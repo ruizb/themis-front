@@ -1,0 +1,26 @@
+{
+  "name": "Themis-front",
+  "version": "0.0.1",
+  "authors": [
+    "Adeline Blaclard",
+    "Alexandre Laffaille",
+    "Justine Lazareth",
+    "Nathan Marin",
+    "Paola Quettier",
+    "Benoit Ruiz",
+    "Tristan Sallé"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ruizb/themis-front.git"
+  },
+  "devDependencies": {
+    "angular": "~1.2",
+    "angular-mocks": "~1.2",
+    "bootstrap": "~3.1",
+    "angular-bootstrap": "~0.10.0",
+    "angular-ui-router": "~0.2"
+  },
+  "dependencies": {},
+  "private": true
+}

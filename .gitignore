@@ -1,0 +1,8 @@
+node_modules
+vendor
+front-mars.sublime-project
+front-mars.sublime-workspace
+.idea
+.DS_Store
+build
+bin
