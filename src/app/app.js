@@ -1,8 +1,8 @@
 angular.module( 'themis', [
   'templates-app',
   'templates-common',
-  'ngBoilerplate.home',
-  'ngBoilerplate.about',
+  'themis.home',
+  'themis.about',
   'ui.router'
 ])
 

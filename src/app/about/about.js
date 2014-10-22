@@ -1,6 +1,5 @@
-angular.module( 'ngBoilerplate.about', [
+angular.module( 'themis.about', [
   'ui.router',
-  'placeholders',
   'ui.bootstrap'
 ])
 

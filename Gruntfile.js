@@ -15,7 +15,7 @@ module.exports = function ( grunt ) {
   // grunt.loadNpmTasks('grunt-conventional-changelog');
   // grunt.loadNpmTasks('grunt-bump');
   // grunt.loadNpmTasks('grunt-coffeelint');
-  // grunt.loadNpmTasks('grunt-karma');
+  grunt.loadNpmTasks('grunt-karma');
   // grunt.loadNpmTasks('grunt-ngmin');
   grunt.loadNpmTasks('grunt-html2js');
   grunt.loadNpmTasks('grunt-contrib-connect');
@@ -341,18 +341,18 @@ module.exports = function ( grunt ) {
     /**
      * The Karma configurations.
      */
-    // karma: {
-    //   options: {
-    //     configFile: '<%= build_dir %>/karma-unit.js'
-    //   },
-    //   unit: {
-    //     port: 9019,
-    //     background: true
-    //   },
-    //   continuous: {
-    //     singleRun: true
-    //   }
-    // },
+    karma: {
+       options: {
+         configFile: '<%= build_dir %>/karma-unit.js'
+       },
+       unit: {
+         port: 9019,
+         background: true
+       },
+       continuous: {
+         singleRun: true
+       }
+    },
 
     /**
      * The `index` task compiles the `index.html` file as a Grunt template. CSS
@@ -397,17 +397,17 @@ module.exports = function ( grunt ) {
      * This task compiles the karma template so that changes to its file array
      * don't have to be managed manually.
      */
-    // karmaconfig: {
-    //   unit: {
-    //     dir: '<%= build_dir %>',
-    //     src: [ 
-    //       '<%= vendor_files.js %>',
-    //       '<%= html2js.app.dest %>',
-    //       '<%= html2js.common.dest %>',
-    //       '<%= test_files.js %>'
-    //     ]
-    //   }
-    // },
+    karmaconfig: {
+       unit: {
+         dir: '<%= build_dir %>',
+         src: [
+           '<%= vendor_files.js %>',
+           '<%= html2js.app.dest %>',
+           '<%= html2js.common.dest %>',
+           '<%= test_files.js %>'
+         ]
+       }
+    },
 
     /**
      * And for rapid development, we have a watch set up that checks to see if
@@ -576,7 +576,7 @@ module.exports = function ( grunt ) {
   grunt.registerTask( 'build', [
     'clean', 'html2js', 'jshint', 'less:build', 'concat:build_css',
     'copy:build_app_assets', 'copy:build_vendor_assets', 'copy:build_appjs',
-    'copy:build_vendorjs', 'index:build'
+    'copy:build_vendorjs', 'index:build', 'karmaconfig', 'karma:continuous'
   ]);
 
   /**
@@ -638,18 +638,18 @@ module.exports = function ( grunt ) {
    * run, we use grunt to manage the list for us. The `karma/*` files are
    * compiled as grunt templates for use by Karma. Yay!
    */
-  // grunt.registerMultiTask( 'karmaconfig', 'Process karma config templates', function () {
-  //   var jsFiles = filterForJS( this.filesSrc );
+  grunt.registerMultiTask( 'karmaconfig', 'Process karma config templates', function () {
+     var jsFiles = filterForJS( this.filesSrc );
     
-  //   grunt.file.copy( 'karma/karma-unit.tpl.js', grunt.config( 'build_dir' ) + '/karma-unit.js', { 
-  //     process: function ( contents, path ) {
-  //       return grunt.template.process( contents, {
-  //         data: {
-  //           scripts: jsFiles
-  //         }
-  //       });
-  //     }
-  //   });
-  // });
+     grunt.file.copy( 'karma/karma-unit.tpl.js', grunt.config( 'build_dir' ) + '/karma-unit.js', {
+       process: function ( contents, path ) {
+         return grunt.template.process( contents, {
+           data: {
+             scripts: jsFiles
+           }
+         });
+       }
+     });
+  });
 
 };
