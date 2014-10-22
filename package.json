@@ -2,13 +2,27 @@
   "name": "Themis-front",
   "version": "0.0.1",
   "contributors": [
-    { "name": "Adeline Blaclard" },
-    { "name": "Alexandre Laffaille" },
-    { "name": "Justine Lazareth" },
-    { "name": "Nathan Marin" },
-    { "name": "Paola Quettier" },
-    { "name": "Benoit Ruiz" },
-    { "name": "Tristan Sallé" }
+    {
+      "name": "Adeline Blaclard"
+    },
+    {
+      "name": "Alexandre Laffaille"
+    },
+    {
+      "name": "Justine Lazareth"
+    },
+    {
+      "name": "Nathan Marin"
+    },
+    {
+      "name": "Paola Quettier"
+    },
+    {
+      "name": "Benoit Ruiz"
+    },
+    {
+      "name": "Tristan Sallé"
+    }
   ],
   "homepage": "https://github.com/ruizb/themis-front",
   "bugs": "https://github.com/ruizb/themis-front/issues",
@@ -16,7 +30,10 @@
     "type": "git",
     "url": "git@github.com:ruizb/themis-front.git"
   },
-  "dependencies": {},
+  "dependencies": {
+    "gzippo": "~0.2.0",
+    "express": "~3.0.0"
+  },
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-less": "~0.11.0",
