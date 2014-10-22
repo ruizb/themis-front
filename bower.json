@@ -14,13 +14,14 @@
     "type": "git",
     "url": "git@github.com:ruizb/themis-front.git"
   },
-  "devDependencies": {
+  "dependencies": {
     "angular": "~1.2",
-    "angular-mocks": "~1.2",
+    "angular-mocks": "~1.2"
+  },
+  "devDependencies": {
     "bootstrap": "~3.1",
     "angular-bootstrap": "~0.10.0",
     "angular-ui-router": "~0.2"
   },
-  "dependencies": {},
   "private": true
 }
