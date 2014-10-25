@@ -1,10 +1,10 @@
-angular.module( 'themis.about', [
+angular.module('themis.about', [
   'ui.router',
   'ui.bootstrap'
 ])
 
-.config(function config( $stateProvider ) {
-  $stateProvider.state( 'about', {
+.config(function config($stateProvider) {
+  $stateProvider.state('about', {
     url: '/about',
     views: {
       "main": {
@@ -16,13 +16,11 @@ angular.module( 'themis.about', [
   });
 })
 
-.controller( 'AboutCtrl', function AboutCtrl( $scope ) {
+.controller('AboutCtrl', function AboutCtrl($scope) {
   // This is simple a demo for UI Boostrap.
   $scope.dropdownDemoItems = [
     "The first choice!",
     "And another choice for you.",
     "but wait! A third!"
   ];
-})
-
-;
+});

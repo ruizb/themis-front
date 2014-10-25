@@ -40,37 +40,36 @@
             Home
           </a>
         </li>
-        <li class="dropdown">
+        <li ng-class="{active: ['about', 'scelles', 'missions', 'facturation'].contains(currentState)}" class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            Section 1 <i class="caret"></i>
+            Gestion Affaires <i class="caret"></i>
           </a>
           <ul class="dropdown-menu">
-            <li><a href ui-sref="about">Menu 1</a></li>
-            <li><a href ui-sref="about">Menu 2</a></li>
-            <li><a href ui-sref="about">Menu 3</a></li>
-            <li><a href ui-sref="about">Menu 4</a></li>
+            <li ui-sref-active="active"><a href ui-sref="about">Suivi des affaires</a></li>
+            <li><a href="#">Gestion des scellés</a></li>
+            <li><a href="#">Gestion des missions</a></li>
+            <li><a href="#">Gestion de la facturation</a></li>
           </ul>
         </li>
-        <li class="dropdown">
+        <li ng-class="{active: ['tgi', 'procureurs', 'juges', 'greffiers'].contains(currentState)}" class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            Section 2 <i class="caret"></i>
+            Gestion Instances Juridiques <i class="caret"></i>
           </a>
           <ul class="dropdown-menu">
-            <li><a href ui-sref="about">Menu 1</a></li>
-            <li><a href ui-sref="about">Menu 2</a></li>
-            <li><a href ui-sref="about">Menu 3</a></li>
-            <li><a href ui-sref="about">Menu 4</a></li>
+            <li><a href="#">Gestion des TGI</a></li>
+            <li><a href="#">Gestion des procureurs</a></li>
+            <li><a href="#">Gestion des juges</a></li>
+            <li><a href="#">Gestion des greffiers</a></li>
           </ul>
         </li>
-        <li class="dropdown">
+        <li ng-class="{active: ['enqueteurs', 'services-enqueteur', 'corps-enqueteur'].contains(currentState)}" class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            Section 3 <i class="caret"></i>
+            Gestion Enquêteurs <i class="caret"></i>
           </a>
           <ul class="dropdown-menu">
-            <li><a href ui-sref="about">Menu 1</a></li>
-            <li><a href ui-sref="about">Menu 2</a></li>
-            <li><a href ui-sref="about">Menu 3</a></li>
-            <li><a href ui-sref="about">Menu 4</a></li>
+            <li><a href="#">Gestion des enquêteurs</a></li>
+            <li><a href="#">Gestion des services d'enquêteur</a></li>
+            <li><a href="#">Gestion des corps d'enquêteur</a></li>
           </ul>
         </li>
       </ul>
