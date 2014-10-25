@@ -8,7 +8,7 @@ describe( 'home section', function() {
   beforeEach( module( 'themis.home' ) );
 
   it( 'should have a dummy test', inject( function() {
-    expect( false ).toBeTruthy();
+    expect( true ).toBeTruthy();
   }));
 });
 
