@@ -1,83 +1,92 @@
 <!DOCTYPE html>
 <html ng-app="themis" ng-controller="AppCtrl">
-  <head>
-    <title ng-bind="pageTitle"></title>
+<head>
+  <title ng-bind="pageTitle"></title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- font awesome from BootstrapCDN -->
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <!-- font awesome from BootstrapCDN -->
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
-    <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
-    <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
+  <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
+  <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
 
-    <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
-    <script type="text/javascript" src="<%= file %>"></script><% }); %>
+  <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
+  <script type="text/javascript" src="<%= file %>"></script><% }); %>
 
-  </head>
-  <body>
-    <div class="container">
-      <div class="navbar navbar-default">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" ng-init="menuCollapsed = true"
-            ng-click="menuCollapsed = ! menuCollapsed">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <div class="navbar-brand">
-            Themis
-            <small>
-              <a href="#">v<%= version %></a>
-            </small>
-          </div>
-        </div>
-        <div class="collapse navbar-collapse" collapse="menuCollapsed">
-          <ul class="nav navbar-nav">
-            <li ui-sref-active="active">
-              <a href ui-sref="home">
-                <i class="fa fa-home"></i>
-                Home
-              </a>
-            </li>
-            <li ui-sref-active="active">
-              <a href ui-sref="about">
-                <i class="fa fa-info-circle"></i>
-                What is it?
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="fa fa-book"></i>
-                Read the Docs
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="fa fa-github-alt"></i>
-                Github
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="fa fa-comments"></i>
-                Support
-              </a>
-            </li>
-          </ul>
-        </div>
+</head>
+<body>
+<div class="container">
+  <div class="navbar navbar-default">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" ng-init="menuCollapsed = true"
+              ng-click="menuCollapsed = ! menuCollapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="navbar-brand">
+        Themis
+        <!-- <small>
+          <a href="#">v<%= version %></a>
+        </small> -->
       </div>
     </div>
+    <div class="collapse navbar-collapse" collapse="menuCollapsed">
+      <ul class="nav navbar-nav">
+        <li ui-sref-active="active">
+          <a href ui-sref="home">
+            Home
+          </a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Section 1 <i class="caret"></i>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href ui-sref="about">Menu 1</a></li>
+            <li><a href ui-sref="about">Menu 2</a></li>
+            <li><a href ui-sref="about">Menu 3</a></li>
+            <li><a href ui-sref="about">Menu 4</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Section 2 <i class="caret"></i>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href ui-sref="about">Menu 1</a></li>
+            <li><a href ui-sref="about">Menu 2</a></li>
+            <li><a href ui-sref="about">Menu 3</a></li>
+            <li><a href ui-sref="about">Menu 4</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Section 3 <i class="caret"></i>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href ui-sref="about">Menu 1</a></li>
+            <li><a href ui-sref="about">Menu 2</a></li>
+            <li><a href ui-sref="about">Menu 3</a></li>
+            <li><a href ui-sref="about">Menu 4</a></li>
+          </ul>
+        </li>
+      </ul>
+      <button type="button" class="btn btn-default navbar-btn navbar-right">Sign in</button>
+    </div>
+  </div>
+</div>
 
-    <div class="container" ui-view="main"></div>
+<div class="container" ui-view="main"></div>
 
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-inner">
-          <p>The Themis project is based on <a href="http://github.com/ngbp/ngbp">ngbp</a>.</p>
-        </div>
-      </div>
-    </footer>
-  </body>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <p>The Themis project is based on <a href="http://github.com/ngbp/ngbp">ngbp</a>.</p>
+    </div>
+  </div>
+</footer>
+</body>
 </html>
