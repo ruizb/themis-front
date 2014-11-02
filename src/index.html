@@ -5,15 +5,11 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- font awesome from BootstrapCDN -->
-  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <!-- glyphicons from BootstrapCDN -->
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 
   <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
   <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
-
-  <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
-  <script type="text/javascript" src="<%= file %>"></script><% }); %>
-
 </head>
 <body>
 <div class="container">
@@ -40,18 +36,19 @@
             Home
           </a>
         </li>
-        <li ng-class="{active: ['about', 'scelles', 'missions', 'facturation'].contains(currentState)}" class="dropdown">
+        <!--<li ng-class="{active: _.contains(['affaires', 'scelles', 'missions', 'facturation'], currentState)}" class="dropdown">-->
+        <li ng-class="{active: _.contains(['affaires', 'scelles', 'missions', 'facturation'], currentState)}" class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             Gestion Affaires <i class="caret"></i>
           </a>
           <ul class="dropdown-menu">
-            <li ui-sref-active="active"><a href ui-sref="about">Suivi des affaires</a></li>
+            <li><a href="#">Suivi des affaires</a></li>
             <li><a href="#">Gestion des scellés</a></li>
             <li><a href="#">Gestion des missions</a></li>
             <li><a href="#">Gestion de la facturation</a></li>
           </ul>
         </li>
-        <li ng-class="{active: ['tgi', 'procureurs', 'juges', 'greffiers'].contains(currentState)}" class="dropdown">
+        <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             Gestion Instances Juridiques <i class="caret"></i>
           </a>
@@ -62,12 +59,12 @@
             <li><a href="#">Gestion des greffiers</a></li>
           </ul>
         </li>
-        <li ng-class="{active: ['enqueteurs', 'services-enqueteur', 'corps-enqueteur'].contains(currentState)}" class="dropdown">
+        <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             Gestion Enquêteurs <i class="caret"></i>
           </a>
           <ul class="dropdown-menu">
-            <li><a href="#">Gestion des enquêteurs</a></li>
+            <li ui-sref-active="active"><a href ui-sref="enqueteurs.index">Gestion des enquêteurs</a></li>
             <li><a href="#">Gestion des services d'enquêteur</a></li>
             <li><a href="#">Gestion des corps d'enquêteur</a></li>
           </ul>
@@ -87,5 +84,7 @@
     </div>
   </div>
 </footer>
+<!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
+<script type="text/javascript" src="<%= file %>"></script><% }); %>
 </body>
 </html>
