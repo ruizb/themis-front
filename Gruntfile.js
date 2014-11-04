@@ -586,7 +586,7 @@ module.exports = function ( grunt ) {
    * minifying your code.
    */
   grunt.registerTask( 'compile', [
-    'less:compile', 'copy:compile_assets', 'concat:compile_js', 'uglify', 'index:compile'
+    'less:compile', 'copy:compile_assets', 'concat:compile_js',/* 'uglify',*/ 'index:compile'
   ]);
 
   grunt.registerTask('heroku', ['compile']);
