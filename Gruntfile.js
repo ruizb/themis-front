@@ -589,7 +589,7 @@ module.exports = function ( grunt ) {
     'less:compile', 'copy:compile_assets', 'concat:compile_js',/* 'uglify',*/ 'index:compile'
   ]);
 
-  grunt.registerTask('heroku', ['compile']);
+  grunt.registerTask('heroku', ['default']);
 
   /**
    * A utility function to get all app JavaScript sources.
