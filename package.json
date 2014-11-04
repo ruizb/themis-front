@@ -34,7 +34,7 @@
 
   },
   "devDependencies": {
-    "bower": "~1.3.8",
+    "bower": "~1.3.12",
     "gzippo": "~0.2.0",
     "express": "~3.0.0",
     "grunt": "~0.4.1",
@@ -53,6 +53,6 @@
     "karma-phantomjs-launcher": "~0.1.4"
   },
   "scripts": {
-    "postinstall": "./node_modules/bower/bin/bower install && grunt heroku"
+    "postinstall": "bower install"
   }
 }
