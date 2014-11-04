@@ -12,68 +12,7 @@
   <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
 </head>
 <body>
-<div class="container">
-  <div class="navbar navbar-default">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" ng-init="menuCollapsed = true"
-              ng-click="menuCollapsed = ! menuCollapsed">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <div class="navbar-brand">
-        Themis
-        <!-- <small>
-          <a href="#">v<%= version %></a>
-        </small> -->
-      </div>
-    </div>
-    <div class="collapse navbar-collapse" collapse="menuCollapsed">
-      <ul class="nav navbar-nav">
-        <li ui-sref-active="active">
-          <a href ui-sref="home">
-            Home
-          </a>
-        </li>
-        <!--<li ng-class="{active: _.contains(['affaires', 'scelles', 'missions', 'facturation'], currentState)}" class="dropdown">-->
-        <li ng-class="{active: _.contains(['affaires', 'scelles', 'missions', 'facturation'], currentState)}" class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            Gestion Affaires <i class="caret"></i>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Suivi des affaires</a></li>
-            <li><a href="#">Gestion des scellés</a></li>
-            <li><a href="#">Gestion des missions</a></li>
-            <li><a href="#">Gestion de la facturation</a></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            Gestion Instances Juridiques <i class="caret"></i>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Gestion des TGI</a></li>
-            <li><a href="#">Gestion des procureurs</a></li>
-            <li><a href="#">Gestion des juges</a></li>
-            <li><a href="#">Gestion des greffiers</a></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            Gestion Enquêteurs <i class="caret"></i>
-          </a>
-          <ul class="dropdown-menu">
-            <li ui-sref-active="active"><a href ui-sref="enqueteurs.index">Gestion des enquêteurs</a></li>
-            <li><a href="#">Gestion des services d'enquêteur</a></li>
-            <li><a href="#">Gestion des corps d'enquêteur</a></li>
-          </ul>
-        </li>
-      </ul>
-      <button type="button" class="btn btn-default navbar-btn navbar-right">Sign in</button>
-    </div>
-  </div>
-</div>
+<nav-bar current-state="currentState" ng-if="currentState !== 'login'"></nav-bar>
 
 <div class="container" ui-view="main"></div>
 

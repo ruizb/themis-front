@@ -10,7 +10,9 @@ angular
   })
 
   .config(function myAppConfig($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/home');
+    // if (user is logged in) { otherwise=home } else { otherwise=login }
+    // TODO
+    $urlRouterProvider.otherwise('/login');
   })
 
   .controller('AppCtrl', function AppCtrl($scope, $location) {
@@ -18,6 +20,6 @@ angular
       if (angular.isDefined(toState.data.pageTitle)) {
         $scope.pageTitle = toState.data.pageTitle;
       }
-      // $scope.currentState = angular.isDefined(toState) ? toState.name : 'home';
+      $scope.currentState = angular.isDefined(toState) ? toState.name : 'home';
     });
   });
