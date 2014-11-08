@@ -1,0 +1,31 @@
+<div class="row">
+  <h2>Liste des greffiers</h2>
+
+  <button type="button" class="center-block btn btn-default btn-lg btn-primary btn-add-entity" ui-sref="greffiers.edit">
+    <span class="glyphicon glyphicon-plus"></span> Ajouter un greffier
+  </button>
+
+  <table class="table table-striped">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Phone number</th>
+      <th>Address</th>
+      <th>Actions</th>
+    </tr>
+    <tr ng-repeat="enqueteur in enqueteurs">
+      <td>{{ greffier.id }}</td>
+      <td>{{ greffier.firstname }} {{ greffier.lastname }}</td>
+      <td>{{ greffier.phone }}</td>
+      <td>{{ greffier.adress }}</td>
+      <td>
+        <button type="button" class="btn btn-default" tooltip="Modifier" ui-sref="greffiers.edit({ id: greffier.id })">
+          <span class="glyphicon glyphicon-pencil"></span>
+        </button>
+        <button type="button" class="btn btn-default" tooltip="Supprimer" ui-sref="greffiers.delete({ id: greffier.id })">
+          <span class="glyphicon glyphicon-trash"></span>
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>
