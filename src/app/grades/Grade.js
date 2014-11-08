@@ -1,32 +1,32 @@
 angular
   .module('themis.grades')
-  .factory('Grade',function(Entity, $q, $http){
+  .factory('Grade', function (Entity, $q, $http) {
   
-	var Grade = function () {
+    var Grade = function () {
       Entity.call(this);
-      this.url = '/grade';
+      this.url += '/grades';
     };
-	Grade.prototype = Object.create(Entity.prototype);
-	 
-	Grade.prototype.getAll = function () {
-      var deferred = $q.defer();
+    Grade.prototype = Object.create(Entity.prototype);
 
-      var grades = [];
-      for (var i = 0; i < 50; i++) {
-        grades.push({
-          id: i,
-          name:"Commissaire"
-        });
-      }
-      deferred.resolve(grades);
+    Grade.prototype.getAll = function () {
+        var deferred = $q.defer();
 
-      return deferred.promise;
-    };
-	
-	Grade.prototype.add = function (gradeData) {
+        var grades = [];
+        for (var i = 0; i < 50; i++) {
+          grades.push({
+            id: i,
+            name:"Commissaire"
+          });
+        }
+        deferred.resolve(grades);
+
+        return deferred.promise;
+      };
+
+    Grade.prototype.add = function (gradeData) {
       var deferred = $q.defer();
       $http
-        .post(this.urlBase + this.url, gradeData)
+        .post(this.url, gradeData)
         .success(function (data) {
           deferred.resolve(data);
         })
@@ -35,11 +35,11 @@ angular
         });
       return deferred.promise;
     };
-	
-	Grade.prototype.edit = function (gradeData) {
-      var deferred = $q.defer();
+
+    Grade.prototype.edit = function (gradeData) {
+        var deferred = $q.defer();
       $http
-        .put(this.urlBase + this.url + '/' + gradeData.id, gradeData)
+        .put(this.url + '/' + gradeData.id, gradeData)
         .success(function (data) {
           deferred.resolve(data);
         })
@@ -48,11 +48,11 @@ angular
         });
       return deferred.promise;
     };
-	//????
+
     Grade.prototype.remove = function (gradeData) {
       var deferred = $q.defer();
       $http
-        ['delete'](this.urlBase + this.url + '/' + gradeData.id)
+        ['delete'](this.url + '/' + gradeData.id)// ['delete'] instead of .delete because of jshint ("delete is a reserved key word...")
         .success(function (data) {
           deferred.resolve(data);
         })
@@ -61,7 +61,7 @@ angular
         });
       return deferred.promise;
     };
-  
-	return new Grade();
+
+    return new Grade();
   
   });

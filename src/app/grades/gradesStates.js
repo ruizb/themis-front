@@ -11,7 +11,7 @@ angular
           }
         }
       })
-	.state('grades.index', {
+      .state('grades.index', {
         url: '/index',
         views: {
           "mainContent": {
@@ -21,7 +21,7 @@ angular
         },
         data:{ pageTitle: 'Liste des grades' }
       })
-	.state('grades.edit', {
+      .state('grades.edit', {
         url: '/edit/:id',
         views: {
           "mainContent": {
@@ -33,13 +33,13 @@ angular
           grade: function ($stateParams, $q) {
             var deferred = $q.defer();
             if ($stateParams.id === '') {
-              deferred.resolve({});
+              deferred.resolve({ id: '', name: '' });
             }
             else {
               // should call GET api/1/grades/:id
               deferred.resolve({
                 id: $stateParams.id,
-                name: "commissaire"
+                name: "Commissaire"
               });
             }
 
