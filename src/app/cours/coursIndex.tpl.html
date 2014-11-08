@@ -1,0 +1,27 @@
+<div class="row">
+  <h2>Liste des cours</h2>
+
+  <button type="button" class="center-block btn btn-default btn-lg btn-primary btn-add-entity" ui-sref="cours.edit">
+    <span class="glyphicon glyphicon-plus"></span> Ajouter une cour
+  </button>
+
+  <table class="table table-striped">
+    <tr>
+      <th>ID</th>
+      <th>Libelle</th>
+      <th>Actions</th>
+    </tr>
+    <tr ng-repeat="cour in cours">
+      <td>{{ cour.id }}</td>
+      <td>{{ cour.libelle }}</td>
+      <td>
+        <button type="button" class="btn btn-default" tooltip="Modifier" ui-sref="cours.edit({ id: cour.id })">
+          <span class="glyphicon glyphicon-pencil"></span>
+        </button>
+        <button type="button" class="btn btn-default" tooltip="Supprimer" ui-sref="cours.remove({ id: cour.id })"> <!--a voir delete-->
+          <span class="glyphicon glyphicon-trash"></span>
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>
