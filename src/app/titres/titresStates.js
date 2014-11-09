@@ -30,17 +30,19 @@ angular
           }
         },
         resolve: {
-          titre: function ($stateParams, $q) {
+          titre: function ($stateParams, $q, Titre) {
             var deferred = $q.defer();
-            if ($stateParams.id === '') {
-              deferred.resolve({});
+            if (_.isUndefined($stateParams.id) || $stateParams.id === '') {
+              deferred.resolve({ libelle: '' });
             }
             else {
-              // should call GET api/1/titre/:id
-              deferred.resolve({
-                id: $stateParams.id,
-                name: "Magistrat"
-              });
+              Titre
+                .get($stateParams.id)
+                .then(function (data) {
+                  deferred.resolve(data);
+                }, function (err) {
+                  deferred.reject(err);
+                });
             }
 
             return deferred.promise;
