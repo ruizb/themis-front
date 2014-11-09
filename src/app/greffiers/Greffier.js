@@ -15,20 +15,20 @@ angular
       var greffiers = [];
       for (var i = 0; i < 50; i++) {
         greffiers.push({
-          id: i,
-          firstname: "Bob",
-          lastname: "greffier",
-		  adress: "3 rue des lillas 34000 Montpellier",
-          phone: "00 11 22 33 44",
-		  mobile: "06 11 22 33 44",
-          fax: "02 11 22 33 44",
-		  TGIs :{
+        id: i,
+        firstname: "Bob",
+        lastname: "greffier",
+		adress: "3 rue des lillas 34000 Montpellier",
+        phone: "00 11 22 33 44",
+		mobile: "06 11 22 33 44",
+        fax: "02 11 22 33 44",
+			TGIs :{
 			id :1,
 			name : 'TGI de Montpellier',
 			phone : '0011223344'
-		  }
-        });
-      }
+			}
+		});
+		}
       deferred.resolve(greffiers);
 
       return deferred.promise;

@@ -1,2 +1,47 @@
 <h2>{{ h2Title }}</h2>
-<p>ID du greffier à modifier : {{ greffier.id }}</p>
+<button class="btn btn-default btn-xs" ui-sref="greffiers.index">
+  <i class="glyphicon glyphicon-chevron-left"></i> Retour à la liste des greffiers
+</button>
+
+<!--<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert(alert)">{{alert.message}}</alert>-->
+
+<form novalidate>
+  <div ng-if="isEdit" class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">ID</label>
+    <input type="text" class="form-control" name="id" id="id" ng-model="greffier.id" readonly>
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Nom</label>
+    <input type="text" class="form-control" name="firstname" id="firstname" ng-model="greffier.firstname">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Prenom</label>
+    <input type="text" class="form-control" name="lastname" id="lastname" ng-model="greffier.lastname">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Adresse</label>
+    <input type="text" class="form-control" name="adress" id="adress" ng-model="greffier.adress">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Telephone</label>
+    <input type="text" class="form-control" name="phone" id="phone" ng-model="greffier.phone">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Mobile</label>
+    <input type="text" class="form-control" name="mobile" id="mobile" ng-model="greffier.mobile">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Fax</label>
+    <input type="text" class="form-control" name="fax" id="fax" ng-model="greffier.fax">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">TGI</label>
+    <input type="text" class="form-control" name="idTgi" id="idTgi" ng-model="greffier.tgi.id">
+  </div>
+
+  <div class="form-group col-sm-2 col-sm-offset-5">
+    <button type="submit" class="btn btn-primary center-block btn-form-send btn-block" ng-click="submit()">Envoyer</button>
+  </div>
+</form>
+
+<!--<smart-form entity="grade" is-edit="isEdit"></smart-form>-->
