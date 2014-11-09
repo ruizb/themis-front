@@ -6,12 +6,12 @@ angular
 
     $scope.coursFields = [
       { name: 'ID', value: 'id' },
-      { name: 'Libellé', value: 'libelle' }
+      { name: 'Libelle', value: 'libelle' }
     ];
 
     $scope.Cour = Cour;
 
-    Grade
+    Cour
       .getAll()
       .then(function (data) {
         $scope.cours = data;
