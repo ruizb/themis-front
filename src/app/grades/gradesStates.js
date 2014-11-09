@@ -30,22 +30,24 @@ angular
           }
         },
         resolve: {
-          grade: function ($stateParams, $q) {
+          grade: function ($stateParams, $q, Grade) {
             var deferred = $q.defer();
-            if ($stateParams.id === '') {
-              deferred.resolve({ id: '', name: '' });
+            if (_.isUndefined($stateParams.id) || $stateParams.id === '') {
+              deferred.resolve({ libelle: '' });
             }
             else {
-              // should call GET api/1/grades/:id
-              deferred.resolve({
-                id: $stateParams.id,
-                name: "Commissaire"
-              });
+              Grade
+                .get($stateParams.id)
+                .then(function (data) {
+                  deferred.resolve(data);
+                }, function (err) {
+                  deferred.reject(err);
+                });
             }
 
             return deferred.promise;
           }
         },
         data:{ pageTitle: 'Modifier un grade' }
-    });
+      });
 	});

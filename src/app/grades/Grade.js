@@ -8,21 +8,6 @@ angular
     };
     Grade.prototype = Object.create(Entity.prototype);
 
-    Grade.prototype.getAll = function () {
-        var deferred = $q.defer();
-
-        var grades = [];
-        for (var i = 0; i < 50; i++) {
-          grades.push({
-            id: i,
-            name:"Commissaire"
-          });
-        }
-        deferred.resolve(grades);
-
-        return deferred.promise;
-      };
-
     Grade.prototype.add = function (gradeData) {
       var deferred = $q.defer();
       $http

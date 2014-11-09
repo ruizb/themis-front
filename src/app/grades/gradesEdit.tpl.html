@@ -3,7 +3,7 @@
   <i class="glyphicon glyphicon-chevron-left"></i> Retour à la liste des grades
 </button>
 
-<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.message}}</alert>
+<!--<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert(alert)">{{alert.message}}</alert>-->
 
 <form novalidate>
   <div ng-if="isEdit" class="form-group col-sm-8 col-sm-offset-2">
@@ -12,7 +12,7 @@
   </div>
   <div class="form-group col-sm-8 col-sm-offset-2">
     <label class="control-label" for="id">Libellé</label>
-    <input type="text" class="form-control" name="name" id="name" ng-model="grade.name">
+    <input type="text" class="form-control" name="libelle" id="libelle" ng-model="grade.libelle">
   </div>
 
   <div class="form-group col-sm-2 col-sm-offset-5">
