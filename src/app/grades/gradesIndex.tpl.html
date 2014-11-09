@@ -5,15 +5,17 @@
     <span class="glyphicon glyphicon-plus"></span> Ajouter un grade
   </button>
 
-  <table class="table table-striped">
+  <div ng-if="loading" class="loading center-block">Chargement...</div>
+
+  <table ng-if="!loading" class="table table-striped">
     <tr>
       <th>ID</th>
-      <th>Name</th>
+      <th>Libellé</th>
       <th>Actions</th>
     </tr>
     <tr ng-repeat="grade in grades">
       <td>{{ grade.id }}</td>
-      <td>{{ grade.name }}</td>
+      <td>{{ grade.libelle }}</td>
       <td>
         <button type="button" class="btn btn-default" tooltip="Modifier" ui-sref="grades.edit({ id: grade.id })">
           <span class="glyphicon glyphicon-pencil"></span>
