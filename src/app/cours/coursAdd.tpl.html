@@ -1,16 +1,23 @@
 <h2>{{ h2Title }}</h2>
+<button class="btn btn-default btn-xs" ui-sref="cours.index">
+  <i class="glyphicon glyphicon-chevron-left"></i> Retour à la liste des cours
+</button>
 
-<form class="form-horizontal" role="form">
-  <div class="form-group">
-    <label for="inputLibelle" class="col-sm-2 control-label">Libelle</label>
-    <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputEmail3" placeholder="Libelle">
-    </div>
+<!--<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert(alert)">{{alert.message}}</alert>-->
+
+<form novalidate>
+  <div ng-if="isAdd" class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">ID</label>
+    <input type="text" class="form-control" name="id" id="id" ng-model="cour.id">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Libellé</label>
+    <input type="text" class="form-control" name="libelle" id="libelle" ng-model="cour.libelle">
   </div>
 
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default">Save</button>
-    </div>
+  <div class="form-group col-sm-2 col-sm-offset-5">
+    <button type="submit" class="btn btn-primary center-block btn-form-send btn-block" ng-click="submit()">Envoyer</button>
   </div>
 </form>
+
+<!--<smart-form entity="grade" is-edit="isEdit"></smart-form>-->

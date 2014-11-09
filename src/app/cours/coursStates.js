@@ -11,7 +11,7 @@ angular
           }
         }
       })
-	.state('cours.index', {
+      .state('cours.index', {
         url: '/index',
         views: {
           "mainContent": {
@@ -21,7 +21,7 @@ angular
         },
         data:{ pageTitle: 'Liste des cours' }
       })
-	.state('cours.edit', {
+      .state('cours.edit', {
         url: '/edit/:id',
         views: {
           "mainContent": {
@@ -30,22 +30,24 @@ angular
           }
         },
         resolve: {
-          cour: function ($stateParams, $q) {
+          cour: function ($stateParams, $q, Cour) {
             var deferred = $q.defer();
-            if ($stateParams.id === '') {
-              deferred.resolve({});
+            if (_.isUndefined($stateParams.id) || $stateParams.id === '') {
+              deferred.resolve({ libelle: '' });
             }
             else {
-              // should call GET api/1/grades/:id
-              deferred.resolve({
-                id: $stateParams.id,
-                libelle: "cour d'appel de Montpellier"
-              });
+              Cour
+                .get($stateParams.id)
+                .then(function (data) {
+                  deferred.resolve(data);
+                }, function (err) {
+                  deferred.reject(err);
+                });
             }
 
             return deferred.promise;
           }
         },
         data:{ pageTitle: 'Modifier une cour' }
-    });
+      });
 	});
