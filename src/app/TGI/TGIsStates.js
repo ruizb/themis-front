@@ -1,57 +1,53 @@
 angular
-.module('themis.TGIs')
+.module('themis.tgis')
   .config(function config($stateProvider) {
     $stateProvider
-      .state('TGIs', {
+      .state('tgis', {
         abstract: true,
-        url: '/TGIs',
+        url: '/tgis',
         views: {
           "main": {
             template: '<div ui-view="mainContent"></div>'
           }
         }
       })
-	.state('TGIs.index', {
+      .state('tgis.index', {
         url: '/index',
         views: {
           "mainContent": {
-            controller: 'TGIsIndexCtrl',
-            templateUrl: 'TGIs/TGIsIndex.tpl.html'
+            controller: 'TgisIndexCtrl',
+            templateUrl: 'tgis/tgisIndex.tpl.html'
           }
         },
         data:{ pageTitle: 'Liste des TGIs' }
       })
-	.state('TGIs.edit', {
+      .state('tgis.edit', {
         url: '/edit/:id',
         views: {
           "mainContent": {
-            controller: 'TGIsEditCtrl',
-            templateUrl: 'TGIs/TGIsEdit.tpl.html'
+            controller: 'TgisEditCtrl',
+            templateUrl: 'tgis/tgisEdit.tpl.html'
           }
         },
         resolve: {
-          TGI: function ($stateParams, $q) {
+          tgi: function ($stateParams, $q, Tgi) {
             var deferred = $q.defer();
-            if ($stateParams.id === '') {
-              deferred.resolve({});
+            if (_.isUndefined($stateParams.id) || $stateParams.id === '') {
+              deferred.resolve({ name: '' });
             }
             else {
-              // should call GET api/1/grades/:id
-              deferred.resolve({
-                id: $stateParams.id,
-				name:'TGI de Montpellier',
-				phone: '0011223344',
-				cours: //ou courts?
-				{
-				id: 1,
-				libelle: 'Cours d\'Appel de Montpellier'
-				}
-              });
+              Tgi
+                .get($stateParams.id)
+                .then(function (data) {
+                  deferred.resolve(data);
+                }, function (err) {
+                  deferred.reject(err);
+                });
             }
 
             return deferred.promise;
           }
         },
         data:{ pageTitle: 'Modifier un TGI' }
-    });
+      });
 	});

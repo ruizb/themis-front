@@ -1,6 +1,6 @@
 angular
-  .module('themis.TGIs', [
+  .module('themis.tgis', [
     'ui.router',
-    'ui.bootstrap'
+    'ui.bootstrap',
 	'themis.cours'
   ]);

@@ -1,2 +1,31 @@
 <h2>{{ h2Title }}</h2>
-<p>ID du TGI a modifier : {{ TGI.id }}</p>
+<button class="btn btn-default btn-xs" ui-sref="tgis.index">
+  <i class="glyphicon glyphicon-chevron-left"></i> Retour à la liste des TGIs
+</button>
+
+<!--<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert(alert)">{{alert.message}}</alert>-->
+
+<form novalidate>
+  <div ng-if="isEdit" class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">ID</label>
+    <input type="text" class="form-control" name="id" id="id" ng-model="tgi.id" readonly>
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Nom</label>
+    <input type="text" class="form-control" name="name" id="name" ng-model="tgi.name">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Telephone</label>
+    <input type="text" class="form-control" name="phone" id="phone" ng-model="tgi.phone">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Cour</label>
+    <input type="text" class="form-control" name="court" id="court" ng-model="tgi.court.libelle"> <!--a voir -->
+  </div>
+
+  <div class="form-group col-sm-2 col-sm-offset-5">
+    <button type="submit" class="btn btn-primary center-block btn-form-send btn-block" ng-click="submit()">Envoyer</button>
+  </div>
+</form>
+
+<!--<smart-form entity="grade" is-edit="isEdit"></smart-form>-->

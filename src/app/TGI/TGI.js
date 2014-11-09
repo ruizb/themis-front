@@ -1,25 +1,25 @@
 angular
-  .module('themis.TGIs')
-  .factory('TGI',function(Entity, $q, $http, Cour){
+  .module('themis.tgis')
+  .factory('Tgi',function(Entity, $q, $http, Cour){
 	
 	Cour="Cour d'appel de Montpellier";
 	
-	var TGI = function () {
+	var Tgi = function () {
       Entity.call(this);
-      this.url = '/TGI';
+      this.url = '/tgis';
     };
-	TGI.prototype = Object.create(Entity.prototype);
+	Tgi.prototype = Object.create(Entity.prototype);
 	 
-	TGI.prototype.getAll = function () {
+	Tgi.prototype.getAll = function () {
       var deferred = $q.defer();
 
-      var TGIs = [];
+      var tgis = [];
       for (var i = 0; i < 20; i++) {
-        TGIs.push({
-          id: i,
-		  name:'TGI de Montpellier',
-		  phone: '0011223344',
-		  cours: //ou courts?
+        tgis.push({
+        id: i,
+		name:'TGI de Montpellier',
+		phone: '0011223344',
+		cours: //ou courts?
 			{
 			id: 1,
 			libelle: 'Cours d\'Appel de Montpellier'
@@ -27,15 +27,15 @@ angular
           
         });
       }
-      deferred.resolve(TGIs);
+      deferred.resolve(tgis);
 
       return deferred.promise;
     };
 	
-	TGI.prototype.add = function (TGIData) {
+	Tgi.prototype.add = function (tgiData) {
       var deferred = $q.defer();
       $http
-        .post(this.urlBase + this.url, TGIData)
+        .post(this.urlBase + this.url, tgiData)
         .success(function (data) {
           deferred.resolve(data);
         })
@@ -45,10 +45,10 @@ angular
       return deferred.promise;
     };
 	
-	TGI.prototype.edit = function (TGIData) {
+	Tgi.prototype.edit = function (TGIData) {
       var deferred = $q.defer();
       $http
-        .put(this.urlBase + this.url + '/' + TGIData.id, TGIData)
+        .put(this.urlBase + this.url + '/' + tgiData.id, tgiData)
         .success(function (data) {
           deferred.resolve(data);
         })
@@ -58,10 +58,10 @@ angular
       return deferred.promise;
     };
 	//????
-    TGI.prototype.remove = function (TGIData) {
+    TGI.prototype.remove = function (tgiData) {
       var deferred = $q.defer();
       $http
-        ['delete'](this.urlBase + this.url + '/' + TGIData.id)
+        ['delete'](this.urlBase + this.url + '/' + tgiData.id)
         .success(function (data) {
           deferred.resolve(data);
         })
@@ -71,6 +71,6 @@ angular
       return deferred.promise;
     };
   
-	return new TGI();
+	return new Tgi();
   
   });
