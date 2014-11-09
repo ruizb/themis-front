@@ -4,7 +4,7 @@ angular
 
     var Greffier = function () {
       Entity.call(this);
-      this.url = '/greffier';
+      this.url = '/greffiers';
     };
     Greffier.prototype = Object.create(Entity.prototype);
 
