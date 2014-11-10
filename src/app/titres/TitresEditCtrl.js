@@ -9,7 +9,7 @@ angular
       $scope.h2Title = 'Ajouter un titre';
     }
     else { // edit
-      $scope.h2Title = 'Modifier le titre ' + titre.libelle;
+      $scope.h2Title = 'Modifier le titre ' + titre.name;
       $scope.titre = titre;
     }
 
