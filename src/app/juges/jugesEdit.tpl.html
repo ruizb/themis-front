@@ -1,0 +1,63 @@
+<h2>{{ h2Title }}</h2>
+<button class="btn btn-default btn-xs" ui-sref="juges.index">
+  <i class="glyphicon glyphicon-chevron-left"></i> Retour &agrave la liste des juges
+</button>
+
+<!--<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert(alert)">{{alert.message}}</alert>-->
+
+<form novalidate>
+  <div ng-if="isEdit" class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">ID</label>
+    <input type="text" class="form-control" name="id" id="id" ng-model="juge.id" readonly>
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Prenom</label>
+    <input type="text" class="form-control" name="fname" id="fname" ng-model="juge.fname">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Nom</label>
+    <input type="text" class="form-control" name="name" id="name" ng-model="juge.name">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Adresse</label>
+    <input type="text" class="form-control" name="address" id="address" ng-model="juge.address">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Telephone</label>
+    <input type="text" class="form-control" name="phone" id="phone" ng-model="juge.phone">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Fax</label>
+    <input type="text" class="form-control" name="fax" id="fax" ng-model="juge.fax">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Titre</label>
+	<select class="form-control selection" name="status" id="status"><!--ng-model="juge.status.name"-->
+		<option>Magistrat</option>
+		<option>Procureur</option>
+		<option>Mega-Juge</option>
+	</select>
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">TGI</label>
+	<select class="form-control selection" name="tgi" id="tgi"><!--ng-model="juge.tgi.name"-->
+		<option>TGI de Montpellier</option>
+		<option>TGI de Nimes</option>
+		<option>TGI de Beziers</option>
+	</select>
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Greffier</label>
+	<select class="form-control selection" name="greffier" id="geffier"><!--ng-model="juge.greffier.id" + name + fname-->
+		<option>Greffier 1</option>
+		<option>Greffier 2</option>
+		<option>Greffier 3</option>
+	</select>
+  </div>
+
+  <div class="form-group col-sm-2 col-sm-offset-5">
+    <button type="submit" class="btn btn-primary center-block btn-form-send btn-block" ng-click="submit()">Envoyer</button>
+  </div>
+</form>
+
+<!--<smart-form entity="greffier" is-edit="isEdit"></smart-form>-->
