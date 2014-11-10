@@ -1,0 +1,27 @@
+<h2>{{ h2Title }}</h2>
+<button class="btn btn-default btn-xs" ui-sref="services.index">
+  <i class="glyphicon glyphicon-chevron-left"></i> Retour &agrave la liste des services
+</button>
+
+<!--<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert(alert)">{{alert.message}}</alert>-->
+
+<form novalidate>
+  <div ng-if="isEdit" class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">ID</label>
+    <input type="text" class="form-control" name="id" id="id" ng-model="service.id" readonly>
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Libelle</label>
+    <input type="text" class="form-control" name="libelle" id="libelle" ng-model="service.libelle">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Corps</label>
+    <input type="text" class="form-control" name="corps" id="corps" ng-model="service.corps.libelle"> <!-- vérif notation pointée et changer type text en liste -->
+  </div>
+
+  <div class="form-group col-sm-2 col-sm-offset-5">
+    <button type="submit" class="btn btn-primary center-block btn-form-send btn-block" ng-click="submit()">Envoyer</button>
+  </div>
+</form>
+
+<!--<smart-form entity="service" is-edit="isEdit"></smart-form>-->
