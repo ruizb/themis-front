@@ -9,7 +9,7 @@ angular
       $scope.h2Title = 'Ajouter un service';
     }
     else { // edit
-      $scope.h2Title = 'Modifier le service ' + service.libelle;
+      $scope.h2Title = 'Modifier le service ' + service.name;
       $scope.service = service;
     }
 

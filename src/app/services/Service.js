@@ -15,10 +15,10 @@ angular
 		for (var i = 0; i < 3; i++) {
 			services.push({
 				id: i,
-				libelle: "BAC",
+				name: "BAC",
 				corps: {
 					id: 1,
-					libelle: 'Police'	
+					name: 'Police'	
 				}
 			});
 		}

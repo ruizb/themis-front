@@ -33,7 +33,7 @@ angular
           service: function ($stateParams, $q, Service) {
             var deferred = $q.defer();
             if (_.isUndefined($stateParams.id) || $stateParams.id === '') {
-              deferred.resolve({ libelle: '', corps:''});
+              deferred.resolve({ name: '', corps:''});
             }
             else {
               Service

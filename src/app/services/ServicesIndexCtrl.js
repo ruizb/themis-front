@@ -6,7 +6,7 @@ angular
 
     $scope.servicesFields = [
 		{ name: 'ID', value: 'id' },
-		{ name: 'Libelle', value: 'libelle' },
+		{ name: 'Libelle', value: 'name' },
 		{ name: 'Corps', value: 'corps'}
     ];
 
