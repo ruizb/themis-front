@@ -1,0 +1,9 @@
+<div class="row">
+  <h2>Liste des objets</h2>
+
+  <button type="button" class="center-block btn btn-default btn-lg btn-primary btn-add-entity" ui-sref="objets.edit">
+    <span class="glyphicon glyphicon-plus"></span> Ajouter un objet
+  </button>
+
+  <entity-index entity-manager="Objet" loading="loading" fields="objetsFields" entities="objets" states-namespace="objets"></entity-index>
+</div>
