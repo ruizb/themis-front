@@ -30,7 +30,7 @@ angular
           }
         },
         resolve: {
-          objet: function ($stateParams, $q, Grade) {
+          objet: function ($stateParams, $q, Objet) {
             var deferred = $q.defer();
             if (_.isUndefined($stateParams.id) || $stateParams.id === '') {
               deferred.resolve({ libelle: '' });

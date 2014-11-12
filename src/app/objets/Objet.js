@@ -18,7 +18,7 @@ angular
           libelle:"PC portable"
         });
       }
-      deferred.resolve(cours);
+      deferred.resolve(objets);
 
       return deferred.promise;
     };
