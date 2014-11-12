@@ -9,7 +9,7 @@ angular
       $scope.h2Title = 'Ajouter un objet';
     }
     else { // edit
-      $scope.h2Title = 'Modifier l'objet ' + objet.libelle;
+      $scope.h2Title = 'Modifier l\'objet ' + objet.libelle;
       $scope.objet = objet;
     }
 

@@ -8,6 +8,21 @@ angular
     };
     Objet.prototype = Object.create(Entity.prototype);
 
+	Objet.prototype.getAll = function () {
+      var deferred = $q.defer();
+
+      var objets = [];
+      for (var i = 0; i < 20; i++) {
+        objets.push({
+          id: i,
+          libelle:"PC portable"
+        });
+      }
+      deferred.resolve(cours);
+
+      return deferred.promise;
+    };
+	
     Objet.prototype.add = function (objetData) {
       var deferred = $q.defer();
       $http
