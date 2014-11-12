@@ -11,32 +11,32 @@ angular
           }
         }
       })
-      .state('grades.index', {
+      .state('corpss.index', {
         url: '/index',
         views: {
           "mainContent": {
-            controller: 'GradesIndexCtrl',
-            templateUrl: 'grades/gradesIndex.tpl.html'
+            controller: 'CorpssIndexCtrl',
+            templateUrl: 'corps/corpssIndex.tpl.html'
           }
         },
-        data:{ pageTitle: 'Liste des grades' }
+        data:{ pageTitle: 'Liste des corps' }
       })
-      .state('grades.edit', {
+      .state('corpss.edit', {
         url: '/edit/:id',
         views: {
           "mainContent": {
-            controller: 'GradesEditCtrl',
-            templateUrl: 'grades/gradesEdit.tpl.html'
+            controller: 'CorpssEditCtrl',
+            templateUrl: 'corps/corpssEdit.tpl.html'
           }
         },
         resolve: {
-          grade: function ($stateParams, $q, Grade) {
+          corps: function ($stateParams, $q, Corps) {
             var deferred = $q.defer();
             if (_.isUndefined($stateParams.id) || $stateParams.id === '') {
               deferred.resolve({ libelle: '' });
             }
             else {
-              Grade
+              Corps
                 .get($stateParams.id)
                 .then(function (data) {
                   deferred.resolve(data);
@@ -48,6 +48,6 @@ angular
             return deferred.promise;
           }
         },
-        data:{ pageTitle: 'Modifier un grade' }
+        data:{ pageTitle: 'Modifier un corps' }
       });
 	});

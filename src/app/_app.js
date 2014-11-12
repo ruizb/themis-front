@@ -5,6 +5,6 @@ angular
     'themis.login',
     'themis.home',
     'themis.enqueteurs',
-	'themis.corps',
+	'themis.corpss',
     'ui.router'
   ]);

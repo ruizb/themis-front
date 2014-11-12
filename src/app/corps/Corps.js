@@ -8,6 +8,21 @@ angular
     };
     Corps.prototype = Object.create(Entity.prototype);
 
+	Corps.prototype.getAll = function () {
+      var deferred = $q.defer();
+
+      var corpsListe = [];
+      for (var i = 0; i < 20; i++) {
+        corpsListe.push({
+          id: i,
+          libelle:"gendarmerie"
+        });
+      }
+      deferred.resolve(corpsListe);
+
+      return deferred.promise;
+    };
+	
     Corps.prototype.add = function (corpsData) {
       var deferred = $q.defer();
       $http
