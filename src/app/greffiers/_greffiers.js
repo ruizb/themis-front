@@ -1,6 +1,6 @@
 angular
   .module('themis.greffiers', [
     'ui.router',
-    'ui.bootstrap',
-	'themis.tgis'
+    'ui.bootstrap'
+	//'themis.tgis'
   ]);
