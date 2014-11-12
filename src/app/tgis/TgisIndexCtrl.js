@@ -5,8 +5,10 @@ angular
     $scope.loading = true;
 
     $scope.tgisFields = [
-      { name: 'ID', value: 'id' },
-      { name: 'name', value: 'name' }
+	{ name: 'ID', value: 'id' },
+    { name: 'name', value: 'name' },
+	{ name: 'phone', value: 'phone' }
+	//{ name: 'court', value: 'court' }
     ];
 
     $scope.Tgi = Tgi;

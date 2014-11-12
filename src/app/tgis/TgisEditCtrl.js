@@ -16,7 +16,7 @@ angular
     $scope.submit = function () {
       var operation = isEdit ? 'edit' : 'add';
       Tgi
-        [operation]($scope.TGI)
+        [operation]($scope.tgi)
         .then(function (data) {
           // success
           $state.go('tgis.index');
