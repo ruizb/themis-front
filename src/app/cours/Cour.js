@@ -4,7 +4,7 @@ angular
   
 	var Cour = function () {
       Entity.call(this);
-      this.url = '/cour';
+      this.url = '/cours';
     };
 	Cour.prototype = Object.create(Entity.prototype);
 	 

@@ -1,6 +1,6 @@
 angular
   .module('themis.cours')
-  .controller('CourssEditCtrl', function ($scope, $state, Cour, cour) {
+  .controller('CoursEditCtrl', function ($scope, $state, Cour, cour) {
 
     var isEdit = !_.isUndefined(cour.id) && _.isNumber(cour.id);
     $scope.isEdit = isEdit;
