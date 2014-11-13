@@ -1,0 +1,9 @@
+<div class="row">
+  <h2>Liste des missions</h2>
+
+  <button type="button" class="center-block btn btn-default btn-lg btn-primary btn-add-entity" ui-sref="missions.edit">
+    <span class="glyphicon glyphicon-plus"></span> Ajouter une mission
+  </button>
+
+  <entity-index entity-manager="Mission" loading="loading" fields="missionsFields" entities="missions" states-namespace="missions"></entity-index>
+</div>
