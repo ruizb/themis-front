@@ -9,7 +9,7 @@ angular
       $scope.h2Title = 'Ajouter un greffier';
     }
     else { // edit
-      $scope.h2Title = 'Modifier le greffier tot';
+      $scope.h2Title = 'Modifier le greffier';
       $scope.greffier = greffier;
     }
 

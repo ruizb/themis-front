@@ -1,5 +1,5 @@
 angular
-  .module('themis.greffiers')
+.module('themis.greffiers')
   .config(function config($stateProvider) {
     $stateProvider
       .state('greffiers', {
@@ -30,27 +30,19 @@ angular
           }
         },
         resolve: {
-          enqueteur: function ($stateParams, $q) {
+          greffier: function ($stateParams, $q, Grade) {
             var deferred = $q.defer();
-            if ($stateParams.id === '') {
-              deferred.resolve({});
+            if (_.isUndefined($stateParams.id) || $stateParams.id === '') {
+              deferred.resolve({ firstname: '', lastname: '' , adress:'', phone:'', mobile:'', fax:'' });
             }
             else {
-              // should call GET api/1/enqueteur/:id
-              deferred.resolve({
-                id: $stateParams.id,
-                firstname: "Bob",
-				lastname: "greffier",
-				adress: "3 rue des lillas 34000 Montpellier",
-				phone: "00 11 22 33 44",
-				mobile: "06 11 22 33 44",
-				fax: "02 11 22 33 44"
-				/*TGIs :{
-				id :1,
-				name : 'TGI de Montpellier',
-				phone : '0011223344'
-				}*/
-              });
+              Greffier
+                .get($stateParams.id)
+                .then(function (data) {
+                  deferred.resolve(data);
+                }, function (err) {
+                  deferred.reject(err);
+                });
             }
 
             return deferred.promise;
@@ -58,4 +50,4 @@ angular
         },
         data:{ pageTitle: 'Modifier un greffier' }
       });
-  });
+	});
