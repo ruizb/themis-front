@@ -1,5 +1,5 @@
 angular
-  .module('themis.greffiers', [
+  .module('themis.clerks', [
     'ui.router',
     'ui.bootstrap'
 	//'themis.tgis'

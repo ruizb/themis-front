@@ -1,37 +1,46 @@
 angular
-  .module('themis.greffiers')
-  .factory('Greffier', function (Entity, $q, $http) {
+  .module('themis.clerks')
+  .factory('Clerk', function (Entity, $q, $http) {
   
-    var Greffier = function () {
+    var Clerk = function () {
       Entity.call(this);
-      this.url += '/greffiers';
+      this.url += '/clerks';
     };
-    Greffier.prototype = Object.create(Entity.prototype);
+    Clerk.prototype = Object.create(Entity.prototype);
 	
-	Greffier.prototype.getAll = function () {
+	Clerk.prototype.getAll = function () {
       var deferred = $q.defer();
 
-      var greffiers = [];
+      var clerks = [];
       for (var i = 0; i < 20; i++) {
-        greffiers.push({
+        clerks.push({
 		id: i,
-		firstname:"dupont",
-		lastname: "jean",
-		adress: "3 rue des lillas 34000 Montpellier",
+		fname:"dupont",
+		lname: "jean",
+		address: "3 rue des lillas 34000 Montpellier",
 		phone: "00 11 22 33 44",
 		mobile: "06 11 22 33 44",
-		fax: "02 11 22 33 44"
+		fax: "02 11 22 33 44",
+		tribunal : {
+				id:1,
+				name:"TGI Montpellier",
+				phone:"0102030405",
+				court: {
+					id: 1,
+					label: "Cour appel Montpellier"
+				}
+			}
         });
       }
-      deferred.resolve(greffiers);
+      deferred.resolve(clerks);
 
       return deferred.promise;
     };
 	
-    Greffier.prototype.add = function (greffierData) {
+    Clerk.prototype.add = function (clerkData) {
       var deferred = $q.defer();
       $http
-        .post(this.url, greffierData)
+        .post(this.url, clerkData)
         .success(function (data) {
           deferred.resolve(data);
         })
@@ -41,10 +50,10 @@ angular
       return deferred.promise;
     };
 
-    Greffier.prototype.edit = function (greffierData) {
+    Clerk.prototype.edit = function (clerkData) {
         var deferred = $q.defer();
       $http
-        .put(this.url + '/' + greffierData.id, greffierData)
+        .put(this.url + '/' + clerkData.id, clerkData)
         .success(function (data) {
           deferred.resolve(data);
         })
@@ -54,10 +63,10 @@ angular
       return deferred.promise;
     };
 
-    Greffier.prototype.remove = function (greffierData) {
+    Clerk.prototype.remove = function (clerkData) {
       var deferred = $q.defer();
       $http
-        ['delete'](this.url + '/' + greffierData.id)// ['delete'] instead of .delete because of jshint ("delete is a reserved key word...")
+        ['delete'](this.url + '/' + clerkData.id)// ['delete'] instead of .delete because of jshint ("delete is a reserved key word...")
         .success(function (data) {
           deferred.resolve(data);
         })
@@ -67,6 +76,6 @@ angular
       return deferred.promise;
     };
 
-    return new Greffier();
+    return new Clerk();
   
   });

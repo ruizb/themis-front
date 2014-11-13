@@ -1,8 +1,8 @@
 angular
-  .module('themis.greffiers')
-  .controller('GreffiersEditCtrl', function ($scope, $state, Greffier, greffier) {
+  .module('themis.clerks')
+  .controller('ClerksEditCtrl', function ($scope, $state, Clerk, clerk) {
 
-    var isEdit = !_.isUndefined(greffier.id) && _.isNumber(greffier.id);
+    var isEdit = !_.isUndefined(clerk.id) && _.isNumber(clerk.id);
     $scope.isEdit = isEdit;
 
     if (!isEdit) { // add
@@ -10,16 +10,16 @@ angular
     }
     else { // edit
       $scope.h2Title = 'Modifier le greffier';
-      $scope.greffier = greffier;
+      $scope.clerk = clerk;
     }
 
     $scope.submit = function () {
       var operation = isEdit ? 'edit' : 'add';
-      Greffier
-        [operation]($scope.greffier)
+      Clerk
+        [operation]($scope.clerk)
         .then(function (data) {
           // success
-          $state.go('greffiers.index');
+          $state.go('clerks.index');
         }, function (err) {
           // error
           console.log(err);

@@ -1,42 +1,42 @@
 angular
-.module('themis.greffiers')
+.module('themis.clerks')
   .config(function config($stateProvider) {
     $stateProvider
-      .state('greffiers', {
+      .state('clerks', {
         abstract: true,
-        url: '/greffiers',
+        url: '/clerks',
         views: {
           "main": {
             template: '<div ui-view="mainContent"></div>'
           }
         }
       })
-      .state('greffiers.index', {
+      .state('clerks.index', {
         url: '/index',
         views: {
           "mainContent": {
-            controller: 'GreffiersIndexCtrl',
-            templateUrl: 'greffiers/greffiersIndex.tpl.html'
+            controller: 'ClerksIndexCtrl',
+            templateUrl: 'clerks/clerksIndex.tpl.html'
           }
         },
         data:{ pageTitle: 'Liste des greffiers' }
       })
-      .state('greffiers.edit', {
+      .state('clerks.edit', {
         url: '/edit/:id',
         views: {
           "mainContent": {
-            controller: 'GreffiersEditCtrl',
-            templateUrl: 'greffiers/greffiersEdit.tpl.html'
+            controller: 'ClerksEditCtrl',
+            templateUrl: 'clerks/clerksEdit.tpl.html'
           }
         },
         resolve: {
-          greffier: function ($stateParams, $q, Grade) {
+          clerk: function ($stateParams, $q, Clerk) {
             var deferred = $q.defer();
             if (_.isUndefined($stateParams.id) || $stateParams.id === '') {
-              deferred.resolve({ firstname: '', lastname: '' , adress:'', phone:'', mobile:'', fax:'' });
+              deferred.resolve({ fname: '', lname: '' , address:'', phone:'', mobile:'', fax:'' }); //Ajouter le tribunal !
             }
             else {
-              Greffier
+              Clerk
                 .get($stateParams.id)
                 .then(function (data) {
                   deferred.resolve(data);
