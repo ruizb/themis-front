@@ -14,14 +14,16 @@ angular
       link: function (scope, element, attrs) {
 
         scope.remove = function (entity) {
-          scope.entityManager
-            .remove(entity)
-            .then(function (data) {
-              // remove element from DOM
-              scope.entities.splice(scope.entities.indexOf(entity), 1);
-            }, function (err) {
-              console.log(err);
-            });
+          if (confirm('Etes-vous sûr de vouloir supprimer cet élément ?')) {
+            scope.entityManager
+              .remove(entity)
+              .then(function (data) {
+                // remove element from DOM
+                scope.entities.splice(scope.entities.indexOf(entity), 1);
+              }, function (err) {
+                console.log(err);
+              });
+          }
         };
 
       }

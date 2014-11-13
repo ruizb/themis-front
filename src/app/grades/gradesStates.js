@@ -1,4 +1,4 @@
-angular
+  angular
 .module('themis.grades')
   .config(function config($stateProvider) {
     $stateProvider
