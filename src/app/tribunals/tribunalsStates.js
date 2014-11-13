@@ -1,42 +1,42 @@
 angular
-.module('themis.tgis')
+.module('themis.tribunals')
   .config(function config($stateProvider) {
     $stateProvider
-      .state('tgis', {
+      .state('tribunals', {
         abstract: true,
-        url: '/tgis',
+        url: '/tribunals',
         views: {
           "main": {
             template: '<div ui-view="mainContent"></div>'
           }
         }
       })
-      .state('tgis.index', {
+      .state('tribunals.index', {
         url: '/index',
         views: {
           "mainContent": {
-            controller: 'TgisIndexCtrl',
-            templateUrl: 'tgis/tgisIndex.tpl.html'
+            controller: 'TribunalsIndexCtrl',
+            templateUrl: 'tribunals/tribunalsIndex.tpl.html'
           }
         },
         data:{ pageTitle: 'Liste des TGIs' }
       })
-      .state('tgis.edit', {
+      .state('tribunals.edit', {
         url: '/edit/:id',
         views: {
           "mainContent": {
-            controller: 'TgisEditCtrl',
-            templateUrl: 'tgis/tgisEdit.tpl.html'
+            controller: 'TribunalsEditCtrl',
+            templateUrl: 'tribunals/tribunalsEdit.tpl.html'
           }
         },
         resolve: {
-          tgi: function ($stateParams, $q, Tgi) {
+          tribunal: function ($stateParams, $q, Tribunal) {
             var deferred = $q.defer();
             if (_.isUndefined($stateParams.id) || $stateParams.id === '') {
-              deferred.resolve({ name: '' });
+              deferred.resolve({ name: '', phone: '', court:'' });
             }
             else {
-              Tgi
+              Tribunal
                 .get($stateParams.id)
                 .then(function (data) {
                   deferred.resolve(data);

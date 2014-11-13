@@ -1,0 +1,9 @@
+<div class="row">
+  <h2>Liste des TGIs</h2>
+
+  <button type="button" class="center-block btn btn-default btn-lg btn-primary btn-add-entity" ui-sref="tribunals.edit">
+    <span class="glyphicon glyphicon-plus"></span> Ajouter un TGI
+  </button>
+
+  <entity-index entity-manager="Tribunal" loading="loading" fields="tribunalsFields" entities="tribunals" states-namespace="tribunals"></entity-index>
+</div>

@@ -1,36 +1,33 @@
 angular
-  .module('themis.tgis')
-  .factory('Tgi', function (Entity, $q, $http /*Cour*/) {
+  .module('themis.tribunals')
+  .factory('Tribunal', function (Entity, $q, $http) {
 	
-	//Cour = "cour de montpellier";
-	
-    var Tgi = function () {
+    var Tribunal = function () {
       Entity.call(this);
-      this.url += '/tgis';
+      this.url += '/tribunals';
     };
-    Tgi.prototype = Object.create(Entity.prototype);
+    Tribunal.prototype = Object.create(Entity.prototype);
 
-	Tgi.prototype.getAll = function () {
+	Tribunal.prototype.getAll = function () {
 		var deferred = $q.defer();
 
-		var tgis = [];
+		var tribunals = [];
 		for (var i = 0; i < 20; i++) {
-		tgis.push({
+		tribunals.push({
 			id: i,
 			name:"TGI de Montpellier",
 			phone:"010101010110"
-			//court:"cour de montp"
 			});
 			}
-			deferred.resolve(tgis);
+			deferred.resolve(tribunals);
 
       return deferred.promise;
     };
 	
-    Tgi.prototype.add = function (tgiData) {
+    Tribunal.prototype.add = function (tribunalData) {
       var deferred = $q.defer();
       $http
-        .post(this.url, tgiData)
+        .post(this.url, tribunalData)
         .success(function (data) {
           deferred.resolve(data);
         })
@@ -40,10 +37,10 @@ angular
       return deferred.promise;
     };
 
-    Tgi.prototype.edit = function (tgiData) {
+    Tribunal.prototype.edit = function (tribunalData) {
         var deferred = $q.defer();
       $http
-        .put(this.url + '/' + tgiData.id, tgiData)
+        .put(this.url + '/' + tribunalData.id, tribunalData)
         .success(function (data) {
           deferred.resolve(data);
         })
@@ -53,10 +50,10 @@ angular
       return deferred.promise;
     };
 
-    Tgi.prototype.remove = function (tgiData) {
+    Tribunal.prototype.remove = function (tribunalData) {
       var deferred = $q.defer();
       $http
-        ['delete'](this.url + '/' + tgiData.id)// ['delete'] instead of .delete because of jshint ("delete is a reserved key word...")
+        ['delete'](this.url + '/' + tribunalData.id)// ['delete'] instead of .delete because of jshint ("delete is a reserved key word...")
         .success(function (data) {
           deferred.resolve(data);
         })
@@ -66,6 +63,6 @@ angular
       return deferred.promise;
     };
 
-    return new Tgi();
+    return new Tribunal();
   
   });

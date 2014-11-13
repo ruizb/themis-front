@@ -1,5 +1,5 @@
 <h2>{{ h2Title }}</h2>
-<button class="btn btn-default btn-xs" ui-sref="tgis.index">
+<button class="btn btn-default btn-xs" ui-sref="tribunals.index">
   <i class="glyphicon glyphicon-chevron-left"></i> Retour à la liste des TGIs
 </button>
 
@@ -8,15 +8,15 @@
 <form novalidate>
   <div ng-if="isEdit" class="form-group col-sm-8 col-sm-offset-2">
     <label class="control-label" for="id">ID</label>
-    <input type="text" class="form-control" name="id" id="id" ng-model="tgi.id" readonly>
+    <input type="text" class="form-control" name="id" id="id" ng-model="tribunal.id" readonly>
   </div>
   <div class="form-group col-sm-8 col-sm-offset-2">
     <label class="control-label" for="id">Nom</label>
-    <input type="text" class="form-control" name="name" id="name" ng-model="tgi.name">
+    <input type="text" class="form-control" name="name" id="name" ng-model="tribunal.name">
   </div>
   <div class="form-group col-sm-8 col-sm-offset-2">
     <label class="control-label" for="id">Telephone</label>
-    <input type="text" class="form-control" name="phone" id="phone" ng-model="tgi.phone">
+    <input type="text" class="form-control" name="phone" id="phone" ng-model="tribunal.phone">
   </div>
   <!--<div class="form-group col-sm-8 col-sm-offset-2">
     <label class="control-label" for="id">Cour</label>

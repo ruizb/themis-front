@@ -1,22 +1,21 @@
 angular
-  .module('themis.tgis')
-  .controller('TgisIndexCtrl', function ($scope, Tgi) {
+  .module('themis.tribunals')
+  .controller('TribunalsIndexCtrl', function ($scope, Tribunal) {
 
     $scope.loading = true;
 
-    $scope.tgisFields = [
+    $scope.tribunalsFields = [
 	{ name: 'ID', value: 'id' },
     { name: 'name', value: 'name' },
 	{ name: 'phone', value: 'phone' }
-	//{ name: 'court', value: 'court' }
     ];
 
-    $scope.Tgi = Tgi;
+    $scope.Tribunal = Tribunal;
 
-    Tgi
+    Tribunal
       .getAll()
       .then(function (data) {
-        $scope.tgis = data;
+        $scope.tribunals = data;
         $scope.loading = false;
       });
 
