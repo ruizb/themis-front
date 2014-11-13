@@ -1,21 +1,21 @@
 angular
-  .module('themis.services')
-  .controller('ServicesIndexCtrl', function ($scope, Service) {
+  .module('themis.departments')
+  .controller('DepartmentsIndexCtrl', function ($scope, Department) {
 
     $scope.loading = true;
 
-    $scope.servicesFields = [
+    $scope.departmentsFields = [
 		{ name: 'ID', value: 'id' },
 		{ name: 'Libelle', value: 'name' },
 		{ name: 'Corps', value: 'corps'}
     ];
 
-    $scope.Service = Service;
+    $scope.Department = Department;
 
-    Service
+    Department
       .getAll()
       .then(function (data) {
-        $scope.services = data;
+        $scope.departments = data;
         $scope.loading = false;
       });
 

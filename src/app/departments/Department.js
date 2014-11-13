@@ -1,35 +1,35 @@
 angular
-  .module('themis.services')
-  .factory('Service', function (Entity, $q, $http) {
+  .module('themis.departments')
+  .factory('Department', function (Entity, $q, $http) {
   
-    var Service = function () {
+    var Department = function () {
       Entity.call(this);
-      this.url += '/services';
+      this.url += '/departments';
     };
-    Service.prototype = Object.create(Entity.prototype);
+    Department.prototype = Object.create(Entity.prototype);
 	
 	// TODO tmp
-	Service.prototype.getAll = function () {
+	Department.prototype.getAll = function () {
 		var deferred = $q.defer();
-		var services = [];
+		var departments = [];
 		for (var i = 0; i < 3; i++) {
-			services.push({
+			departments.push({
 				id: i,
 				name: "BAC",
 				corps: {
 					id: 1,
-					name: 'Police'	
+					label: 'Police'	
 				}
 			});
 		}
-		deferred.resolve(services);
+		deferred.resolve(departments);
 		return deferred.promise;
 	};
 
-    Service.prototype.add = function (serviceData) {
+    Department.prototype.add = function (departmentData) {
       var deferred = $q.defer();
       $http
-        .post(this.url, serviceData)
+        .post(this.url, departmentData)
         .success(function (data) {
           deferred.resolve(data);
         })
@@ -39,10 +39,10 @@ angular
       return deferred.promise;
     };
 
-    Service.prototype.edit = function (serviceData) {
+    Department.prototype.edit = function (departmentData) {
         var deferred = $q.defer();
       $http
-        .put(this.url + '/' + serviceData.id, serviceData)
+        .put(this.url + '/' + departmentData.id, departmentData)
         .success(function (data) {
           deferred.resolve(data);
         })
@@ -52,10 +52,10 @@ angular
       return deferred.promise;
     };
 
-    Service.prototype.remove = function (serviceData) {
+    Department.prototype.remove = function (departmentData) {
       var deferred = $q.defer();
       $http
-        ['delete'](this.url + '/' + serviceData.id)// ['delete'] instead of .delete because of jshint ("delete is a reserved key word...")
+        ['delete'](this.url + '/' + departmentData.id)// ['delete'] instead of .delete because of jshint ("delete is a reserved key word...")
         .success(function (data) {
           deferred.resolve(data);
         })
@@ -65,6 +65,6 @@ angular
       return deferred.promise;
     };
 
-    return new Service();
+    return new Department();
   
   });

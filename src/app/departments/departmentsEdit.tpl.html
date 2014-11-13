@@ -1,5 +1,5 @@
 <h2>{{ h2Title }}</h2>
-<button class="btn btn-default btn-xs" ui-sref="services.index">
+<button class="btn btn-default btn-xs" ui-sref="departments.index">
   <i class="glyphicon glyphicon-chevron-left"></i> Retour &agrave la liste des services
 </button>
 
@@ -8,20 +8,20 @@
 <form novalidate>
   <div ng-if="isEdit" class="form-group col-sm-8 col-sm-offset-2">
     <label class="control-label" for="id">ID</label>
-    <input type="text" class="form-control" name="id" id="id" ng-model="service.id" readonly>
+    <input type="text" class="form-control" name="id" id="id" ng-model="department.id" readonly>
   </div>
   <div class="form-group col-sm-8 col-sm-offset-2">
     <label class="control-label" for="id">Libelle</label>
-    <input type="text" class="form-control" name="name" id="name" ng-model="service.name">
+    <input type="text" class="form-control" name="name" id="name" ng-model="department.name">
   </div>
   <div class="form-group col-sm-8 col-sm-offset-2">
     <label class="control-label" for="id">Corps</label>
-	<select class="form-control selection" name="corps" id="corps"><!--ng-model="service.corps.name'-->
+	<select class="form-control selection" name="corps" id="corps"><!--ng-model="department.corps.name'-->
 		<option>Police</option>
 		<option>Gendarmerie</option>
 		<option>Douane</option>
 	</select>
-    <!--<input type="text" class="form-control" name="corps" id="corps" ng-model="service.corps.name">--> <!-- vérif notation pointée et changer type text en liste -->
+    <!--<input type="text" class="form-control" name="corps" id="corps" ng-model="department.corps.name">--> <!-- vérif notation pointée et changer type text en liste -->
   </div>
 
   <div class="form-group col-sm-2 col-sm-offset-5">
@@ -29,4 +29,4 @@
   </div>
 </form>
 
-<!--<smart-form entity="service" is-edit="isEdit"></smart-form>-->
+<!--<smart-form entity="department" is-edit="isEdit"></smart-form>-->

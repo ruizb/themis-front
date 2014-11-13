@@ -1,42 +1,42 @@
 angular
-.module('themis.services')
+.module('themis.departments')
   .config(function config($stateProvider) {
     $stateProvider
-      .state('services', {
+      .state('departments', {
         abstract: true,
-        url: '/services',
+        url: '/departments',
         views: {
           "main": {
             template: '<div ui-view="mainContent"></div>'
           }
         }
       })
-      .state('services.index', {
+      .state('departments.index', {
         url: '/index',
         views: {
           "mainContent": {
-            controller: 'ServicesIndexCtrl',
-            templateUrl: 'services/servicesIndex.tpl.html'
+            controller: 'DepartmentsIndexCtrl',
+            templateUrl: 'departments/departmentsIndex.tpl.html'
           }
         },
         data:{ pageTitle: 'Liste des services' }
       })
-      .state('services.edit', {
+      .state('departments.edit', {
         url: '/edit/:id',
         views: {
           "mainContent": {
-            controller: 'ServicesEditCtrl',
-            templateUrl: 'services/servicesEdit.tpl.html'
+            controller: 'DepartmentsEditCtrl',
+            templateUrl: 'departments/departmentsEdit.tpl.html'
           }
         },
         resolve: {
-          service: function ($stateParams, $q, Service) {
+          department: function ($stateParams, $q, Department) {
             var deferred = $q.defer();
             if (_.isUndefined($stateParams.id) || $stateParams.id === '') {
               deferred.resolve({ name: '', corps:''});
             }
             else {
-              Service
+              Department
                 .get($stateParams.id)
                 .then(function (data) {
                   deferred.resolve(data);
