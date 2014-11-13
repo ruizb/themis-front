@@ -1,9 +1,9 @@
 angular
   .module('themis.grades')
-  .factory('Grade', function (Entity, $q, $http) {
-  
+  .factory('Grade', function ($q, $http) {
+
     var Grade = function () {
-      Entity.call(this);
+      Entity.call(this, $http, $q);
       this.url += '/grades';
     };
     Grade.prototype = Object.create(Entity.prototype);
