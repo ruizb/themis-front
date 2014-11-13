@@ -8,6 +8,29 @@ angular
     };
     Rank.prototype = Object.create(Entity.prototype);
 
+    Rank.prototype.getAll = function () {
+      var deferred = this.$q.defer();
+//      deferred.resolve([
+//        {
+//          id: 1,
+//          label: "Test",
+//          corps: {
+//            id: 1,
+//            name: "Corps hehehe"
+//          }
+//        }
+//      ]);
+      this.$http
+        .get(this.url)
+        .success(function (data) {
+          deferred.resolve(data);
+        })
+        .error(function (err) {
+          deferred.reject(err);
+        });
+      return deferred.promise;
+    };
+
     Rank.prototype.add = function (rankData) {
       var deferred = $q.defer();
       $http
