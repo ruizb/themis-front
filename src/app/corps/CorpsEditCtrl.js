@@ -1,6 +1,6 @@
 angular
-  .module('themis.corpss')
-  .controller('CorpssEditCtrl', function ($scope, $state, Corps, corps) {
+  .module('themis.corps')
+  .controller('CorpsEditCtrl', function ($scope, $state, Corps, corps) {
 
     var isEdit = !_.isUndefined(corps.id) && _.isNumber(corps.id);
     $scope.isEdit = isEdit;
@@ -9,7 +9,7 @@ angular
       $scope.h2Title = 'Ajouter un corps';
     }
     else { // edit
-      $scope.h2Title = 'Modifier le corps ' + corps.libelle;
+      $scope.h2Title = 'Modifier le corps ' + corps.label;
       $scope.grade = grade;
     }
 

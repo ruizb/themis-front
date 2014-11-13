@@ -1,5 +1,5 @@
 angular
-  .module('themis.corpss')
+  .module('themis.corps')
   .factory('Corps', function (Entity, $q, $http) {
   
     var Corps = function () {
@@ -15,7 +15,7 @@ angular
       for (var i = 0; i < 20; i++) {
         corpsListe.push({
           id: i,
-          libelle:"gendarmerie"
+          label:"gendarmerie"
         });
       }
       deferred.resolve(corpsListe);
