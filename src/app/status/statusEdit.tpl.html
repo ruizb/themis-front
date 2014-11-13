@@ -1,5 +1,5 @@
 <h2>{{ h2Title }}</h2>
-<button class="btn btn-default btn-xs" ui-sref="titres.index">
+<button class="btn btn-default btn-xs" ui-sref="status.index">
   <i class="glyphicon glyphicon-chevron-left"></i> Retour &agrave la liste des titres
 </button>
 
@@ -8,11 +8,11 @@
 <form novalidate>
   <div ng-if="isEdit" class="form-group col-sm-8 col-sm-offset-2">
     <label class="control-label" for="id">ID</label>
-    <input type="text" class="form-control" name="id" id="id" ng-model="titre.id" readonly>
+    <input type="text" class="form-control" name="id" id="id" ng-model="status.id" readonly>
   </div>
   <div class="form-group col-sm-8 col-sm-offset-2">
     <label class="control-label" for="id">Libell&eacute</label>
-    <input type="text" class="form-control" name="name" id="name" ng-model="titre.name">
+    <input type="text" class="form-control" name="name" id="name" ng-model="status.name">
   </div>
 
   <div class="form-group col-sm-2 col-sm-offset-5">
@@ -20,4 +20,4 @@
   </div>
 </form>
 
-<!--<smart-form entity="titre" is-edit="isEdit"></smart-form>-->
+<!--<smart-form entity="status" is-edit="isEdit"></smart-form>-->

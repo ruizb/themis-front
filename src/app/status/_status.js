@@ -1,5 +1,5 @@
 angular
-  .module('themis.titres', [
+  .module('themis.status', [
     'ui.router',
     'ui.bootstrap'
   ]);

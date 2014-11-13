@@ -1,42 +1,42 @@
 angular
-  .module('themis.titres')
+  .module('themis.status')
   .config(function config($stateProvider) {
     $stateProvider
-      .state('titres', {
+      .state('status', {
         abstract: true,
-        url: '/titres',
+        url: '/status',
         views: {
           "main": {
             template: '<div ui-view="mainContent"></div>'
           }
         }
       })
-      .state('titres.index', {
+      .state('status.index', {
         url: '/index',
         views: {
           "mainContent": {
-            controller: 'TitresIndexCtrl',
-            templateUrl: 'titres/titresIndex.tpl.html'
+            controller: 'StatusIndexCtrl',
+            templateUrl: 'status/statusIndex.tpl.html'
           }
         },
         data:{ pageTitle: 'Liste des titres' }
       })
-      .state('titres.edit', {
+      .state('status.edit', {
         url: '/edit/:id',
         views: {
           "mainContent": {
-            controller: 'TitresEditCtrl',
-            templateUrl: 'titres/titresEdit.tpl.html'
+            controller: 'StatusEditCtrl',
+            templateUrl: 'status/statusEdit.tpl.html'
           }
         },
         resolve: {
-          titre: function ($stateParams, $q, Titre) {
+          status: function ($stateParams, $q, Status) {
             var deferred = $q.defer();
             if (_.isUndefined($stateParams.id) || $stateParams.id === '') {
-              deferred.resolve({ libelle: '' });
+              deferred.resolve({ name: '' });
             }
             else {
-              Titre
+              Status
                 .get($stateParams.id)
                 .then(function (data) {
                   deferred.resolve(data);

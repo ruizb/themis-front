@@ -1,32 +1,32 @@
 angular
-  .module('themis.titres')
-  .factory('Titre', function (Entity, $q, $http) {
+  .module('themis.status')
+  .factory('Status', function (Entity, $q, $http) {
   
-    var Titre = function () {
+    var Status = function () {
       Entity.call(this);
-      this.url += '/titres';
+      this.url += '/status';
     };
-    Titre.prototype = Object.create(Entity.prototype);
+    Status.prototype = Object.create(Entity.prototype);
 	
 	// TODO tmp
-	Titre.prototype.getAll = function () {
+	Status.prototype.getAll = function () {
 		var deferred = $q.defer();
 
-		var titres = [];
+		var status = [];
 		for (var i = 0; i < 3; i++) {
-			titres.push({
+			status.push({
 				id: i,
 				name: "Magistrat"
 			});
 		}
-		deferred.resolve(titres);
+		deferred.resolve(status);
 	return deferred.promise;
 	};
 
-    Titre.prototype.add = function (titreData) {
+    Status.prototype.add = function (statusData) {
       var deferred = $q.defer();
       $http
-        .post(this.url, titreData)
+        .post(this.url, statusData)
         .success(function (data) {
           deferred.resolve(data);
         })
@@ -36,10 +36,10 @@ angular
       return deferred.promise;
     };
 
-    Titre.prototype.edit = function (titreData) {
+    Status.prototype.edit = function (statusData) {
         var deferred = $q.defer();
       $http
-        .put(this.url + '/' + titreData.id, titreData)
+        .put(this.url + '/' + statusData.id, statusData)
         .success(function (data) {
           deferred.resolve(data);
         })
@@ -49,10 +49,10 @@ angular
       return deferred.promise;
     };
 
-    Titre.prototype.remove = function (titreData) {
+    Status.prototype.remove = function (statusData) {
       var deferred = $q.defer();
       $http
-        ['delete'](this.url + '/' + titreData.id)// ['delete'] instead of .delete because of jshint ("delete is a reserved key word...")
+        ['delete'](this.url + '/' + statusData.id)// ['delete'] instead of .delete because of jshint ("delete is a reserved key word...")
         .success(function (data) {
           deferred.resolve(data);
         })
@@ -62,6 +62,6 @@ angular
       return deferred.promise;
     };
 
-    return new Titre();
+    return new Status();
   
   });

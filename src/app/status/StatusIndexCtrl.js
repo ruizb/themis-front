@@ -1,20 +1,20 @@
 angular
-  .module('themis.titres')
-  .controller('TitresIndexCtrl', function ($scope, Titre) {
+  .module('themis.status')
+  .controller('StatusIndexCtrl', function ($scope, Status) {
 
     $scope.loading = true;
 
-    $scope.titresFields = [
+    $scope.statusFields = [
       { name: 'ID', value: 'id' },
       { name: 'Libellé', value: 'name' }
     ];
 
-    $scope.Titre = Titre;
+    $scope.Status = Status;
 
-    Titre
+    Status
       .getAll()
       .then(function (data) {
-        $scope.titres = data;
+        $scope.status = data;
         $scope.loading = false;
       });
 
