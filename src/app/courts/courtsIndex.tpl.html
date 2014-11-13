@@ -1,0 +1,9 @@
+<div class="row">
+  <h2>Liste des cours d'appel</h2>
+
+  <button type="button" class="center-block btn btn-default btn-lg btn-primary btn-add-entity" ui-sref="courts.edit">
+    <span class="glyphicon glyphicon-plus"></span> Ajouter une cour
+  </button>
+
+  <entity-index entity-manager="Court" loading="loading" fields="courtsFields" entities="courts" states-namespace="courts"></entity-index>
+</div>
