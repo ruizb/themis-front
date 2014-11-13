@@ -1,17 +1,17 @@
 angular
-  .module('themis.grades')
-  .factory('Grade', function ($q, $http) {
+  .module('themis.ranks')
+  .factory('Rank', function ($q, $http) {
 
-    var Grade = function () {
+    var Rank = function () {
       Entity.call(this, $http, $q);
-      this.url += '/grades';
+      this.url += '/ranks';
     };
-    Grade.prototype = Object.create(Entity.prototype);
+    Rank.prototype = Object.create(Entity.prototype);
 
-    Grade.prototype.add = function (gradeData) {
+    Rank.prototype.add = function (rankData) {
       var deferred = $q.defer();
       $http
-        .post(this.url, gradeData)
+        .post(this.url, rankData)
         .success(function (data) {
           deferred.resolve(data);
         })
@@ -21,10 +21,10 @@ angular
       return deferred.promise;
     };
 
-    Grade.prototype.edit = function (gradeData) {
+    Rank.prototype.edit = function (rankData) {
         var deferred = $q.defer();
       $http
-        .put(this.url + '/' + gradeData.id, gradeData)
+        .put(this.url + '/' + rankData.id, rankData)
         .success(function (data) {
           deferred.resolve(data);
         })
@@ -34,10 +34,10 @@ angular
       return deferred.promise;
     };
 
-    Grade.prototype.remove = function (gradeData) {
+    Rank.prototype.remove = function (rankData) {
       var deferred = $q.defer();
       $http
-        ['delete'](this.url + '/' + gradeData.id)// ['delete'] instead of .delete because of jshint ("delete is a reserved key word...")
+        ['delete'](this.url + '/' + rankData.id)// ['delete'] instead of .delete because of jshint ("delete is a reserved key word...")
         .success(function (data) {
           deferred.resolve(data);
         })
@@ -47,6 +47,6 @@ angular
       return deferred.promise;
     };
 
-    return new Grade();
+    return new Rank();
   
   });

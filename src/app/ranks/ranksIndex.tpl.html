@@ -1,0 +1,9 @@
+<div class="row">
+  <h2>Liste des grades d'enquêteurs</h2>
+
+  <button type="button" class="center-block btn btn-default btn-lg btn-primary btn-add-entity" ui-sref="ranks.edit">
+    <span class="glyphicon glyphicon-plus"></span> Ajouter un grade
+  </button>
+
+  <entity-index entity-manager="Rank" loading="loading" fields="rankssFields" entities="ranks" states-namespace="ranks"></entity-index>
+</div>

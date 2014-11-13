@@ -1,5 +1,5 @@
 <h2>{{ h2Title }}</h2>
-<button class="btn btn-default btn-xs" ui-sref="grades.index">
+<button class="btn btn-default btn-xs" ui-sref="ranks.index">
   <i class="glyphicon glyphicon-chevron-left"></i> Retour à la liste des grades
 </button>
 
@@ -8,11 +8,11 @@
 <form novalidate>
   <div ng-if="isEdit" class="form-group col-sm-8 col-sm-offset-2">
     <label class="control-label" for="id">ID</label>
-    <input type="text" class="form-control" name="id" id="id" ng-model="grade.id" readonly>
+    <input type="text" class="form-control" name="id" id="id" ng-model="rank.id" readonly>
   </div>
   <div class="form-group col-sm-8 col-sm-offset-2">
     <label class="control-label" for="id">Libellé</label>
-    <input type="text" class="form-control" name="libelle" id="libelle" ng-model="grade.libelle">
+    <input type="text" class="form-control" name="label" id="label" ng-model="rank.label">
   </div>
 
   <div class="form-group col-sm-2 col-sm-offset-5">
