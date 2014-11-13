@@ -1,5 +1,5 @@
 angular
-  .module('themis.objets', [
+  .module('themis.items', [
     'ui.router',
     'ui.bootstrap'
   ]);

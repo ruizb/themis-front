@@ -1,32 +1,32 @@
 angular
-  .module('themis.objets')
-  .factory('Objet', function (Entity, $q, $http) {
+  .module('themis.items')
+  .factory('Item', function (Entity, $q, $http) {
   
-    var Objet = function () {
+    var Item = function () {
       Entity.call(this);
-      this.url += '/objets';
+      this.url += '/items';
     };
-    Objet.prototype = Object.create(Entity.prototype);
+    Item.prototype = Object.create(Entity.prototype);
 
-	Objet.prototype.getAll = function () {
+	Item.prototype.getAll = function () {
       var deferred = $q.defer();
 
-      var objets = [];
+      var items = [];
       for (var i = 0; i < 20; i++) {
-        objets.push({
+        items.push({
           id: i,
-          libelle:"PC portable"
+          label:"PC portable"
         });
       }
-      deferred.resolve(objets);
+      deferred.resolve(items);
 
       return deferred.promise;
     };
 	
-    Objet.prototype.add = function (objetData) {
+    Item.prototype.add = function (itemData) {
       var deferred = $q.defer();
       $http
-        .post(this.url, objetData)
+        .post(this.url, itemData)
         .success(function (data) {
           deferred.resolve(data);
         })
@@ -36,10 +36,10 @@ angular
       return deferred.promise;
     };
 
-    Objet.prototype.edit = function (objetData) {
+    Item.prototype.edit = function (itemData) {
         var deferred = $q.defer();
       $http
-        .put(this.url + '/' + objetData.id, objetData)
+        .put(this.url + '/' + itemData.id, itemData)
         .success(function (data) {
           deferred.resolve(data);
         })
@@ -49,10 +49,10 @@ angular
       return deferred.promise;
     };
 
-    Objet.prototype.remove = function (objetData) {
+    Item.prototype.remove = function (itemData) {
       var deferred = $q.defer();
       $http
-        ['delete'](this.url + '/' + objetData.id)// ['delete'] instead of .delete because of jshint ("delete is a reserved key word...")
+        ['delete'](this.url + '/' + itemData.id)// ['delete'] instead of .delete because of jshint ("delete is a reserved key word...")
         .success(function (data) {
           deferred.resolve(data);
         })
@@ -62,6 +62,6 @@ angular
       return deferred.promise;
     };
 
-    return new Objet();
+    return new Item();
   
   });

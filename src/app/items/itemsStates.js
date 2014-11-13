@@ -1,42 +1,42 @@
 angular
-.module('themis.objets')
+.module('themis.items')
   .config(function config($stateProvider) {
     $stateProvider
-      .state('objets', {
+      .state('items', {
         abstract: true,
-        url: '/objets',
+        url: '/items',
         views: {
           "main": {
             template: '<div ui-view="mainContent"></div>'
           }
         }
       })
-      .state('objets.index', {
+      .state('items.index', {
         url: '/index',
         views: {
           "mainContent": {
-            controller: 'ObjetsIndexCtrl',
-            templateUrl: 'objets/objetsIndex.tpl.html'
+            controller: 'ItemsIndexCtrl',
+            templateUrl: 'items/itemsIndex.tpl.html'
           }
         },
         data:{ pageTitle: 'Liste des objets' }
       })
-      .state('objets.edit', {
+      .state('items.edit', {
         url: '/edit/:id',
         views: {
           "mainContent": {
-            controller: 'ObjetsEditCtrl',
-            templateUrl: 'objets/objetsEdit.tpl.html'
+            controller: 'ItemsEditCtrl',
+            templateUrl: 'items/itemsEdit.tpl.html'
           }
         },
         resolve: {
-          objet: function ($stateParams, $q, Objet) {
+          item: function ($stateParams, $q, Item) {
             var deferred = $q.defer();
             if (_.isUndefined($stateParams.id) || $stateParams.id === '') {
-              deferred.resolve({ libelle: '' });
+              deferred.resolve({ label: '' });
             }
             else {
-              Objet
+              Item
                 .get($stateParams.id)
                 .then(function (data) {
                   deferred.resolve(data);

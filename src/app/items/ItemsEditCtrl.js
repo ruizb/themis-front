@@ -1,25 +1,25 @@
 angular
-  .module('themis.objets')
-  .controller('ObjetsEditCtrl', function ($scope, $state, Objet, objet) {
+  .module('themis.items')
+  .controller('ItemsEditCtrl', function ($scope, $state, Item, item) {
 
-    var isEdit = !_.isUndefined(objet.id) && _.isNumber(objet.id);
+    var isEdit = !_.isUndefined(item.id) && _.isNumber(item.id);
     $scope.isEdit = isEdit;
 
     if (!isEdit) { // add
       $scope.h2Title = 'Ajouter un objet';
     }
     else { // edit
-      $scope.h2Title = 'Modifier l\'objet ' + objet.libelle;
-      $scope.objet = objet;
+      $scope.h2Title = 'Modifier l\'objet ' + item.libelle;
+      $scope.item = item;
     }
 
     $scope.submit = function () {
       var operation = isEdit ? 'edit' : 'add';
-      Objet
-        [operation]($scope.objet)
+      Item
+        [operation]($scope.item)
         .then(function (data) {
           // success
-          $state.go('objets.index');
+          $state.go('item.index');
         }, function (err) {
           // error
           console.log(err);
