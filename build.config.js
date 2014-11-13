@@ -71,7 +71,10 @@ module.exports = {
     ],
     css: [
     ],
-    assets: [
-    ]
+    assets: {
+      fonts: [
+        'vendor/bootstrap/dist/fonts/*'
+      ]
+    }
   }
 };
