@@ -4,28 +4,5 @@
   <button type="button" class="center-block btn btn-default btn-lg btn-primary btn-add-entity" ui-sref="procureurs.edit">
     <span class="glyphicon glyphicon-plus"></span> Ajouter un procureur
   </button>
-
-  <table class="table table-striped">
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Status</th>
-      <th>TGI</th>
-	  <th>Actions</th>
-    </tr>
-    <tr ng-repeat="procureur in procureurs">
-      <td>{{ procureur.id }}</td>
-      <td>{{ procureur.firstname }} {{ procureur.lastname }}</td>
-      <td>{{ procureur.status.name }}</td>
-	  <td>{{ procureur.tgi.name }}</td>
-      <td>
-        <button type="button" class="btn btn-default" tooltip="Modifier" ui-sref="procureurs.edit({ id: procureur.id })">
-          <span class="glyphicon glyphicon-pencil"></span>
-        </button>
-        <button type="button" class="btn btn-default" tooltip="Supprimer" ui-sref="procureurs.delete({ id: procureur.id })">
-          <span class="glyphicon glyphicon-trash"></span>
-        </button>
-      </td>
-    </tr>
-  </table>
+	<entity-index entity-manager="Procureur" loading="loading" fields="procureursFields" entities="procureurs" states-namespace="procureurs"></entity-index>
 </div>

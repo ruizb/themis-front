@@ -4,7 +4,7 @@ angular
 
     var Procureur = function () {
       Entity.call(this);
-      this.url = '/procureur';
+      this.url += '/procureurs';
     };
     Procureur.prototype = Object.create(Entity.prototype);
 
@@ -41,7 +41,7 @@ angular
     Procureur.prototype.add = function (procureurData) {
       var deferred = $q.defer();
       $http
-        .post(this.urlBase + this.url, procureurData)
+        .post(this.url, procureurData)
         .success(function (data) {
           deferred.resolve(data);
         })
@@ -53,7 +53,7 @@ angular
     Procureur.prototype.edit = function (procureurData) {
       var deferred = $q.defer();
       $http
-        .put(this.urlBase + this.url + '/' + procureurData.id, procureurData)
+        .put(this.url + '/' + procureurData.id, procureurData)
         .success(function (data) {
           deferred.resolve(data);
         })
@@ -65,7 +65,7 @@ angular
     Procureur.prototype.remove = function (procureurData) {
       var deferred = $q.defer();
       $http
-        ['delete'](this.urlBase + this.url + '/' + procureurData.id)
+        ['delete'](this.url + '/' + procureurData.id)
         .success(function (data) {
           deferred.resolve(data);
         })

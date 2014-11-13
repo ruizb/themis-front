@@ -1,2 +1,38 @@
 <h2>{{ h2Title }}</h2>
-<p>ID du procureur à modifier : {{ procureur.id }}</p>
+<button class="btn btn-default btn-xs" ui-sref="procureurs.index">
+  <i class="glyphicon glyphicon-chevron-left"></i> Retour à la liste des procureurs
+</button>
+
+<!--<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert(alert)">{{alert.message}}</alert>-->
+
+<form novalidate>
+  <div ng-if="isEdit" class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">ID</label>
+    <input type="text" class="form-control" name="id" id="id" ng-model="procureur.id" readonly>
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Fistname</label>
+    <input type="text" class="form-control" name="firstname" id="firstname" ng-model="procureur.firstname">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Lastname</label>
+    <input type="text" class="form-control" name="lastname" id="lastname" ng-model="procureur.lastname">
+  </div>
+  
+  <!-- TODO with list
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Status</label>
+    <input type="text" class="form-control" name="status" id="status" ng-model="procureur.status">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">TGI</label>
+    <input type="text" class="form-control" name="tgi" id="tgi" ng-model="procureur.tgi">
+  </div>
+  -->
+
+  <div class="form-group col-sm-2 col-sm-offset-5">
+    <button type="submit" class="btn btn-primary center-block btn-form-send btn-block" ng-click="submit()">Envoyer</button>
+  </div>
+</form>
+
+<!--<smart-form entity="procureur" is-edit="isEdit"></smart-form>-->
