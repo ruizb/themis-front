@@ -1,42 +1,42 @@
 angular
-.module('themis.juges')
+.module('themis.judges')
   .config(function config($stateProvider) {
     $stateProvider
-      .state('juges', {
+      .state('judges', {
         abstract: true,
-        url: '/juges',
+        url: '/judges',
         views: {
           "main": {
             template: '<div ui-view="mainContent"></div>'
           }
         }
       })
-      .state('juges.index', {
+      .state('judges.index', {
         url: '/index',
         views: {
           "mainContent": {
-            controller: 'JugesIndexCtrl',
-            templateUrl: 'juges/jugesIndex.tpl.html'
+            controller: 'JudgesIndexCtrl',
+            templateUrl: 'judges/judgesIndex.tpl.html'
           }
         },
         data:{ pageTitle: 'Liste des juges' }
       })
-      .state('juges.edit', {
+      .state('judges.edit', {
         url: '/edit/:id',
         views: {
           "mainContent": {
-            controller: 'JugesEditCtrl',
-            templateUrl: 'juges/jugesEdit.tpl.html'
+            controller: 'JudgesEditCtrl',
+            templateUrl: 'judges/judgesEdit.tpl.html'
           }
         },
         resolve: {
-          juge: function ($stateParams, $q, Juge) {
+          judge: function ($stateParams, $q, Judge) {
             var deferred = $q.defer();
             if (_.isUndefined($stateParams.id) || $stateParams.id === '') {
-              deferred.resolve({ fname: '', name:'', address:'', phone:'', fax:'', status:'', tgi:'', greffier:''});
+              deferred.resolve({ fname: '', lname:'', address:{}, phone:'', fax:'', status:{}, clerk:{}});
             }
             else {
-              Juge
+              Judge
                 .get($stateParams.id)
                 .then(function (data) {
                   deferred.resolve(data);

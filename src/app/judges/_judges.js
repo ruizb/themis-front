@@ -1,5 +1,5 @@
 angular
-  .module('themis.juges', [
+  .module('themis.judges', [
     'ui.router',
     'ui.bootstrap'
   ]);

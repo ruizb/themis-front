@@ -1,22 +1,22 @@
 angular
-  .module('themis.juges')
-  .factory('Juge', function (Entity, $q, $http) {
+  .module('themis.judges')
+  .factory('Judge', function ($q, $http) {
   
-    var Juge = function () {
-      Entity.call(this);
-      this.url += '/juges';
+    var Judge = function () {
+      Entity.call(this, $http, $q);
+      this.url += '/judges';
     };
-    Juge.prototype = Object.create(Entity.prototype);
+    Judge.prototype = Object.create(Entity.prototype);
 	
 	// TODO tmp
-	Juge.prototype.getAll = function () {
+	Judge.prototype.getAll = function () {
 		var deferred = $q.defer();
-		var juges = [];
+		var judges = [];
 		for (var i = 0; i < 3; i++) {
-			juges.push({
+			judges.push({
 				id: 1,
 				fname: 'Boby',
-				name: 'Modnar',
+				lname: 'Modnar',
 				address: {
 					country: 'France',
 					city: 'Montpellier',
@@ -24,52 +24,43 @@ angular
 					zip_code: '34000'
 				},
 				phone: '0011223344',
-				fax: '0011223344',
+				fax: '0011223345',
 				status: {
 					id: 1,
 					name: 'Magistrat'
 				},
-				tgi: {
+				clerk: {
 					id: 1,
-					name: 'TGI de Montpellier',
-					phone: '0011223344',
-					court: {
-						id: 1,
-						name: 'Cours d\'Appel de Montpellier'
-					}
-				},
-				greffier: {
-					id: 1,
-					fname: 'Boby',
-					name: 'Modnar',
+					fname: 'Bob',
+					lname: 'Michou',
 					address: {
 						country: 'France',
 						city: 'Montpellier',
 						street: '123 Avenue de la France',
 						zip_code: '34000'
 					},
-					phone: '0011223344',
-					fax: '0011223344',
-					tgi: {
+					phone: '0011223351',
+					fax: '0011223352',
+					tribunal: {
 						id: 1,
 						name: 'TGI de Montpellier',
-						phone: '0011223344',
+						phone: '0011223371',
 						court: {
 							id: 1,
-							name: 'Cours d\'Appel de Montpellier'
+							label: 'Cours d\'Appel de Montpellier'
 						}
 					}
 				}
 			});
 		}
-		deferred.resolve(juges);
+		deferred.resolve(judges);
 		return deferred.promise;
 	};
 
-    Juge.prototype.add = function (jugeData) {
+    Judge.prototype.add = function (judgeData) {
       var deferred = $q.defer();
       $http
-        .post(this.url, jugeData)
+        .post(this.url, judgeData)
         .success(function (data) {
           deferred.resolve(data);
         })
@@ -79,10 +70,10 @@ angular
       return deferred.promise;
     };
 
-    Juge.prototype.edit = function (jugeData) {
+    Judge.prototype.edit = function (judgeData) {
         var deferred = $q.defer();
       $http
-        .put(this.url + '/' + jugeData.id, jugeData)
+        .put(this.url + '/' + judgeData.id, judgeData)
         .success(function (data) {
           deferred.resolve(data);
         })
@@ -92,10 +83,10 @@ angular
       return deferred.promise;
     };
 
-    Juge.prototype.remove = function (jugeData) {
+    Judge.prototype.remove = function (judgeData) {
       var deferred = $q.defer();
       $http
-        ['delete'](this.url + '/' + jugeData.id)// ['delete'] instead of .delete because of jshint ("delete is a reserved key word...")
+        ['delete'](this.url + '/' + judgeData.id)// ['delete'] instead of .delete because of jshint ("delete is a reserved key word...")
         .success(function (data) {
           deferred.resolve(data);
         })
@@ -105,6 +96,6 @@ angular
       return deferred.promise;
     };
 
-    return new Juge();
+    return new Judge();
   
   });
