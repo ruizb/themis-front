@@ -1,9 +1,9 @@
 angular
   .module('themis.courts')
-  .factory('Court',function(Entity, $q, $http){
+  .factory('Court',function($q, $http){
   
 	var Court = function () {
-      Entity.call(this);
+      Entity.call(this, $http, $q);
       this.url = '/courts';
     };
 	Court.prototype = Object.create(Entity.prototype);
