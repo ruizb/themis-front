@@ -1,42 +1,42 @@
-angular
-.module('themis.grades')
+  angular
+.module('themis.ranks')
   .config(function config($stateProvider) {
     $stateProvider
-      .state('grades', {
+      .state('ranks', {
         abstract: true,
-        url: '/grades',
+        url: '/ranks',
         views: {
           "main": {
             template: '<div ui-view="mainContent"></div>'
           }
         }
       })
-      .state('grades.index', {
+      .state('ranks.index', {
         url: '/index',
         views: {
           "mainContent": {
-            controller: 'GradesIndexCtrl',
-            templateUrl: 'grades/gradesIndex.tpl.html'
+            controller: 'RanksIndexCtrl',
+            templateUrl: 'ranks/ranksIndex.tpl.html'
           }
         },
         data:{ pageTitle: 'Liste des grades' }
       })
-      .state('grades.edit', {
+      .state('ranks.edit', {
         url: '/edit/:id',
         views: {
           "mainContent": {
-            controller: 'GradesEditCtrl',
-            templateUrl: 'grades/gradesEdit.tpl.html'
+            controller: 'RanksEditCtrl',
+            templateUrl: 'ranks/ranksEdit.tpl.html'
           }
         },
         resolve: {
-          grade: function ($stateParams, $q, Grade) {
+          rank: function ($stateParams, $q, Rank) {
             var deferred = $q.defer();
             if (_.isUndefined($stateParams.id) || $stateParams.id === '') {
               deferred.resolve({ libelle: '' });
             }
             else {
-              Grade
+              Rank
                 .get($stateParams.id)
                 .then(function (data) {
                   deferred.resolve(data);
