@@ -5,8 +5,8 @@
     <th ng-repeat="field in fields">{{ field.name }}</th>
     <th>Actions</th>
   </tr>
-  <tr ng-repeat="entity in entities">
-    <td ng-repeat="field in fields">{{ entity[field.value] }}</td>
+  <tr dir-paginate="entity in entities | itemsPerPage: 10">
+    <td ng-repeat="value in entitiesValues[$index]">{{ value }}</td>
     <td>
       <button type="button" class="btn btn-default" tooltip="Modifier" ui-sref="{{ statesNamespace }}.edit({ id: entity.id })">
         <span class="glyphicon glyphicon-pencil"></span>
@@ -17,3 +17,6 @@
     </td>
   </tr>
 </table>
+
+<dir-pagination-controls></dir-pagination-controls>
+
