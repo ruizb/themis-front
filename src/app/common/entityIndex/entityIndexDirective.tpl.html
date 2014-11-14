@@ -7,7 +7,7 @@
   </tr>
   <tr dir-paginate="entity in entities | itemsPerPage: 10">
     <td ng-repeat="value in entitiesValues[$index]">{{ value }}</td>
-    <td>
+    <td width="15%">
       <button type="button" class="btn btn-default" tooltip="Modifier" ui-sref="{{ statesNamespace }}.edit({ id: entity.id })">
         <span class="glyphicon glyphicon-pencil"></span>
       </button>
@@ -18,4 +18,10 @@
   </tr>
 </table>
 
-<dir-pagination-controls></dir-pagination-controls>
+<ul>
+  <li dir-paginate="entity in entities | itemsPerPage: 10">{{ entity.label }}</li>
+</ul>
+
+<div class="text-center">
+  <dir-pagination-controls boundary-links="true" on-page-change="refresh()"></dir-pagination-controls>
+</div>
