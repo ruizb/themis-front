@@ -6,6 +6,7 @@ angular
     'themis.home',
     'themis.enqueteurs',
     'themis.ranks',
+	'themis.itemMissions',
     'ui.router',
     'angularUtils.directives.dirPagination'
   ]);
