@@ -5,7 +5,8 @@ angular
     'themis.login',
     'themis.home',
     'themis.enqueteurs',
-    'themis.grades',
-	'themis.juges',
-    'ui.router'
+	'themis.judges',
+    'themis.ranks',
+    'ui.router',
+    'angularUtils.directives.dirPagination'
   ]);

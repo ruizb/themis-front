@@ -20,7 +20,7 @@ module.exports = {
    * app's unit tests.
    */
   app_files: {
-    js: [ 'src/**/_*.js', 'src/**/*.js', '!src/**/*.spec.js', '!src/assets/**/*.js' ],
+    js: [ 'src/common/**/*.js', 'src/**/_*.js', 'src/**/*.js', '!src/**/*.spec.js', '!src/assets/**/*.js' ],
     jsunit: [ 'src/**/*.spec.js' ],
     
     atpl: [ 'src/app/**/*.tpl.html' ],
@@ -71,7 +71,10 @@ module.exports = {
     ],
     css: [
     ],
-    assets: [
-    ]
+    assets: {
+      fonts: [
+        'vendor/bootstrap/dist/fonts/*'
+      ]
+    }
   }
 };
