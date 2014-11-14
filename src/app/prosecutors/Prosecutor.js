@@ -1,47 +1,47 @@
 angular
-  .module('themis.procureurs')
-  .factory('Procureur', function (Entity, $q, $http) {
+  .module('themis.prosecutors')
+  .factory('Prosecutor', function ($q, $http) {
 
-    var Procureur = function () {
-      Entity.call(this);
-      this.url += '/procureurs';
+    var Prosecutor = function () {
+      Entity.call(this, $http, $q);
+      this.url += '/prosecutors';
     };
-    Procureur.prototype = Object.create(Entity.prototype);
+    Prosecutor.prototype = Object.create(Entity.prototype);
 
     // TODO tmp
-    Procureur.prototype.getAll = function () {
+    Prosecutor.prototype.getAll = function () {
       var deferred = $q.defer();
 
-      var procureurs = [];
+      var prosecutors = [];
       for (var i = 0; i < 50; i++) {
-        procureurs.push({
+        prosecutors.push({
 			id: i,
-			firstname: "Boby",
-			lastname: "Modnar",
+			fname: "Boby",
+			lname: "Modnar",
 			status:{
 				id: i,
 				name: "Mega Procureur"
 			},
-			tgi:{
+			tribunal:{
 				id: i, 
 				name: "TGI de Montpellier",
 				phone: "01586987548",
-				courAppel: {
+				court: {
 					id : i,
-					name: "Cour appel de Montpellier"
+					label: "Cour appel de Montpellier"
 				}
 			}
 		});
       }
-      deferred.resolve(procureurs);
+      deferred.resolve(prosecutors);
 
       return deferred.promise;
     };
 
-    Procureur.prototype.add = function (procureurData) {
+    Prosecutor.prototype.add = function (prosecutorData) {
       var deferred = $q.defer();
       $http
-        .post(this.url, procureurData)
+        .post(this.url, prosecutorData)
         .success(function (data) {
           deferred.resolve(data);
         })
@@ -50,10 +50,10 @@ angular
         });
       return deferred.promise;
     };
-    Procureur.prototype.edit = function (procureurData) {
+    Prosecutor.prototype.edit = function (prosecutorData) {
       var deferred = $q.defer();
       $http
-        .put(this.url + '/' + procureurData.id, procureurData)
+        .put(this.url + '/' + prosecutorData.id, prosecutorData)
         .success(function (data) {
           deferred.resolve(data);
         })
@@ -62,10 +62,10 @@ angular
         });
       return deferred.promise;
     };
-    Procureur.prototype.remove = function (procureurData) {
+    Prosecutor.prototype.remove = function (prosecutorData) {
       var deferred = $q.defer();
       $http
-        ['delete'](this.url + '/' + procureurData.id)
+        ['delete'](this.url + '/' + prosecutorData.id)
         .success(function (data) {
           deferred.resolve(data);
         })
@@ -75,6 +75,6 @@ angular
       return deferred.promise;
     };
 
-    return new Procureur();
+    return new Prosecutor();
 
   });

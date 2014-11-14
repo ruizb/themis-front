@@ -1,5 +1,5 @@
 <h2>{{ h2Title }}</h2>
-<button class="btn btn-default btn-xs" ui-sref="procureurs.index">
+<button class="btn btn-default btn-xs" ui-sref="prosecutors.index">
   <i class="glyphicon glyphicon-chevron-left"></i> Retour à la liste des procureurs
 </button>
 
@@ -8,25 +8,25 @@
 <form novalidate>
   <div ng-if="isEdit" class="form-group col-sm-8 col-sm-offset-2">
     <label class="control-label" for="id">ID</label>
-    <input type="text" class="form-control" name="id" id="id" ng-model="procureur.id" readonly>
+    <input type="text" class="form-control" name="id" id="id" ng-model="prosecutor.id" readonly>
   </div>
   <div class="form-group col-sm-8 col-sm-offset-2">
     <label class="control-label" for="id">Fistname</label>
-    <input type="text" class="form-control" name="firstname" id="firstname" ng-model="procureur.firstname">
+    <input type="text" class="form-control" name="fname" id="fname" ng-model="prosecutor.firstname">
   </div>
   <div class="form-group col-sm-8 col-sm-offset-2">
     <label class="control-label" for="id">Lastname</label>
-    <input type="text" class="form-control" name="lastname" id="lastname" ng-model="procureur.lastname">
+    <input type="text" class="form-control" name="lname" id="lname" ng-model="prosecutor.lastname">
   </div>
   
   <!-- TODO with list
   <div class="form-group col-sm-8 col-sm-offset-2">
     <label class="control-label" for="id">Status</label>
-    <input type="text" class="form-control" name="status" id="status" ng-model="procureur.status">
+    <input type="text" class="form-control" name="status" id="status" ng-model="prosecutor.status">
   </div>
   <div class="form-group col-sm-8 col-sm-offset-2">
     <label class="control-label" for="id">TGI</label>
-    <input type="text" class="form-control" name="tgi" id="tgi" ng-model="procureur.tgi">
+    <input type="text" class="form-control" name="tgi" id="tgi" ng-model="prosecutor.tgi">
   </div>
   -->
 

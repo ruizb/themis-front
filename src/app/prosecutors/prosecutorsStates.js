@@ -1,42 +1,42 @@
 angular
-.module('themis.procureurs')
+.module('themis.prosecutors')
   .config(function config($stateProvider) {
     $stateProvider
-      .state('procureurs', {
+      .state('prosecutors', {
         abstract: true,
-        url: '/procureurs',
+        url: '/prosecutors',
         views: {
           "main": {
             template: '<div ui-view="mainContent"></div>'
           }
         }
       })
-      .state('procureurs.index', {
+      .state('prosecutors.index', {
         url: '/index',
         views: {
           "mainContent": {
-            controller: 'ProcureursIndexCtrl',
-            templateUrl: 'procureurs/procureursIndex.tpl.html'
+            controller: 'ProsecutorsIndexCtrl',
+            templateUrl: 'prosecutors/prosecutorsIndex.tpl.html'
           }
         },
         data:{ pageTitle: 'Liste des procureurs' }
       })
-      .state('procureurs.edit', {
+      .state('prosecutors.edit', {
         url: '/edit/:id',
         views: {
           "mainContent": {
-            controller: 'ProcureursEditCtrl',
-            templateUrl: 'procureurs/procureursEdit.tpl.html'
+            controller: 'ProsecutorsEditCtrl',
+            templateUrl: 'prosecutors/prosecutorsEdit.tpl.html'
           }
         },
         resolve: {
-          procureur: function ($stateParams, $q, Procureur) {
+          prosecutor: function ($stateParams, $q, Prosecutor) {
             var deferred = $q.defer();
             if (_.isUndefined($stateParams.id) || $stateParams.id === '') {
-              deferred.resolve({ libelle: '' });
+              deferred.resolve({ fname: '', lname: '', status: {}, tribunal: {} });
             }
             else {
-              Procureur
+              Prosecutor
                 .get($stateParams.id)
                 .then(function (data) {
                   deferred.resolve(data);

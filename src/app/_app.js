@@ -5,7 +5,7 @@ angular
     'themis.login',
     'themis.home',
     'themis.enqueteurs',
-	'themis.procureurs',
+	'themis.prosecutors',
     'themis.ranks',
     'ui.router',
     'angularUtils.directives.dirPagination'

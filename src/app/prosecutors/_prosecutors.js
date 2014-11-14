@@ -1,5 +1,5 @@
 angular
-  .module('themis.procureurs', [
+  .module('themis.prosecutors', [
     'ui.router',
     'ui.bootstrap'
   ]);
