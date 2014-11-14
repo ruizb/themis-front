@@ -1,5 +1,5 @@
 angular
-  .module('themis.grades', [
+  .module('themis.ranks', [
     'ui.router',
     'ui.bootstrap'
   ]);
