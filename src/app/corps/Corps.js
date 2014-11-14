@@ -1,9 +1,9 @@
 angular
   .module('themis.corps')
-  .factory('Corps', function (Entity, $q, $http) {
+  .factory('Corps', function ($q, $http) {
   
     var Corps = function () {
-      Entity.call(this);
+      Entity.call(this, $http, $q);
       this.url += '/corps';
     };
     Corps.prototype = Object.create(Entity.prototype);
@@ -15,7 +15,7 @@ angular
       for (var i = 0; i < 20; i++) {
         corpsListe.push({
           id: i,
-          label:"gendarmerie"
+          label:"gendarmerie" + i
         });
       }
       deferred.resolve(corpsListe);
