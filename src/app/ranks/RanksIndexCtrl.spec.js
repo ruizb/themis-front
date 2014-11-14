@@ -31,7 +31,7 @@ describe('RanksIndexCtrl', function () {
       expect(scope.ranksFields).toEqual([
         { name: 'ID', value: 'id' },
         { name: 'Libellé', value: 'label' },
-        { name: 'Corps', value: 'corps.name' }
+        { name: 'Corps', value: 'corps.label' }
       ]);
     });
 

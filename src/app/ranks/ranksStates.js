@@ -33,7 +33,7 @@
           rank: function ($stateParams, $q, Rank) {
             var deferred = $q.defer();
             if (_.isUndefined($stateParams.id) || $stateParams.id === '') {
-              deferred.resolve({ libelle: '' });
+              deferred.resolve({ label: '', corps: {} });
             }
             else {
               Rank

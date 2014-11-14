@@ -7,7 +7,7 @@ angular
     $scope.ranksFields = [
       { name: 'ID', value: 'id' },
       { name: 'Libellé', value: 'label' },
-      { name: 'Corps', value: 'corps.name' }
+      { name: 'Corps', value: 'corps.label' }
     ];
 
     $scope.Rank = Rank;
