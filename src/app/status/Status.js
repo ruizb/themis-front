@@ -1,9 +1,9 @@
 angular
   .module('themis.status')
-  .factory('Status', function (Entity, $q, $http) {
+  .factory('Status', function ($q, $http) {
   
     var Status = function () {
-      Entity.call(this);
+      Entity.call(this,$http,$q);
       this.url += '/status';
     };
     Status.prototype = Object.create(Entity.prototype);
