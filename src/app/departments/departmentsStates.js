@@ -33,7 +33,7 @@ angular
           department: function ($stateParams, $q, Department) {
             var deferred = $q.defer();
             if (_.isUndefined($stateParams.id) || $stateParams.id === '') {
-              deferred.resolve({ name: '', corps:''});
+              deferred.resolve({ name: '', corps:{}});
             }
             else {
               Department
