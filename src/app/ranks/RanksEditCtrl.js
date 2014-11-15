@@ -25,10 +25,6 @@ angular
       $scope.rank = rank;
     }
 
-    $scope.test = function () {
-      console.log($scope.rank);
-    };
-
     $scope.submit = function () {
       var operation = isEdit ? 'edit' : 'add';
 //      $scope.rank.corps.id = parseInt($scope.rank.corps.id, 10);
