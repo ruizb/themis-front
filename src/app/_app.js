@@ -8,5 +8,6 @@ angular
     'themis.corps',
     'themis.ranks',
     'ui.router',
+    'ngSanitize',
     'angularUtils.directives.dirPagination'
   ]);

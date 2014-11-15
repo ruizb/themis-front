@@ -37,6 +37,8 @@ describe('RanksEditCtrl', function () {
 
     spyOn(_$state_, 'go');
 
+    scope.addAlert = function () {}; // mock the addAlert method inherited from AppCtrl scope
+
     createController = function (rank) {
       return _$controller_('RanksEditCtrl', {
         $scope: scope,

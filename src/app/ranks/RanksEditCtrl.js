@@ -31,10 +31,17 @@ angular
       Rank
         [operation]($scope.rank)
         .then(function (data) {
-          // success
+          $scope.addAlert({
+            type: 'success',
+            msg: 'Le grade ' + $scope.rank.label + ' a bien été ajouté.'
+          });
           $state.go('ranks.index');
         }, function (err) {
           // error
+          $scope.addAlert({
+            type: 'danger',
+            msg: 'Le grade n\'a pas pu être ajouté. Message d\'erreur :<br><code>' + err + '</code>'
+          });
           console.log(err);
         });
     };
