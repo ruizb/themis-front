@@ -35,11 +35,6 @@ describe('RanksEditCtrl', function () {
     state = _$state_;
     $httpBackend = _$httpBackend_;
 
-    // expect is placed here because the API is contacted at controller initialization
-    $httpBackend
-      .expect('GET', apiUrl + '/corps')
-      .respond(corpsDataFromAPI);
-
     spyOn(_$state_, 'go');
 
     createController = function (rank) {
@@ -60,33 +55,62 @@ describe('RanksEditCtrl', function () {
       expect(ctrl).toBeDefined();
     });
 
-    it('should have isEdit to false if plain rank is passed in as dependency', function () {
-      createController(emptyRankMock);
-      expect(scope.isEdit).toBe(false);
+    describe('With HTTP 200 from Corps.getAll', function () {
+
+      beforeEach(function () {
+        $httpBackend
+          .expect('GET', apiUrl + '/corps')
+          .respond(200, corpsDataFromAPI);
+      });
+
+      it('should have isEdit to false if plain rank is passed in as dependency', function () {
+        createController(emptyRankMock);
+        expect(scope.isEdit).toBe(false);
+      });
+
+      it('should have isEdit to true if empty rank is passed in as dependency', function () {
+        createController(rankMock);
+        expect(scope.isEdit).toBe(true);
+      });
+
+      it('should not set $scope.rank if rank is empty', function () {
+        createController(emptyRankMock);
+        expect(scope.rank).toBeUndefined();
+      });
+
+      it('should set $scope.rank to rank if rank is not empty', function () {
+        createController(rankMock);
+        expect(scope.rank).toEqual(rankMock);
+      });
+
+      it('should set $scope.corpsList when corps data are received', function () {
+        createController(rankMock);
+        $httpBackend.flush();
+
+        corpsDataFromAPI[0].selected = true; // first corps of corpsDataFromAPI is the corps of rankMock
+
+        expect(scope.corpsList).toEqual(corpsDataFromAPI);
+      });
+
     });
 
-    it('should have isEdit to true if empty rank is passed in as dependency', function () {
-      createController(rankMock);
-      expect(scope.isEdit).toBe(true);
-    });
+    describe('With HTTP 400 from Corps.getAll', function () {
 
-    it('should not set $scope.rank if rank is empty', function () {
-      createController(emptyRankMock);
-      expect(scope.rank).toBeUndefined();
-    });
+      beforeEach(function () {
+        $httpBackend
+          .expect('GET', apiUrl + '/corps')
+          .respond(400, 'error message Corps.getAll');
+      });
 
-    it('should set $scope.rank to rank if rank is not empty', function () {
-      createController(rankMock);
-      expect(scope.rank).toEqual(rankMock);
-    });
+      it('should not set $scope.corpsList if error when corps data are received', function () {
+        createController(rankMock);
+        $httpBackend.flush();
 
-    it('should set $scope.corpsList when corps data are received', function () {
-      createController(rankMock);
-      $httpBackend.flush();
+        corpsDataFromAPI[0].selected = true; // first corps of corpsDataFromAPI is the corps of rankMock
 
-      corpsDataFromAPI[0].selected = true; // first corps of corpsDataFromAPI is the corps of rankMock
+        expect(scope.corpsList).toBeUndefined();
+      });
 
-      expect(scope.corpsList).toEqual(corpsDataFromAPI);
     });
 
   });
@@ -94,6 +118,10 @@ describe('RanksEditCtrl', function () {
   describe('When user submits the add form', function () {
 
     beforeEach(function () {
+      $httpBackend
+        .expect('GET', apiUrl + '/corps')
+        .respond(200, corpsDataFromAPI);
+
       createController(emptyRankMock);
       $httpBackend.flush();
     });
@@ -112,7 +140,7 @@ describe('RanksEditCtrl', function () {
     it('should not redirect to ranks/index when failure', function () {
       $httpBackend
         .expect('POST', apiUrl + '/ranks', rankMock)
-        .respond(400);
+        .respond(400, 'error message from scope.submit() ADD case');
 
       scope.rank = rankMock;
       scope.submit();
@@ -125,6 +153,10 @@ describe('RanksEditCtrl', function () {
   describe('When user submits the edit form', function () {
 
     beforeEach(function () {
+      $httpBackend
+        .expect('GET', apiUrl + '/corps')
+        .respond(200, corpsDataFromAPI);
+
       createController(rankMock);
       $httpBackend.flush();
     });
@@ -142,7 +174,7 @@ describe('RanksEditCtrl', function () {
     it('should not redirect to ranks/index when failure', function () {
       $httpBackend
         .expect('PUT', apiUrl + '/ranks/' + rankMock.id, rankMock)
-        .respond(400);
+        .respond(400, 'error message scope.submit() EDIT case');
 
       scope.submit();
       $httpBackend.flush();

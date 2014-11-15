@@ -103,6 +103,16 @@ describe('RanksIndexCtrl', function () {
       expect(scope.ranks.length).toBe(0);
     });
 
+    it('should not update $scope.ranks if error from API', function () {
+      $httpBackend
+        .expect('DELETE', apiUrl + '/ranks/' + rankToRemove.id)
+        .respond(400, 'error message scope.remove()');
+
+      scope.remove(rankToRemove);
+      $httpBackend.flush();
+      expect(scope.ranks.length).toBe(1);
+    });
+
   });
 
 });
