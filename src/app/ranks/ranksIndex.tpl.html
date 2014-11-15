@@ -5,5 +5,40 @@
     <span class="glyphicon glyphicon-plus"></span> Ajouter un grade
   </button>
 
-  <entity-index entity-manager="Rank" loading="loading" fields="ranksFields" entities="ranks" states-namespace="ranks"></entity-index>
+  <!--<entity-index entity-manager="Rank" loading="loading" fields="ranksFields" entities="ranks" states-namespace="ranks"></entity-index>-->
+
+  <div ng-if="loading" class="loading center-block">Chargement...</div>
+
+  <table ng-if="!loading" class="table table-striped">
+    <colgroup>
+      <col width="5%">
+      <col width="40%">
+      <col width="40%">
+      <col width="15%">
+    </colgroup>
+    <tr>
+      <th>ID</th>
+      <th>Libellé</th>
+      <th>Corps</th>
+      <th>Actions</th>
+    </tr>
+    <tr dir-paginate="rank in ranks | itemsPerPage: 10">
+      <td>{{ rank.id }}</td>
+      <td>{{ rank.label }}</td>
+      <td>{{ rank.corps.label }}</td>
+      <td>
+        <button type="button" class="btn btn-default" tooltip="Modifier" ui-sref="ranks.edit({ id: rank.id })">
+          <span class="glyphicon glyphicon-pencil"></span>
+        </button>
+        <button type="button" class="btn btn-default" tooltip="Supprimer" ng-click="remove(rank)">
+          <span class="glyphicon glyphicon-trash"></span>
+        </button>
+      </td>
+    </tr>
+  </table>
+
+  <div class="text-center">
+    <dir-pagination-controls boundary-links="true"></dir-pagination-controls>
+  </div>
+
 </div>
