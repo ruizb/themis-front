@@ -25,9 +25,25 @@ angular
       $scope.rank = rank;
     }
 
+    $scope.updateRanksCorps = function () {
+      _.map($scope.corpsList, function (corps) {
+        // reinitialize selected property of each corps
+        corps.selected = false;
+        return corps;
+      });
+
+      // get full Corps because we only have to ID in $scope.rank.corps from the select
+      $scope.corpsList.forEach(function (corps) {
+        if (corps.id === parseInt($scope.rank.corps.id, 10)) {
+          $scope.rank.corps = corps;
+          $scope.rank.corps.selected = true;
+        }
+      });
+    };
+
     $scope.submit = function () {
       var operation = isEdit ? 'edit' : 'add';
-//      $scope.rank.corps.id = parseInt($scope.rank.corps.id, 10);
+      $scope.rank.corps.id = parseInt($scope.rank.corps.id, 10);
       Rank
         [operation]($scope.rank)
         .then(function (data) {

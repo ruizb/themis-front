@@ -20,6 +20,10 @@ describe('RanksEditCtrl', function () {
     {
       id: 1,
       label: 'Gendarmerie'
+    },
+    {
+      id: 2,
+      label: 'Police'
     }
   ];
 
@@ -90,6 +94,7 @@ describe('RanksEditCtrl', function () {
         $httpBackend.flush();
 
         corpsDataFromAPI[0].selected = true; // first corps of corpsDataFromAPI is the corps of rankMock
+        corpsDataFromAPI[1].selected = false;
 
         expect(scope.corpsList).toEqual(corpsDataFromAPI);
       });
@@ -109,6 +114,7 @@ describe('RanksEditCtrl', function () {
         $httpBackend.flush();
 
         corpsDataFromAPI[0].selected = true; // first corps of corpsDataFromAPI is the corps of rankMock
+        corpsDataFromAPI[1].selected = false;
 
         expect(scope.corpsList).toBeUndefined();
       });
@@ -159,8 +165,19 @@ describe('RanksEditCtrl', function () {
         .expect('GET', apiUrl + '/corps')
         .respond(200, corpsDataFromAPI);
 
+      corpsDataFromAPI[0].selected = true; // first corps of corpsDataFromAPI is the corps of rankMock
+      corpsDataFromAPI[1].selected = false;
+
       createController(rankMock);
       $httpBackend.flush();
+    });
+
+    it('should update $scope.rank.corps when selecting new corps', function () {
+      scope.rank.corps.id = scope.corpsList[1].id; // simulate select on the second Corps
+      scope.updateRanksCorps(); // triggered when user selects another Corps
+      expect(scope.rank.corps).toEqual(scope.corpsList[1]);
+      expect(scope.corpsList[0].selected).toBe(false);
+      expect(scope.corpsList[1].selected).toBe(true);
     });
 
     it('should redirect to ranks/index when success', function () {
