@@ -1,0 +1,35 @@
+<h2>{{ h2Title }}</h2>
+<button class="btn btn-default btn-xs" ui-sref="evidences.index">
+  <i class="glyphicon glyphicon-chevron-left"></i> Retour à la liste des scell&eacutes
+</button>
+
+<!--<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert(alert)">{{alert.message}}</alert>-->
+
+<form novalidate>
+  <div ng-if="isEdit" class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">ID</label>
+    <input type="text" class="form-control" name="id" id="id" ng-model="evidence.id" readonly>
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Libellé</label>
+    <input type="text" class="form-control" name="label" id="label" ng-model="evidence.label">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Numéro</label>
+    <input type="text" class="form-control" name="num" id="num" ng-model="evidence.num">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">numéro de PV</label>
+    <input type="text" class="form-control" name="numPV" id="numPV" ng-model="evidence.numPV">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">liste d'objet-missions</label>
+    <input type="text" class="form-control" name="itemMission" id="itemMission" ng-model="evidence.itemMission">
+  </div>
+
+  <div class="form-group col-sm-2 col-sm-offset-5">
+    <button type="submit" class="btn btn-primary center-block btn-form-send btn-block" ng-click="submit()">Envoyer</button>
+  </div>
+</form>
+
+<!--<smart-form entity="grade" is-edit="isEdit"></smart-form>-->
