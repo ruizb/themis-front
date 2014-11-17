@@ -10,18 +10,24 @@ angular
     }
     else { // edit
       $scope.h2Title = 'Modifier le corps ' + corps.label;
-      $scope.grade = grade;
+      $scope.corps = corps;
     }
 
     $scope.submit = function () {
       var operation = isEdit ? 'edit' : 'add';
-      Grade
-        [operation]($scope.grade)
+      Corps
+        [operation]($scope.corps)
         .then(function (data) {
-          // success
-          $state.go('grades.index');
+          $scope.addAlert({
+            type: 'success',
+            msg: 'Le corps ' + $scope.corps.label + ' a bien été ' + (isEdit ? 'modifié' : 'ajouté') + '.'
+          });
+          $state.go('corps.index');
         }, function (err) {
-          // error
+          $scope.addAlert({
+            type: 'danger',
+            msg: 'Le corps n\'a pas pu être ' + (isEdit ? 'modifié' : 'ajouté') + '. Message d\'erreur :<br><code>' + err + '</code>'
+          });
           console.log(err);
         });
     };

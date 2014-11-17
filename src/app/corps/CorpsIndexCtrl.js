@@ -4,18 +4,24 @@ angular
 
     $scope.loading = true;
 
-    $scope.corpsFields = [
-      { name: 'ID', value: 'id' },
-      { name: 'label', value: 'label' }
-    ];
-
-    $scope.Corps = Corps;
-
     Corps
       .getAll()
       .then(function (data) {
         $scope.corps = data;
         $scope.loading = false;
       });
+
+    $scope.remove = function (corps) {
+      if ($window.confirm('Etes-vous sûr de vouloir supprimer le corps ' + corps.label + ' ?')) {
+        Corps
+          .remove(corps)
+          .then(function (data) {
+            // remove element from DOM
+            $scope.corps.splice($scope.corps.indexOf(corps), 1);
+          }, function (err) {
+            console.log(err);
+          });
+      }
+    };
 
   });
