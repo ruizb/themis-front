@@ -1,6 +1,6 @@
 angular
   .module('themis.corps')
-  .controller('CorpsIndexCtrl', function ($scope, Corps) {
+  .controller('CorpsIndexCtrl', function ($scope, $window, Corps) {
 
     $scope.loading = true;
 

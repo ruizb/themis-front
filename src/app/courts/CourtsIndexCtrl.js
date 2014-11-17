@@ -1,6 +1,6 @@
 angular
   .module('themis.courts')
-  .controller('CourtsIndexCtrl', function ($scope, Court) {
+  .controller('CourtsIndexCtrl', function ($scope, $window, Court) {
 
     $scope.loading = true;
 

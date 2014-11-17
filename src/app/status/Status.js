@@ -3,25 +3,24 @@ angular
   .factory('Status', function ($q, $http) {
   
     var Status = function () {
-      Entity.call(this,$http,$q);
+      Entity.call(this, $http, $q);
       this.url += '/status';
     };
     Status.prototype = Object.create(Entity.prototype);
-	
-	// TODO tmp
-	Status.prototype.getAll = function () {
-		var deferred = $q.defer();
 
-		var status = [];
-		for (var i = 0; i < 3; i++) {
-			status.push({
-				id: i,
-				name: "Magistrat"
-			});
-		}
-		deferred.resolve(status);
-	return deferred.promise;
-	};
+//	Status.prototype.getAll = function () {
+//		var deferred = $q.defer();
+//
+//		var status = [];
+//		for (var i = 0; i < 3; i++) {
+//			status.push({
+//				id: i,
+//				name: "Magistrat"
+//			});
+//		}
+//		deferred.resolve(status);
+//	return deferred.promise;
+//	};
 
     Status.prototype.add = function (statusData) {
       var deferred = $q.defer();
@@ -37,7 +36,7 @@ angular
     };
 
     Status.prototype.edit = function (statusData) {
-        var deferred = $q.defer();
+      var deferred = $q.defer();
       $http
         .put(this.url + '/' + statusData.id, statusData)
         .success(function (data) {

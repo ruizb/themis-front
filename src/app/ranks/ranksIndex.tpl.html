@@ -31,7 +31,7 @@
         <th>Corps</th>
         <th>Actions</th>
       </tr>
-      <tr dir-paginate="rank in ranks | filter:searchText | itemsPerPage: 10">
+      <tr dir-paginate="rank in ranks | filter: searchText | itemsPerPage: 10">
         <td>{{ rank.id }}</td>
         <td>{{ rank.label }}</td>
         <td>{{ rank.corps.label }}</td>

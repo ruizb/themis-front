@@ -5,5 +5,46 @@
     <span class="glyphicon glyphicon-plus"></span> Ajouter un titre
   </button>
 
-  <entity-index entity-manager="Status" loading="loading" fields="statusFields" entities="status" states-namespace="status"></entity-index>
+  <div ng-if="loading" class="loading center-block">Chargement...</div>
+
+  <div ng-if="!loading">
+
+    <div class="form-group col-md-6 col-md-offset-3">
+      <div class="input-group">
+        <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+        <input type="text" class="form-control" id="search" placeholder="Search..." ng-model="searchText">
+      </div>
+    </div>
+
+    <table class="table table-striped">
+      <colgroup>
+        <col width="5%">
+        <col width="80%">
+        <col width="15%">
+      </colgroup>
+      <tr>
+        <th>ID</th>
+        <th>Libellé</th>
+        <th>Actions</th>
+      </tr>
+      <tr dir-paginate="status in statusList | filter: searchText | itemsPerPage: 10">
+        <td>{{ status.id }}</td>
+        <td>{{ status.name }}</td>
+        <td>
+          <button type="button" class="btn btn-default" tooltip="Modifier" ui-sref="status.edit({ id: status.id })">
+            <span class="glyphicon glyphicon-pencil"></span>
+          </button>
+          <button type="button" class="btn btn-default" tooltip="Supprimer" ng-click="remove(status)">
+            <span class="glyphicon glyphicon-trash"></span>
+          </button>
+        </td>
+      </tr>
+    </table>
+
+    <div class="text-center">
+      <dir-pagination-controls boundary-links="true"></dir-pagination-controls>
+    </div>
+
+  </div>
+
 </div>

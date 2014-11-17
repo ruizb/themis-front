@@ -18,10 +18,17 @@ angular
       Status
         [operation]($scope.status)
         .then(function (data) {
-          // success
+          $scope.addAlert({
+            type: 'success',
+            msg: 'Le titre ' + $scope.status.name + ' a bien été ' + (isEdit ? 'modifié' : 'ajouté') + '.'
+          });
           $state.go('status.index');
         }, function (err) {
           // error
+          $scope.addAlert({
+            type: 'danger',
+            msg: 'Le titre n\'a pas pu être ' + (isEdit ? 'modifié' : 'ajouté') + '. Message d\'erreur :<br><code>' + err + '</code>'
+          });
           console.log(err);
         });
     };

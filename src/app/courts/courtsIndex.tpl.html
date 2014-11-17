@@ -27,7 +27,7 @@
         <th>Libellé</th>
         <th>Actions</th>
       </tr>
-      <tr dir-paginate="court in courts | filter:searchText | itemsPerPage: 10">
+      <tr dir-paginate="court in courts | filter: searchText | itemsPerPage: 10">
         <td>{{ court.id }}</td>
         <td>{{ court.label }}</td>
         <td>
