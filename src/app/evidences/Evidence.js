@@ -28,19 +28,6 @@ angular
 
       return deferred.promise;
     };
-	
-    /*Evidence.prototype.getAll = function () {
-      var deferred = this.$q.defer();
-      this.$http
-        .get(this.url)
-        .success(function (data) {
-          deferred.resolve(data);
-        })
-        .error(function (err) {
-          deferred.reject(err);
-        });
-      return deferred.promise;
-    };*/
 
     Evidence.prototype.add = function (evidenceData) {
       var deferred = $q.defer();

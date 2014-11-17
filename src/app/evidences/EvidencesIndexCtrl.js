@@ -9,7 +9,7 @@ angular
 	{ name: 'Libellé', value: 'label' },
 	{ name: 'Numéro', value: 'num' },
 	{ name: 'Numéro PV', value: 'numPV' },
-	{ name: 'Objet-missions', value: 'itemMission' }
+	{ name: 'Objet-missions', value: 'itemMission.label' }
     ];
 
     $scope.Evidence = Evidence;

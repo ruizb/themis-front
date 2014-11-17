@@ -6,10 +6,10 @@ angular
     $scope.isEdit = isEdit;
 
     if (!isEdit) { // add
-      $scope.h2Title = 'Ajouter un scelle';
+      $scope.h2Title = 'Ajouter un scellé';
     }
     else { // edit
-      $scope.h2Title = 'Modifier le scelle ' + evidence.label;
+      $scope.h2Title = 'Modifier le scellé ' + evidence.label;
       $scope.evidence = evidence;
     }
 

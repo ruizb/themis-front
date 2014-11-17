@@ -19,7 +19,7 @@
             templateUrl: 'evidences/evidencesIndex.tpl.html'
           }
         },
-        data:{ pageTitle: 'Liste des scelles' }
+        data:{ pageTitle: 'Liste des scellés' }
       })
       .state('evidences.edit', {
         url: '/edit/:id',
@@ -48,6 +48,6 @@
             return deferred.promise;
           }
         },
-        data:{ pageTitle: 'Modifier un scelle' }
+        data:{ pageTitle: 'Modifier un scellé' }
       });
 	});
