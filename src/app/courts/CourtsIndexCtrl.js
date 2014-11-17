@@ -2,7 +2,7 @@ angular
   .module('themis.courts')
   .controller('CourtsIndexCtrl', function ($scope, Court) {
 
-	  $scope.loading = true;
+    $scope.loading = true;
 
     Court
       .getAll()
