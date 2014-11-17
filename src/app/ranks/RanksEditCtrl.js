@@ -56,7 +56,7 @@ angular
           // error
           $scope.addAlert({
             type: 'danger',
-            msg: 'Le grade n\'a pas pu être ' + (iasEdit ? 'modifié' : 'ajouté') + '. Message d\'erreur :<br><code>' + err + '</code>'
+            msg: 'Le grade n\'a pas pu être ' + (isEdit ? 'modifié' : 'ajouté') + '. Message d\'erreur :<br><code>' + err + '</code>'
           });
           console.log(err);
         });
