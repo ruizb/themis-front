@@ -15,7 +15,21 @@ angular
     $urlRouterProvider.otherwise('/login');
   })
 
-  .controller('AppCtrl', function AppCtrl($scope, $location) {
+  .controller('AppCtrl', function AppCtrl($scope, $timeout) {
+
+    $scope.alerts = [];
+
+    $scope.addAlert = function (alert) {
+      $scope.alerts.push(alert);
+      $timeout(function () {
+        $scope.alerts.splice($scope.alerts.indexOf(alert), 1);
+      }, 5000);
+    };
+
+    $scope.closeAlert = function (index) {
+      $scope.alerts.splice(index, 1);
+    };
+
     $scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
       if (angular.isDefined(toState.data.pageTitle)) {
         $scope.pageTitle = toState.data.pageTitle;

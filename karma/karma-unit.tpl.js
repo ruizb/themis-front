@@ -1,4 +1,4 @@
-module.exports = function ( karma ) {
+module.exports = function (karma) {
   karma.set({
     /** 
      * From where to look for files, starting with the location of this file.
@@ -12,22 +12,25 @@ module.exports = function ( karma ) {
       <% scripts.forEach( function ( file ) { %>'<%= file %>',
       <% }); %>
       'src/**/_*.js',
-      'src/**/*.js',
-      'src/**/*.coffee',
+      'src/**/*.js'
     ],
     exclude: [
       'src/assets/**/*.js'
     ],
     frameworks: [ 'jasmine' ],
-    plugins: [ 'karma-jasmine', 'karma-phantomjs-launcher' ],
+    plugins: [ 'karma-coverage', 'karma-jasmine', 'karma-phantomjs-launcher' ],
     preprocessors: {
-      '**/*.coffee': 'coffee',
+      'src/**/*.js': ['coverage']
+    },
+    coverageReporter: {
+      type : 'html',
+      dir : 'coverage/'
     },
 
     /**
      * How to report, by default.
      */
-    reporters: 'dots',
+    reporters: ['progress', 'coverage'],
 
     /**
      * On which port should the browser connect, on which port is the test runner

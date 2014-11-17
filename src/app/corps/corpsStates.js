@@ -1,42 +1,42 @@
-  angular
-.module('themis.ranks')
+angular
+.module('themis.corps')
   .config(function config($stateProvider) {
     $stateProvider
-      .state('ranks', {
+      .state('corps', {
         abstract: true,
-        url: '/ranks',
+        url: '/corps',
         views: {
           "main": {
             template: '<div ui-view="mainContent"></div>'
           }
         }
       })
-      .state('ranks.index', {
+      .state('corps.index', {
         url: '/index',
         views: {
           "mainContent": {
-            controller: 'RanksIndexCtrl',
-            templateUrl: 'ranks/ranksIndex.tpl.html'
+            controller: 'CorpsIndexCtrl',
+            templateUrl: 'corps/corpsIndex.tpl.html'
           }
         },
-        data:{ pageTitle: 'Liste des grades' }
+        data:{ pageTitle: 'Liste des corps' }
       })
-      .state('ranks.edit', {
+      .state('corps.edit', {
         url: '/edit/:id',
         views: {
           "mainContent": {
-            controller: 'RanksEditCtrl',
-            templateUrl: 'ranks/ranksEdit.tpl.html'
+            controller: 'CorpsEditCtrl',
+            templateUrl: 'corps/corpsEdit.tpl.html'
           }
         },
         resolve: {
-          rank: function ($stateParams, $q, Rank) {
+          corps: function ($stateParams, $q, Corps) {
             var deferred = $q.defer();
             if (_.isUndefined($stateParams.id) || $stateParams.id === '') {
-              deferred.resolve({ label: '', corps: {} });
+              deferred.resolve({ label: '' });
             }
             else {
-              Rank
+              Corps
                 .get($stateParams.id)
                 .then(function (data) {
                   deferred.resolve(data);
@@ -48,6 +48,6 @@
             return deferred.promise;
           }
         },
-        data:{ pageTitle: 'Modifier un grade' }
+        data:{ pageTitle: 'Modifier un corps' }
       });
 	});

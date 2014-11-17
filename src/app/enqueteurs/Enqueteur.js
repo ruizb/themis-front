@@ -1,9 +1,9 @@
 angular
   .module('themis.enqueteurs')
-  .factory('Enqueteur', function (Entity, $q, $http) {
+  .factory('Enqueteur', function ($q, $http) {
 
     var Enqueteur = function () {
-      Entity.call(this);
+      Entity.call(this, $http, $q);
       this.url = '/enqueteur';
     };
     Enqueteur.prototype = Object.create(Entity.prototype);

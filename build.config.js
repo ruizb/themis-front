@@ -64,6 +64,7 @@ module.exports = {
     js: [
       'vendor/lodash/dist/lodash.min.js',
       'vendor/angular/angular.js',
+      'vendor/angular-sanitize/angular-sanitize.js',
       'vendor/angular-bootstrap/ui-bootstrap-tpls.min.js',
       'vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js',
       'vendor/angular-ui-router/release/angular-ui-router.js',
