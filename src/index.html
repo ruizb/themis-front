@@ -15,6 +15,12 @@
 
 <nav-bar current-state="currentState" ng-if="currentState !== 'login'"></nav-bar>
 
+<div class="container">
+  <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">
+    <span ng-bind-html="alert.msg"></span>
+  </alert>
+</div>
+
 <div class="container" ui-view="main"></div>
 
 <footer class="footer">

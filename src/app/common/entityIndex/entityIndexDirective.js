@@ -1,6 +1,6 @@
 angular
   .module('themis')
-  .directive('entityIndex', function ($state) {
+  .directive('entityIndex', function () {
     return {
       restrict: 'E',
       scope: {
@@ -14,6 +14,7 @@ angular
       link: function (scope, element, attrs) {
 
         scope.entitiesValues = [];
+
         scope.$watch('loading', function(newValue, oldValue) {
           if (!newValue) { // data (scope.entities) is done loading
             _.forEach(scope.entities, function (entity) {
@@ -56,6 +57,7 @@ angular
                 console.log(err);
               });
           }
+
         };
 
       }

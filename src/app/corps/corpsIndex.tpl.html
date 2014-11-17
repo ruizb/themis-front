@@ -1,11 +1,9 @@
 <div class="row">
-  <h2>Liste des grades d'enquêteurs</h2>
+  <h2>Liste des corps</h2>
 
-  <button type="button" class="center-block btn btn-default btn-lg btn-primary btn-add-entity" ui-sref="ranks.edit">
-    <span class="glyphicon glyphicon-plus"></span> Ajouter un grade
+  <button type="button" class="center-block btn btn-default btn-lg btn-primary btn-add-entity" ui-sref="corps.edit">
+    <span class="glyphicon glyphicon-plus"></span> Ajouter un corps
   </button>
-
-  <!--<entity-index entity-manager="Rank" loading="loading" fields="ranksFields" entities="ranks" states-namespace="ranks"></entity-index>-->
 
   <div ng-if="loading" class="loading center-block">Chargement...</div>
 
@@ -18,28 +16,25 @@
       </div>
     </div>
 
-    <table class="table table-striped">
+    <table class="table table-striped table-hover table-responsive">
       <colgroup>
         <col width="5%">
-        <col width="40%">
-        <col width="40%">
+        <col width="80%">
         <col width="15%">
       </colgroup>
       <tr>
         <th>ID</th>
         <th>Libellé</th>
-        <th>Corps</th>
         <th>Actions</th>
       </tr>
-      <tr dir-paginate="rank in ranks | filter:searchText | itemsPerPage: 10">
-        <td>{{ rank.id }}</td>
-        <td>{{ rank.label }}</td>
-        <td>{{ rank.corps.label }}</td>
+      <tr dir-paginate="corps in corps | filter: searchText | itemsPerPage: 10">
+        <td>{{ corps.id }}</td>
+        <td>{{ corps.label }}</td>
         <td>
-          <button type="button" class="btn btn-default" tooltip="Modifier" ui-sref="ranks.edit({ id: rank.id })">
+          <button type="button" class="btn btn-default" tooltip="Modifier" ui-sref="corps.edit({ id: corps.id })">
             <span class="glyphicon glyphicon-pencil"></span>
           </button>
-          <button type="button" class="btn btn-default" tooltip="Supprimer" ng-click="remove(rank)">
+          <button type="button" class="btn btn-default" tooltip="Supprimer" ng-click="remove(corps)">
             <span class="glyphicon glyphicon-trash"></span>
           </button>
         </td>
