@@ -7,7 +7,7 @@ angular
     'themis.enqueteurs',
     'themis.corps',
     'themis.ranks',
-	'themis.courts',
+    'themis.courts',
     'ui.router',
     'ngSanitize',
     'angularUtils.directives.dirPagination'

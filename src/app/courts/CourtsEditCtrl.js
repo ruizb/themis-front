@@ -18,10 +18,17 @@ angular
       Court
         [operation]($scope.court)
         .then(function (data) {
-          // success
+          $scope.addAlert({
+            type: 'success',
+            msg: 'La cour ' + $scope.court.label + ' a bien été ' + (isEdit ? 'modifiée' : 'ajoutée') + '.'
+          });
           $state.go('courts.index');
         }, function (err) {
           // error
+          $scope.addAlert({
+            type: 'danger',
+            msg: 'La cour n\'a pas pu être ' + (isEdit ? 'modifiée' : 'ajoutée') + '. Message d\'erreur :<br><code>' + err + '</code>'
+          });
           console.log(err);
         });
     };

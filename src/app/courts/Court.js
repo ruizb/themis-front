@@ -8,25 +8,25 @@ angular
     };
 	Court.prototype = Object.create(Entity.prototype);
 	 
-	Court.prototype.getAll = function () {
-      var deferred = $q.defer();
-
-      var courts = [];
-      for (var i = 0; i < 20; i++) {
-        courts.push({
-          id: i,
-          label:"Cour d'appel de Montpellier"
-        });
-      }
-      deferred.resolve(courts);
-
-      return deferred.promise;
-    };
+//	Court.prototype.getAll = function () {
+//      var deferred = $q.defer();
+//
+//      var courts = [];
+//      for (var i = 0; i < 20; i++) {
+//        courts.push({
+//          id: i,
+//          label:"Cour d'appel de Montpellier"
+//        });
+//      }
+//      deferred.resolve(courts);
+//
+//      return deferred.promise;
+//    };
 	
 	Court.prototype.add = function (courtData) {
       var deferred = $q.defer();
       $http
-        .post(this.urlBase + this.url, courtData)
+        .post(this.url, courtData)
         .success(function (data) {
           deferred.resolve(data);
         })
@@ -39,7 +39,7 @@ angular
 	Court.prototype.edit = function (courtData) {
       var deferred = $q.defer();
       $http
-        .put(this.urlBase + this.url + '/' + courtData.id, courtData)
+        .put(this.url + '/' + courtData.id, courtData)
         .success(function (data) {
           deferred.resolve(data);
         })
@@ -48,19 +48,19 @@ angular
         });
       return deferred.promise;
     };
-	//????
-    Court.prototype.remove = function (courtData) {
-      var deferred = $q.defer();
-      $http
-        ['delete'](this.urlBase + this.url + '/' + courtData.id)
-        .success(function (data) {
-          deferred.resolve(data);
-        })
-        .error(function (err) {
-          deferred.reject(err);
-        });
-      return deferred.promise;
-    };
+
+  Court.prototype.remove = function (courtData) {
+    var deferred = $q.defer();
+    $http
+      ['delete'](this.url + '/' + courtData.id)
+      .success(function (data) {
+        deferred.resolve(data);
+      })
+      .error(function (err) {
+        deferred.reject(err);
+      });
+    return deferred.promise;
+  };
   
 	return new Court();
   
