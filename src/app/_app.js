@@ -12,4 +12,4 @@ angular
     'ui.router',
     'ngSanitize',
     'angularUtils.directives.dirPagination'
-  ]);
+  ]); 
