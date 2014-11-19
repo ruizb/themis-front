@@ -8,6 +8,7 @@ angular
     'themis.status',
     'themis.corps',
     'themis.items',
+    'themis.missions',
     'themis.ranks',
     'themis.courts',
     'ui.router',
