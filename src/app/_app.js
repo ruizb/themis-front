@@ -10,6 +10,7 @@ angular
     'themis.items',
     'themis.missions',
     'themis.tribunals',
+    'themis.clerks',
     'themis.ranks',
     'themis.courts',
     'ui.router',

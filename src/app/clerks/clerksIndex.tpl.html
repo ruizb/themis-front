@@ -1,0 +1,68 @@
+<div class="row">
+  <h2>Liste des greffiers</h2>
+
+  <button type="button" class="center-block btn btn-default btn-lg btn-primary btn-add-entity" ui-sref="clerks.edit">
+    <span class="glyphicon glyphicon-plus"></span> Ajouter un greffier
+  </button>
+
+  <div ng-if="loading" class="loading center-block">Chargement...</div>
+
+  <div ng-if="!loading">
+
+    <div class="form-group col-md-6 col-md-offset-3">
+      <div class="input-group">
+        <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+        <input type="text" class="form-control" id="search" placeholder="Search..." ng-model="searchText">
+      </div>
+    </div>
+
+    <table class="table table-striped">
+      <colgroup>
+        <col width="5%">
+        <col width="10%">
+        <col width="10%">
+        <col width="20%">
+        <col width="10%">
+        <col width="10%">
+        <col width="10%">
+        <col width="10%">
+        <col width="15%">
+      </colgroup>
+      <tr>
+        <th>ID</th>
+        <th>Prénom</th>
+        <th>Nom</th>
+        <th>Adresse</th>
+        <th>Téléphone</th>
+        <th>Portable</th>
+        <th>Fax</th>
+        <th>TGI</th>
+        <th>Actions</th>
+      </tr>
+      <tr dir-paginate="clerk in clerks | filter: searchText | itemsPerPage: 10">
+        <td>{{ clerk.id }}</td>
+        <td>{{ clerk.fname }}</td>
+        <td>{{ clerk.lname }}</td>
+        <td>{{ clerk.address }}</td>
+        <td>{{ clerk.phone }}</td>
+        <td>{{ clerk.mobile }}</td>
+        <td>{{ clerk.fax }}</td>
+        <td><a href ng-click="openTribunalDetails(clerk.tribunal)">{{ clerk.tribunal.name }}</a></td>
+        <td>
+          <button type="button" class="btn btn-default" tooltip="Modifier" ui-sref="clerks.edit({ id: clerk.id })">
+            <span class="glyphicon glyphicon-pencil"></span>
+          </button>
+          <button type="button" class="btn btn-default" tooltip="Supprimer" ng-click="remove(clerk)">
+            <span class="glyphicon glyphicon-trash"></span>
+          </button>
+        </td>
+      </tr>
+    </table>
+
+    <div class="text-center">
+      <dir-pagination-controls boundary-links="true"></dir-pagination-controls>
+    </div>
+
+  </div>
+
+</div>

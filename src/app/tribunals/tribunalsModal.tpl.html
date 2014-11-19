@@ -1,0 +1,20 @@
+<div class="modal-header">
+  <h3 class="modal-title">{{ tribunal.name }}</h3>
+</div>
+
+<div class="modal-body">
+  <p>
+    <strong>ID </strong>{{ tribunal.id }}<br>
+    <strong>Nom </strong>{{ tribunal.name }}<br>
+    <strong>Numéro de téléphone </strong>{{ tribunal.phone }}<br>
+    <strong>Rattaché à la cour d'appel :</strong><br>
+    <ul>
+      <li><strong>ID </strong>{{ tribunal.court.id }}</li>
+      <li><strong>Libellé </strong>{{ tribunal.court.label }}</li>
+    </ul>
+  </p>
+</div>
+
+<div class="modal-footer">
+  <button class="btn btn-primary" ng-click="ok()">Ok</button>
+</div>

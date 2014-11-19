@@ -1,0 +1,49 @@
+<h2>{{ h2Title }}</h2>
+<button class="btn btn-default btn-xs" ui-sref="clerks.index">
+  <i class="glyphicon glyphicon-chevron-left"></i> Retour à la liste des greffiers
+</button>
+
+<!--<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert(alert)">{{alert.message}}</alert>-->
+
+<form novalidate>
+  <div ng-if="isEdit" class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">ID</label>
+    <input type="text" class="form-control" name="id" id="id" ng-model="clerk.id" readonly>
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Nom</label>
+    <input type="text" class="form-control" name="firstname" id="firstname" ng-model="clerk.firstname">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Prenom</label>
+    <input type="text" class="form-control" name="lastname" id="lastname" ng-model="clerk.lastname">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Adresse</label>
+    <input type="text" class="form-control" name="adress" id="adress" ng-model="clerk.adress">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Telephone</label>
+    <input type="text" class="form-control" name="phone" id="phone" ng-model="clerk.phone">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Portable</label>
+    <input type="text" class="form-control" name="mobile" id="mobile" ng-model="clerk.mobile">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Fax</label>
+    <input type="text" class="form-control" name="fax" id="fax" ng-model="clerk.fax">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">TGI</label>
+    <select class="form-control" name="tribunal" id="tribunal" ng-model="clerk.tribunal.id" ng-change="updateClerksTribunal()">
+      <option ng-repeat="tribunal in tribunals" ng-value="tribunal.id" ng-selected="tribunal.selected">{{ tribunal.name }}</option>
+    </select>
+  </div>
+
+  <div class="form-group col-sm-2 col-sm-offset-5">
+    <button type="submit" class="btn btn-primary center-block btn-form-send btn-block" ng-click="submit()">Envoyer</button>
+  </div>
+</form>
+
+<!--<smart-form entity="grade" is-edit="isEdit"></smart-form>-->

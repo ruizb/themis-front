@@ -5,6 +5,7 @@
     <th ng-repeat="field in fields">{{ field.name }}</th>
     <th>Actions</th>
   </tr>
+  
   <tr dir-paginate="entity in entities | itemsPerPage: 10">
     <td ng-repeat="value in entitiesValues[$index]">{{ value }}</td>
     <td width="15%">
