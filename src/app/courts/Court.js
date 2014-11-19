@@ -4,7 +4,7 @@ angular
   
 	var Court = function () {
       Entity.call(this, $http, $q);
-      this.url = '/courts';
+      this.url += '/courts';
     };
 	Court.prototype = Object.create(Entity.prototype);
 	 
