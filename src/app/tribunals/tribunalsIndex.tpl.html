@@ -1,0 +1,56 @@
+<div class="row">
+  <h2>Liste des TGIs</h2>
+
+  <button type="button" class="center-block btn btn-default btn-lg btn-primary btn-add-entity" ui-sref="tribunals.edit">
+    <span class="glyphicon glyphicon-plus"></span> Ajouter un TGI
+  </button>
+
+  <div ng-if="loading" class="loading center-block">Chargement...</div>
+
+  <div ng-if="!loading">
+
+    <div class="form-group col-md-6 col-md-offset-3">
+      <div class="input-group">
+        <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+        <input type="text" class="form-control" id="search" placeholder="Search..." ng-model="searchText">
+      </div>
+    </div>
+
+    <table class="table table-striped">
+      <colgroup>
+        <col width="5%">
+        <col width="20%">
+        <col width="20%">
+        <col width="40%">
+        <col width="15%">
+      </colgroup>
+      <tr>
+        <th>ID</th>
+        <th>Libellé</th>
+        <th>Téléphone</th>
+        <th>Cour d'appel</th>
+        <th>Actions</th>
+      </tr>
+      <tr dir-paginate="tribunal in tribunals | filter: searchText | itemsPerPage: 10">
+        <td>{{ tribunal.id }}</td>
+        <td>{{ tribunal.name }}</td>
+        <td>{{ tribunal.phone }}</td>
+        <td>{{ tribunal.court.label }}</td>
+        <td>
+          <button type="button" class="btn btn-default" tooltip="Modifier" ui-sref="tribunals.edit({ id: tribunal.id })">
+            <span class="glyphicon glyphicon-pencil"></span>
+          </button>
+          <button type="button" class="btn btn-default" tooltip="Supprimer" ng-click="remove(tribunal)">
+            <span class="glyphicon glyphicon-trash"></span>
+          </button>
+        </td>
+      </tr>
+    </table>
+
+    <div class="text-center">
+      <dir-pagination-controls boundary-links="true"></dir-pagination-controls>
+    </div>
+
+  </div>
+
+</div>

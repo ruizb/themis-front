@@ -48,5 +48,5 @@ angular
     };
 
     return new Corps();
-  
+
   });
