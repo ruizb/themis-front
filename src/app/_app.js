@@ -7,6 +7,7 @@ angular
     'themis.enqueteurs',
     'themis.status',
     'themis.corps',
+    'themis.items',
     'themis.ranks',
     'themis.courts',
     'ui.router',
