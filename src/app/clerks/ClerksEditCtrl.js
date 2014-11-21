@@ -22,8 +22,8 @@ angular
     }
     else { // edit
       $scope.h2Title = 'Modifier le greffier';
-      $scope.clerk = clerk;
     }
+    $scope.clerk = clerk;
 
     $scope.updateClerksTribunal = function () {
       _.map($scope.tribunals, function (tribunal) {

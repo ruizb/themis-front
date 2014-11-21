@@ -33,7 +33,7 @@ angular
           clerk: function ($stateParams, $q, Clerk) {
             var deferred = $q.defer();
             if (_.isUndefined($stateParams.id) || $stateParams.id === '') {
-              deferred.resolve({ fname: '', lname: '' , address:'', phone:'', mobile:'', fax:'' }); //Ajouter le tribunal !
+              deferred.resolve({ fname: '', lname: '' , address: '', phone: '', mobile: '', fax: '', tribunal: {} }); //Ajouter le tribunal !
             }
             else {
               Clerk
