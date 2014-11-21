@@ -79,11 +79,6 @@ describe('RanksEditCtrl', function () {
         expect(scope.isEdit).toBe(true);
       });
 
-      it('should not set $scope.rank if rank is empty', function () {
-        createController(emptyRankMock);
-        expect(scope.rank).toBeUndefined();
-      });
-
       it('should set $scope.rank to rank if rank is not empty', function () {
         createController(rankMock);
         expect(scope.rank).toEqual(rankMock);
