@@ -7,7 +7,7 @@ angular
     }
     else { // edit
       $scope.h2Title = 'Modifier l\'enquêteur ' + enqueteur.firstname + ' ' + enqueteur.lastname;
-      $scope.enqueteur = enqueteur;
     }
+    $scope.enqueteur = enqueteur;
 
   });

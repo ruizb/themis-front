@@ -22,8 +22,8 @@ angular
     }
     else { // edit
       $scope.h2Title = 'Modifier le TGI ' + tribunal.name;
-      $scope.tribunal = tribunal;
     }
+    $scope.tribunal = tribunal;
 
     $scope.updateTribunalsCourt = function () {
       _.map($scope.courts, function (court) {

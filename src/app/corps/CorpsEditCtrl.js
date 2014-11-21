@@ -10,8 +10,8 @@ angular
     }
     else { // edit
       $scope.h2Title = 'Modifier le corps ' + corps.label;
-      $scope.corps = corps;
     }
+    $scope.corps = corps;
 
     $scope.submit = function () {
       var operation = isEdit ? 'edit' : 'add';

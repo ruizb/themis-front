@@ -22,8 +22,8 @@ angular
     }
     else { // edit
       $scope.h2Title = 'Modifier le grade ' + rank.label;
-      $scope.rank = rank;
     }
+    $scope.rank = rank;
 
     $scope.updateRanksCorps = function () {
       _.map($scope.corpsList, function (corps) {

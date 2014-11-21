@@ -10,8 +10,8 @@ angular
     }
     else { // edit
       $scope.h2Title = 'Modifier le titre ' + status.name;
-      $scope.status = status;
     }
+    $scope.status = status;
 
     $scope.submit = function () {
       var operation = isEdit ? 'edit' : 'add';

@@ -10,8 +10,8 @@ angular
     }
     else { // edit
       $scope.h2Title = 'Modifier la mission ' + mission.label;
-      $scope.mission = mission;
     }
+    $scope.mission = mission;
 
     $scope.submit = function () {
       var operation = isEdit ? 'edit' : 'add';
