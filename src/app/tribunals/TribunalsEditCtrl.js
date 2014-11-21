@@ -9,7 +9,7 @@ angular
       .getAll()
       .then(function (data) {
         $scope.courts = _.map(data, function (court) {
-          court.selected = (isEdit) ? court.corps.id === court.id : false;
+          court.selected = (isEdit) ? tribunal.court.id === court.id : false;
           return court;
         });
       }, function (err) {
@@ -33,8 +33,8 @@ angular
 
       $scope.courts.forEach(function (court) {
         if (court.id === parseInt($scope.tribunal.court.id, 10)) {
-          $scope.rank.court = court;
-          $scope.rank.court.selected = true;
+          $scope.tribunal.court = court;
+          $scope.tribunal.court.selected = true;
         }
       });
     };
