@@ -16,12 +16,9 @@
   </div>
   <div class="form-group col-sm-8 col-sm-offset-2">
     <label class="control-label" for="id">Corps</label>
-	<select class="form-control selection" name="corps" id="corps"><!--ng-model="department.corps.name'-->
-		<option>Police</option>
-		<option>Gendarmerie</option>
-		<option>Douane</option>
-	</select>
-    <!--<input type="text" class="form-control" name="corps" id="corps" ng-model="department.corps.name">--> <!-- vérif notation pointée et changer type text en liste -->
+    <select class="form-control" name="corps" id="corps" ng-model="rank.corps.id" ng-change="updateDepartmentsCorps()">
+      <option ng-repeat="corps in corpsList" ng-value="corps.id" ng-selected="corps.selected">{{ corps.label }}</option>
+    </select>
   </div>
 
   <div class="form-group col-sm-2 col-sm-offset-5">

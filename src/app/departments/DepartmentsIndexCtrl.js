@@ -4,19 +4,24 @@ angular
 
     $scope.loading = true;
 
-    $scope.departmentsFields = [
-		{ name: 'ID', value: 'id' },
-		{ name: 'Libelle', value: 'name' },
-		{ name: 'Corps', value: 'corps'}
-    ];
-
-    $scope.Department = Department;
-
     Department
       .getAll()
       .then(function (data) {
         $scope.departments = data;
         $scope.loading = false;
       });
+
+    $scope.remove = function (department) {
+      if ($window.confirm('Etes-vous sûr de vouloir supprimer le service ' + department.name + ' ?')) {
+        Department
+          .remove(department)
+          .then(function (data) {
+            // remove element from DOM
+            $scope.departments.splice($scope.departments.indexOf(department), 1);
+          }, function (err) {
+            console.log(err);
+          });
+      }
+    };
 
   });
