@@ -52,11 +52,6 @@ describe('CorpsEditCtrl', function () {
         expect(scope.isEdit).toBe(true);
       });
 
-      it('should not set $scope.corps if corps is empty', function () {
-        createController(emptyCorpsMock);
-        expect(scope.corps).toBeUndefined();
-      });
-
       it('should set $scope.corps to corps if corps is not empty', function () {
         createController(corpsMock);
         expect(scope.corps).toEqual(corpsMock);

@@ -52,11 +52,6 @@ describe('StatusEditCtrl', function () {
         expect(scope.isEdit).toBe(true);
       });
 
-      it('should not set $scope.status if status is empty', function () {
-        createController(emptyStatusMock);
-        expect(scope.status).toBeUndefined();
-      });
-
       it('should set $scope.status to status if status is not empty', function () {
         createController(statusMock);
         expect(scope.status).toEqual(statusMock);
