@@ -1,6 +1,6 @@
 angular
   .module('themis.business')
-  .controller('BusinessIndexCtrl', function ($scope, $window, Business) {
+  .controller('BusinessIndexCtrl', function ($scope, $modal, $window, Business) {
 
     $scope.loading = true;
 
@@ -11,13 +11,26 @@ angular
         $scope.loading = false;
       });
 
+    $scope.openTribunalDetails = function (tribunal) {
+      $modal.open({
+        templateUrl: 'tribunals/tribunalsModal.tpl.html',
+        controller: 'TribunalsModalCtrl',
+        size: 'sm',
+        resolve: {
+          tribunal: function () {
+            return tribunal;
+          }
+        }
+      });
+    };
+
     $scope.remove = function (business) {
-      if ($window.confirm('Etes-vous s&uacirc;r de vouloir supprimer l\'&eacute;tablissement ' + business.label + ' ?')) {
+      if ($window.confirm('Etes-vous sûr de vouloir supprimer l\'établissement ' + business.name + ' ?')) {
         Business
           .remove(business)
           .then(function (data) {
             // remove element from DOM
-            $scope.business.splice($scope.business.indexOf(business), 1);
+            $scope.businesses.splice($scope.businesses.indexOf(business), 1);
           }, function (err) {
             console.log(err);
           });

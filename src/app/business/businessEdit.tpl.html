@@ -15,7 +15,7 @@
     <input type="text" class="form-control" name="name" id="name" ng-model="business.name">
   </div>
   <div class="form-group col-sm-8 col-sm-offset-2">
-    <label class="control-label" for="id">Telephone</label>
+    <label class="control-label" for="id">Téléphone</label>
     <input type="text" class="form-control" name="phone" id="phone" ng-model="business.phone">
   </div>
   <div class="form-group col-sm-8 col-sm-offset-2">
@@ -30,21 +30,36 @@
   </div>
   <div class="form-group col-sm-8 col-sm-offset-2">
     <label class="control-label" for="id">TGI</label>
-    <select class="form-control" name="tribunal" id="tribunal" ng-model="business.tribunal.id">
-      <option ng-repeat="tribunal in tribunalList" ng-value="tribunal.id" ng-selected="tribunal.selected">{{ tribunal.name }}</option>
+    <select class="form-control" name="tribunal" id="tribunal" ng-model="business.tribunal.id" ng-change="updateTribunal()">
+      <option ng-repeat="tribunal in tribunals" ng-value="tribunal.id" ng-selected="tribunal.selected">{{ tribunal.name }}</option>
     </select>
   </div>
   <div class="form-group col-sm-8 col-sm-offset-2">
     <label class="control-label" for="id">Corps</label>
-    <select class="form-control" name="corps" id="corps" ng-model="business.corps.id">
+    <select class="form-control" name="corps" id="corps" ng-model="business.corps.id" ng-change="updateCorps()">
       <option ng-repeat="corps in corpsList" ng-value="corps.id" ng-selected="corps.selected">{{ corps.label }}</option>
     </select>
   </div>
   <div class="form-group col-sm-8 col-sm-offset-2">
-    <label class="control-label" for="id">Service</label> <!-- tous les services -->
-    <select class="form-control" name="department" id="department" ng-model="business.department.id">
-      <option ng-repeat="department in departmentList" ng-value="department.id" ng-selected="department.selected">{{ department.label }}</option>
-    </select>
+    <div class="input-group">
+      <label class="control-label" for="department">Services</label>
+    </div>
+    <div class="input-group">
+      <select class="form-control" name="department" id="department" ng-model="selectedDepartmentId">
+        <option ng-repeat="department in departments" ng-value="department.id">{{ department.name }}</option>
+      </select>
+      <span class="input-group-btn">
+        <button tooltip="Ajouter le service à l'établissement" class="btn btn-success" type="button" ng-click="addSelectedDepartement()"><i class="glyphicon glyphicon-plus"></i></button>
+      </span>
+    </div>
+    <div ng-if="selectedDepartments.length > 0" class="input-group">
+      <p>Liste des services de cet établissement :</p>
+      <ul>
+        <li ng-repeat="dep in selectedDepartments">
+          {{ dep.name }} <button tooltip="Retirer ce service" class="btn btn-sm btn-danger" type="button" ng-click="removeListedDepartment(dep)"><i class="glyphicon glyphicon-remove"></i></button>
+        </li>
+      </ul>
+    </div>
   </div>
 
   <div class="form-group col-sm-2 col-sm-offset-5">

@@ -12,18 +12,22 @@
   <table ng-if="!loading" class="table table-striped">
     <colgroup>
       <col width="5%">
-      <col width="40%">
-      <col width="40%">
+      <col width="15%">
+      <col width="10%">
+      <col width="15%">
+      <col width="15%">
+      <col width="10%">
+      <col width="15%">
       <col width="15%">
     </colgroup>
     <tr>
       <th>ID</th>
       <th>Nom</th>
-      <th>Telephone</th>
+      <th>Téléphone</th>
       <th>Adresse</th>
       <th>TGI</th>
       <th>Corps</th>
-      <th>Service</th> <!-- tous les services -->
+      <th>Services</th> <!-- tous les services -->
       <th>Actions</th>
     </tr>
     <tr dir-paginate="business in business | itemsPerPage: 10">
@@ -31,9 +35,13 @@
       <td>{{ business.name }}</td>
       <td>{{ business.phone }}</td>
       <td>{{ business.address.street }}</td>
-      <td>{{ business.tribunal.name }}</td>
+      <td><a href ng-click="openTribunalDetails(business.tribunal)">{{ business.tribunal.name }}</a></td>
       <td>{{ business.corps.label }}</td>
-      <td>{{ business.department.name }}</td> <!-- Afficher le nom de chaque service -->
+      <td>
+        <ul>
+          <li ng-repeat="dep in business.departments">{{ dep.name }}</li>
+        </ul>
+      </td> <!-- Afficher le nom de chaque service -->
       <td>
         <button type="button" class="btn btn-default" tooltip="Modifier" ui-sref="business.edit({ id: business.id })">
           <span class="glyphicon glyphicon-pencil"></span>

@@ -33,7 +33,7 @@
           business: function ($stateParams, $q, Business) {
             var deferred = $q.defer();
             if (_.isUndefined($stateParams.id) || $stateParams.id === '') {
-              deferred.resolve({ name: '', phone: '', address: {}, tribunal: {}, corps: {}, department: {} }); //Changer en departments
+              deferred.resolve({ name: '', phone: '', address: {}, tribunal: {}, corps: {}, departments: [] }); //Changer en departments
             }
             else {
               Business
