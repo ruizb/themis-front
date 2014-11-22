@@ -1,6 +1,6 @@
 angular
 	.module('themis.prosecutors')
-	.controller('ProsecutorsIndexCtrl', function ($scope, $modal, Prosecutor) {
+	.controller('ProsecutorsIndexCtrl', function ($scope, $modal, $window, Prosecutor) {
 
 		$scope.loading = true;
 	

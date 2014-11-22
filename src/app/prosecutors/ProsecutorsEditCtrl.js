@@ -34,8 +34,8 @@ angular
     }
     else { // edit
       $scope.h2Title = 'Modifier le procureur ' + prosecutor.fname + " " + procureur.lname;
-      $scope.prosecutor = prosecutor;
     }
+    $scope.prosecutor = prosecutor;
 
     $scope.updateProsecutorsStatus = function () {
       _.map($scope.statusList, function (status) {

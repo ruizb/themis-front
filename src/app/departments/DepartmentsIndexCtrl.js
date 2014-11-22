@@ -1,6 +1,6 @@
 angular
   .module('themis.departments')
-  .controller('DepartmentsIndexCtrl', function ($scope, Department) {
+  .controller('DepartmentsIndexCtrl', function ($scope, $window, Department) {
 
     $scope.loading = true;
 

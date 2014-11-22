@@ -33,7 +33,7 @@
           itemMission: function ($stateParams, $q, ItemMission) {
             var deferred = $q.defer();
             if (_.isUndefined($stateParams.id) || $stateParams.id === '') {
-              deferred.resolve({ label: '', item:{}, mission:{}, price:''});
+              deferred.resolve({ item: {}, mission: {}, price: ''});
             }
             else {
               ItemMission

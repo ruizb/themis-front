@@ -1,18 +1,8 @@
 angular
   .module('themis.itemMissions')
-  .controller('ItemMissionsIndexCtrl', function ($scope, ItemMission) {
+  .controller('ItemMissionsIndexCtrl', function ($scope, $window, ItemMission) {
 
     $scope.loading = true;
-
-    $scope.itemMissionsFields = [
-	{ name: 'ID', value: 'id' },
-	{ name: 'Libellé', value: 'label' },
-	{ name: 'Objet', value: 'item.label' },
-	{ name: 'Mission', value: 'mission.label' },
-	{ name: 'Prix', value: 'price' }
-    ];
-
-    $scope.ItemMission = ItemMission;
 
     ItemMission
       .getAll()
@@ -20,5 +10,18 @@ angular
         $scope.itemMissions = data;
         $scope.loading = false;
       });
+
+    $scope.remove = function (itemMission) {
+      if ($window.confirm('Etes-vous sûr de vouloir supprimer le couple objet-mission (' + itemMission.item.label + ')-(' + itemMission.mission.label + ') ?')) {
+        ItemMission
+          .remove(itemMission)
+          .then(function (data) {
+            // remove element from DOM
+            $scope.itemMissions.splice($scope.itemMissions.indexOf(itemMission), 1);
+          }, function (err) {
+            console.log(err);
+          });
+      }
+    };
 
   });

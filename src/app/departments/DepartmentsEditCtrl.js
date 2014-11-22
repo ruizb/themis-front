@@ -22,8 +22,8 @@ angular
     }
     else { // edit
       $scope.h2Title = 'Modifier le service ' + department.name;
-      $scope.department = department;
     }
+    $scope.department = department;
 
     $scope.updateDepartmentsCorps = function () {
       _.map($scope.corpsList, function (corps) {
