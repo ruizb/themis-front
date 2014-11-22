@@ -11,8 +11,56 @@
     <input type="text" class="form-control" name="id" id="id" ng-model="investigator.id" readonly>
   </div>
   <div class="form-group col-sm-8 col-sm-offset-2">
-    <label class="control-label" for="id">Libellé</label>
+    <label class="control-label" for="id">Prénom</label>
     <input type="text" class="form-control" name="fname" id="fname" ng-model="investigator.fname">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Nom</label>
+    <input type="text" class="form-control" name="lname" id="lname" ng-model="investigator.lname">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Téléphone</label>
+    <input type="text" class="form-control" name="phone" id="phone" ng-model="investigator.phone">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Mobile</label>
+    <input type="text" class="form-control" name="mobile" id="mobile" ng-model="investigator.mobile">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Fax</label>
+    <input type="text" class="form-control" name="fax" id="fax" ng-model="investigator.fax">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Rue</label>
+    <input type="text" class="form-control" name="street" id="street" ng-model="investigator.address.street">
+    <label class="control-label" for="id">Code Postal</label>
+    <input type="text" class="form-control" name="zip_code" id="zip_code" ng-model="investigator.address.zip_code">
+    <label class="control-label" for="id">Ville</label>
+    <input type="text" class="form-control" name="city" id="city" ng-model="investigator.address.city">
+    <label class="control-label" for="id">Pays</label>
+    <input type="text" class="form-control" name="country" id="country" ng-model="investigator.address.country">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Email</label>
+    <input type="text" class="form-control" name="mail" id="mail" ng-model="investigator.mail">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Grade</label>
+    <select class="form-control" name="rank" id="rank" ng-model="investigator.rank.id" ng-change="updateRank()">
+      <option ng-repeat="rank in ranks" ng-value="rank.id" ng-selected="rank.selected">{{ rank.label }}</option>
+    </select>
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Service</label>
+    <select class="form-control" name="department" id="department" ng-model="investigator.department.id" ng-change="updateDepartment()">
+      <option ng-repeat="department in departments" ng-value="department.id" ng-selected="department.selected">{{ department.name }}</option>
+    </select>
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Etablissement</label>
+    <select class="form-control" name="business" id="business" ng-model="investigator.business.id" ng-change="updateBusiness()">
+      <option ng-repeat="business in businesses" ng-value="business.id" ng-selected="business.selected">{{ business.name }}</option>
+    </select>
   </div>
 
   <div class="form-group col-sm-2 col-sm-offset-5">

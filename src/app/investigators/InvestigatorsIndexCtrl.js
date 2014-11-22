@@ -1,6 +1,6 @@
 angular
   .module('themis.investigators')
-  .controller('InvestigatorsIndexCtrl', function ($scope, Investigator) {
+  .controller('InvestigatorsIndexCtrl', function ($scope, $window, Investigator) {
 
     $scope.loading = true;
 
@@ -18,13 +18,24 @@ angular
 		{ name: 'Service', value: 'department.name' }
     ];
 
-    $scope.Investigator = Investigator;
-
     Investigator
       .getAll()
       .then(function (data) {
         $scope.investigators = data;
         $scope.loading = false;
       });
+
+    $scope.remove = function (investigator) {
+      if ($window.confirm('Etes-vous sûr de vouloir supprimer l\'enquêteur ' + investigator.fname + ' ' + investigator.lname + ' ?')) {
+        Investigator
+          .remove(investigator)
+          .then(function (data) {
+            // remove element from DOM
+            $scope.investigators.splice($scope.investigators.indexOf(investigator), 1);
+          }, function (err) {
+            console.log(err);
+          });
+      }
+    };
 
   });

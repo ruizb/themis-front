@@ -33,7 +33,7 @@
           investigator: function ($stateParams, $q, Investigator) {
             var deferred = $q.defer();
             if (_.isUndefined($stateParams.id) || $stateParams.id === '') {
-              deferred.resolve({ fname: '', lname: '', phone: '', mobile: '', fax: '', mail: '', address: {}, rank: {}, business: {}, department: {} }); 
+              deferred.resolve({ fname: '', lname: '', phone: '', mobile: '', fax: '', address: {}, mail: '', rank: {}, business: {}, department: {} });
             }
             else {
               Investigator
@@ -48,6 +48,6 @@
             return deferred.promise;
           }
         },
-        data:{ pageTitle: 'Modifier un enquêteur' }
+        data: { pageTitle: 'Modifier un enquêteur' }
       });
 	});
