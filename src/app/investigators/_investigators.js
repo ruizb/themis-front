@@ -1,5 +1,5 @@
 angular
-  .module('themis.enqueteurs', [
+  .module('themis.investigators', [
     'ui.router',
     'ui.bootstrap'
   ]);
