@@ -11,6 +11,7 @@ angular
     'themis.missions',
     'themis.tribunals',
     'themis.clerks',
+    'themis.departments',
     'themis.ranks',
     'themis.courts',
     'ui.router',
