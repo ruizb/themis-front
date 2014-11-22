@@ -1,0 +1,52 @@
+<div class="row">
+  <h2>Liste des &eacute;tablissements</h2>
+
+  <button type="button" class="center-block btn btn-default btn-lg btn-primary btn-add-entity" ui-sref="business.edit">
+    <span class="glyphicon glyphicon-plus"></span> Ajouter un &eacute;tablissement
+  </button>
+
+  <!--<entity-index entity-manager="Rank" loading="loading" fields="ranksFields" entities="ranks" states-namespace="ranks"></entity-index>-->
+
+  <div ng-if="loading" class="loading center-block">Chargement...</div>
+
+  <table ng-if="!loading" class="table table-striped">
+    <colgroup>
+      <col width="5%">
+      <col width="40%">
+      <col width="40%">
+      <col width="15%">
+    </colgroup>
+    <tr>
+      <th>ID</th>
+      <th>Nom</th>
+      <th>Telephone</th>
+      <th>Adresse</th>
+      <th>TGI</th>
+      <th>Corps</th>
+      <th>Service</th> <!-- tous les services -->
+      <th>Actions</th>
+    </tr>
+    <tr dir-paginate="business in business | itemsPerPage: 10">
+      <td>{{ business.id }}</td>
+      <td>{{ business.name }}</td>
+      <td>{{ business.phone }}</td>
+      <td>{{ business.address.street }}</td>
+      <td>{{ business.tribunal.name }}</td>
+      <td>{{ business.corps.label }}</td>
+      <td>{{ business.department.name }}</td> <!-- Afficher le nom de chaque service -->
+      <td>
+        <button type="button" class="btn btn-default" tooltip="Modifier" ui-sref="business.edit({ id: business.id })">
+          <span class="glyphicon glyphicon-pencil"></span>
+        </button>
+        <button type="button" class="btn btn-default" tooltip="Supprimer" ng-click="remove(business)">
+          <span class="glyphicon glyphicon-trash"></span>
+        </button>
+      </td>
+    </tr>
+  </table>
+
+  <div class="text-center">
+    <dir-pagination-controls boundary-links="true"></dir-pagination-controls>
+  </div>
+
+</div>

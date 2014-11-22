@@ -1,0 +1,55 @@
+<h2>{{ h2Title }}</h2>
+<button class="btn btn-default btn-xs" ui-sref="business.index">
+  <i class="glyphicon glyphicon-chevron-left"></i> Retour &agrave; la liste des &eacute;tablissements
+</button>
+
+<!--<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert(alert)">{{alert.message}}</alert>-->
+
+<form novalidate>
+  <div ng-if="isEdit" class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">ID</label>
+    <input type="text" class="form-control" name="id" id="id" ng-model="business.id" readonly>
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Nom</label>
+    <input type="text" class="form-control" name="name" id="name" ng-model="business.name">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Telephone</label>
+    <input type="text" class="form-control" name="phone" id="phone" ng-model="business.phone">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Rue</label>
+    <input type="text" class="form-control" name="street" id="street" ng-model="business.address.street">
+	<label class="control-label" for="id">Code Postal</label>
+    <input type="text" class="form-control" name="zip_code" id="zip_code" ng-model="business.address.zip_code">
+	<label class="control-label" for="id">Ville</label>
+    <input type="text" class="form-control" name="city" id="city" ng-model="business.address.city">
+	<label class="control-label" for="id">Pays</label>
+    <input type="text" class="form-control" name="country" id="country" ng-model="business.address.country">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">TGI</label>
+    <select class="form-control" name="tribunal" id="tribunal" ng-model="business.tribunal.id">
+      <option ng-repeat="tribunal in tribunalList" ng-value="tribunal.id" ng-selected="tribunal.selected">{{ tribunal.name }}</option>
+    </select>
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Corps</label>
+    <select class="form-control" name="corps" id="corps" ng-model="business.corps.id">
+      <option ng-repeat="corps in corpsList" ng-value="corps.id" ng-selected="corps.selected">{{ corps.label }}</option>
+    </select>
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Service</label> <!-- tous les services -->
+    <select class="form-control" name="department" id="department" ng-model="business.department.id">
+      <option ng-repeat="department in departmentList" ng-value="department.id" ng-selected="department.selected">{{ department.label }}</option>
+    </select>
+  </div>
+
+  <div class="form-group col-sm-2 col-sm-offset-5">
+    <button type="submit" class="btn btn-primary center-block btn-form-send btn-block" ng-click="submit()">Envoyer</button>
+  </div>
+</form>
+
+<!--<smart-form entity="grade" is-edit="isEdit"></smart-form>-->
