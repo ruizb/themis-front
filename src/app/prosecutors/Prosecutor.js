@@ -13,25 +13,25 @@ angular
       var deferred = $q.defer();
 
       var prosecutors = [];
-      for (var i = 0; i < 50; i++) {
+      for (var i = 0; i < 5; i++) {
         prosecutors.push({
-			id: i,
-			fname: "Boby",
-			lname: "Modnar",
-			status:{
-				id: i,
-				name: "Mega Procureur"
-			},
-			tribunal:{
-				id: i, 
-				name: "TGI de Montpellier",
-				phone: "01586987548",
-				court: {
-					id : i,
-					label: "Cour appel de Montpellier"
-				}
-			}
-		});
+          id: i,
+          fname: "Boby",
+          lname: "Modnar",
+          status: {
+            id: i,
+            name: "Mega Procureur"
+          },
+          tribunal: {
+            id: i,
+            name: "TGI de Montpellier",
+            phone: "01586987548",
+            court: {
+              id: i,
+              label: "Cour appel de Montpellier"
+            }
+          }
+        });
       }
       deferred.resolve(prosecutors);
 

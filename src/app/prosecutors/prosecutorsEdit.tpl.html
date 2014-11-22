@@ -11,24 +11,25 @@
     <input type="text" class="form-control" name="id" id="id" ng-model="prosecutor.id" readonly>
   </div>
   <div class="form-group col-sm-8 col-sm-offset-2">
-    <label class="control-label" for="id">Fistname</label>
+    <label class="control-label" for="id">Prénom</label>
     <input type="text" class="form-control" name="fname" id="fname" ng-model="prosecutor.firstname">
   </div>
   <div class="form-group col-sm-8 col-sm-offset-2">
-    <label class="control-label" for="id">Lastname</label>
+    <label class="control-label" for="id">Nom</label>
     <input type="text" class="form-control" name="lname" id="lname" ng-model="prosecutor.lastname">
   </div>
-  
-  <!-- TODO with list
   <div class="form-group col-sm-8 col-sm-offset-2">
-    <label class="control-label" for="id">Status</label>
-    <input type="text" class="form-control" name="status" id="status" ng-model="prosecutor.status">
+    <label class="control-label" for="id">Titre</label>
+    <select class="form-control" name="status" id="status" ng-model="prosecutor.status.id" ng-change="updateProsecutorsStatus()">
+      <option ng-repeat="status in statusList" ng-value="status.id" ng-selected="status.selected">{{ status.name }}</option>
+    </select>
   </div>
   <div class="form-group col-sm-8 col-sm-offset-2">
     <label class="control-label" for="id">TGI</label>
-    <input type="text" class="form-control" name="tgi" id="tgi" ng-model="prosecutor.tgi">
+    <select class="form-control" name="tribunal" id="tribunal" ng-model="prosecutor.tribunal.id" ng-change="updateProsecutorsTribunal()">
+      <option ng-repeat="tribunal in tribunals" ng-value="tribunal.id" ng-selected="tribunal.selected">{{ tribunal.name }}</option>
+    </select>
   </div>
-  -->
 
   <div class="form-group col-sm-2 col-sm-offset-5">
     <button type="submit" class="btn btn-primary center-block btn-form-send btn-block" ng-click="submit()">Envoyer</button>
