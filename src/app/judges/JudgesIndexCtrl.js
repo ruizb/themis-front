@@ -4,7 +4,7 @@ angular
 
     $scope.loading = true;
 
-    $scope.judgesFields = [
+   /* $scope.judgesFields = [
 		{ name: 'ID', value: 'id' },
 		{ name: 'Prénom', value: 'fname' },
 		{ name: 'Nom', value: 'lname'},
@@ -13,7 +13,7 @@ angular
 		{ name: 'Fax', value: 'fax'},
 		{ name: 'Titre', value: 'status.name'},
 		{ name: 'Greffier', value: 'clerk.lname'}
-    ];
+    ];*/
 
     $scope.openTribunalDetails = function (tribunal) {
       $modal.open({

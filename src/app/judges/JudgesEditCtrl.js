@@ -9,7 +9,7 @@ angular
       .getAll()
       .then(function (data) {
         $scope.statusList = _.map(data, function (status) {
-          status.selected = (isEdit) ? prosecutor.status.id === status.id : false;
+          status.selected = (isEdit) ? judge.status.id === status.id : false;
           return status;
         });
       }, function (err) {
@@ -21,7 +21,7 @@ angular
       .getAll()
       .then(function (data) {
         $scope.tribunals = _.map(data, function (tribunal) {
-          tribunal.selected = (isEdit) ? prosecutor.tribunal.id === tribunal.id : false;
+          tribunal.selected = (isEdit) ? judge.clerk.tribunal.id === tribunal.id : false;
           return tribunal;
         });
       }, function (err) {
@@ -70,9 +70,9 @@ angular
       });
 
       $scope.tribunals.forEach(function (tribunal) {
-        if (tribunal.id === parseInt($scope.judge.tribunal.id, 10)) {
-          $scope.judge.tribunal = tribunal;
-          $scope.judge.tribunal.selected = true;
+        if (tribunal.id === parseInt($scope.judge.clerk.tribunal.id, 10)) {
+          $scope.judge.clerk.tribunal = tribunal;
+          $scope.judge.clerk.tribunal.selected = true;
         }
       });
     };
@@ -94,7 +94,6 @@ angular
     $scope.submit = function () {
       var operation = isEdit ? 'edit' : 'add';
       $scope.judge.status.id = parseInt($scope.judge.status.id, 10);
-      $scope.judge.tribunal.id = parseInt($scope.judge.tribunal.id, 10);
       $scope.judge.clerk.id = parseInt($scope.judge.clerk.id, 10);
       Judge
         [operation]($scope.judge)
