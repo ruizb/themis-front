@@ -11,6 +11,10 @@
     <input type="text" class="form-control" name="id" id="id" ng-model="itemMission.id" readonly>
   </div>
   <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Libellé</label>
+    <input type="text" class="form-control" name="label" id="label" ng-model="itemMission.label">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
     <label class="control-label" for="id">Objet</label>
     <select class="form-control" name="item" id="item" ng-model="itemMission.item.id" ng-change="updateItem()">
       <option ng-repeat="item in items" ng-value="item.id" ng-selected="item.selected">{{ item.label }}</option>

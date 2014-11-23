@@ -4,7 +4,7 @@
     $stateProvider
       .state('itemMissions', {
         abstract: true,
-        url: '/itemMissions',
+        url: '/operations',
         views: {
           "main": {
             template: '<div ui-view="mainContent"></div>'
@@ -33,7 +33,7 @@
           itemMission: function ($stateParams, $q, ItemMission) {
             var deferred = $q.defer();
             if (_.isUndefined($stateParams.id) || $stateParams.id === '') {
-              deferred.resolve({ item: {}, mission: {}, price: ''});
+              deferred.resolve({ label:'', item: {}, mission: {}, price: ''});
             }
             else {
               ItemMission
