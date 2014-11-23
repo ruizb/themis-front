@@ -7,24 +7,6 @@ angular
       this.url += '/departments';
     };
     Department.prototype = Object.create(Entity.prototype);
-	
-    // TODO tmp
-    Department.prototype.getAll = function () {
-      var deferred = $q.defer();
-      var departments = [];
-      for (var i = 0; i < 3; i++) {
-        departments.push({
-          id: i,
-          name: "BAC",
-          corps: {
-            id: 1,
-            label: 'Police'
-          }
-        });
-      }
-      deferred.resolve(departments);
-      return deferred.promise;
-    };
 
     Department.prototype.add = function (departmentData) {
       var deferred = $q.defer();
