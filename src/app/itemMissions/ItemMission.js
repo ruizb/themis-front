@@ -4,11 +4,11 @@ angular
 
     var ItemMission = function () {
       Entity.call(this, $http, $q);
-      this.url += '/itemMissions';
+      this.url += '/operations';
     };
     ItemMission.prototype = Object.create(Entity.prototype);
 
-    ItemMission.prototype.getAll = function () {
+   /* ItemMission.prototype.getAll = function () {
       var deferred = $q.defer();
 
       var itemMissions = [];
@@ -30,7 +30,7 @@ angular
       deferred.resolve(itemMissions);
 
       return deferred.promise;
-    };
+    };*/
 
     ItemMission.prototype.add = function (itemMissionData) {
       var deferred = $q.defer();
