@@ -1,0 +1,63 @@
+<h2>{{ h2Title }}</h2>
+<button class="btn btn-default btn-xs" ui-sref="judges.index">
+  <i class="glyphicon glyphicon-chevron-left"></i> Retour &agrave la liste des juges
+</button>
+
+<!--<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert(alert)">{{alert.message}}</alert>-->
+
+<form novalidate>
+  <div ng-if="isEdit" class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">ID</label>
+    <input type="text" class="form-control" name="id" id="id" ng-model="judge.id" readonly>
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Prenom</label>
+    <input type="text" class="form-control" name="fname" id="fname" ng-model="judge.fname">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Nom</label>
+    <input type="text" class="form-control" name="lname" id="lname" ng-model="judge.lname">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Rue</label>
+    <input type="text" class="form-control" name="street" id="street" ng-model="investigator.address.street">
+    <label class="control-label" for="id">Code Postal</label>
+    <input type="text" class="form-control" name="zip_code" id="zip_code" ng-model="investigator.address.zip_code">
+    <label class="control-label" for="id">Ville</label>
+    <input type="text" class="form-control" name="city" id="city" ng-model="investigator.address.city">
+    <label class="control-label" for="id">Pays</label>
+    <input type="text" class="form-control" name="country" id="country" ng-model="investigator.address.country">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Telephone</label>
+    <input type="text" class="form-control" name="phone" id="phone" ng-model="judge.phone">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Fax</label>
+    <input type="text" class="form-control" name="fax" id="fax" ng-model="judge.fax">
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Titre</label>
+    <select class="form-control" name="status" id="status" ng-model="judge.status.id" ng-change="updateStatus()">
+      <option ng-repeat="status in statusList" ng-value="status.id" ng-selected="status.selected">{{ status.name }}</option>
+    </select>
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">TGI</label>
+    <select class="form-control" name="tribunal" id="tribunal" ng-model="judge.tribunal.id" ng-change="updateTribunal()">
+      <option ng-repeat="tribunal in tribunals" ng-value="tribunal.id" ng-selected="tribunal.selected">{{ tribunal.name }}</option>
+    </select>
+  </div>
+  <div class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Greffier</label>
+    <select class="form-control" name="clerk" id="clerk" ng-model="judge.clerk.id" ng-change="updateClerk()">
+      <option ng-repeat="clerk in clerks" ng-value="clerk.id" ng-selected="clerk.selected">{{ clerk.fname }} {{ clerk.lname }}</option>
+    </select>
+  </div>
+
+  <div class="form-group col-sm-2 col-sm-offset-5">
+    <button type="submit" class="btn btn-primary center-block btn-form-send btn-block" ng-click="submit()">Envoyer</button>
+  </div>
+</form>
+
+<!--<smart-form entity="judge" is-edit="isEdit"></smart-form>-->

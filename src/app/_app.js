@@ -13,6 +13,7 @@ angular
     'themis.departments',
     'themis.prosecutors',
     'themis.investigators',
+    'themis.judges',
     'themis.ranks',
     'themis.courts',
     'themis.itemMissions',
