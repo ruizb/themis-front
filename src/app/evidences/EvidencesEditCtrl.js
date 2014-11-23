@@ -38,9 +38,11 @@ angular
     ItemMission
       .getAll()
       .then(function (data) {
-        $scope.itemMissions = _.map(data, function (itemMission) {
-          itemMission.selected = (isEdit) ? evidence.itemMission.id === itemMission.id : false;
-          return itemMission;
+        $scope.itemMissions = data;
+        _.forEach(data, function (itemMission) {
+          if (_.find($scope.evidence.operations, { id: itemMission.id })) {
+            $scope.selectedItemMissions.push(itemMission);
+          }
         });
       }, function (err) {
         // error

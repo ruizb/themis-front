@@ -38,7 +38,7 @@
       <p>Liste des objets-missions du scellé :</p>
       <ul>
         <li ng-repeat="im in selectedItemMissions">
-          ({{ im.item.label }})-({{ im.mission.label }}) <button tooltip="Retirer cet objet-mission" class="btn btn-sm btn-danger" type="button" ng-click="removeListedItemMission(im)"><i class="glyphicon glyphicon-remove"></i></button>
+          ({{ im.item.label }})-({{ im.mission.label }}) <button class="btn btn-sm btn-danger" type="button" ng-click="removeListedItemMission(im)"><i class="glyphicon glyphicon-remove"></i></button>
         </li>
       </ul>
     </div>

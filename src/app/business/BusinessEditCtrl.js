@@ -39,6 +39,11 @@ angular
       .getAll()
       .then(function (data) {
         $scope.departments = data;
+        _.forEach(data, function (department) {
+          if (_.find($scope.business.departments, { id: department.id })) {
+            $scope.selectedDepartments.push(department);
+          }
+        });
       }, function (err) {
         // error
         console.log(err);
