@@ -8,7 +8,7 @@ angular
 
     $scope.login = function () {
       // TODO
-      $state.go('home');
+      $state.go('evidences.index');
 //      $http
 //        .post('http://themisapi.herokuapp.com/user', {
 //          headers: {
