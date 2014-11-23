@@ -33,7 +33,7 @@ angular
       $scope.h2Title = 'Ajouter un procureur';
     }
     else { // edit
-      $scope.h2Title = 'Modifier le procureur ' + prosecutor.fname + " " + procureur.lname;
+      $scope.h2Title = 'Modifier le procureur ' + prosecutor.fname + " " + prosecutor.lname;
     }
     $scope.prosecutor = prosecutor;
 
