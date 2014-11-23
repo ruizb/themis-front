@@ -69,6 +69,7 @@ angular
       var operation = isEdit ? 'edit' : 'add';
       $scope.itemMission.item.id = parseInt($scope.itemMission.item.id, 10);
       $scope.itemMission.mission.id = parseInt($scope.itemMission.mission.id, 10);
+      $scope.itemMission.price = parseInt($scope.itemMission.price, 10);
       ItemMission
         [operation]($scope.itemMission)
         .then(function (data) {
