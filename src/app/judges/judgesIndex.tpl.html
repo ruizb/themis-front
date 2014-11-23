@@ -49,7 +49,7 @@
           <td>{{ judge.phone }}</td>
           <td>{{ judge.fax }}</td>
           <td>{{ judge.status.name }}</td>
-          <td><a href ng-click="openTribunalDetails(judge.tribunal)">{{ judge.tribunal.name }}</a></td>
+          <td><a href ng-click="openTribunalDetails(judge.tribunal)">{{ judge.clerk.tribunal.name }}</a></td>
           <td>{{ judge.clerk.fname }} {{ judge.clerk.lname }}</td>
           <td>
             <button type="button" class="btn btn-default" tooltip="Modifier" ui-sref="judges.edit({ id: judge.id })">

@@ -9,7 +9,7 @@ angular
     Judge.prototype = Object.create(Entity.prototype);
 	
     // TODO tmp
-    Judge.prototype.getAll = function () {
+   /* Judge.prototype.getAll = function () {
       var deferred = $q.defer();
       var judges = [];
       for (var i = 0; i < 3; i++) {
@@ -61,7 +61,7 @@ angular
       deferred.resolve(judges);
       return deferred.promise;
     };
-
+*/
     Judge.prototype.add = function (judgeData) {
       var deferred = $q.defer();
       $http
