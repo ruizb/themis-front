@@ -9,58 +9,58 @@ angular
     Judge.prototype = Object.create(Entity.prototype);
 	
     // TODO tmp
-    Judge.prototype.getAll = function () {
-      var deferred = $q.defer();
-      var judges = [];
-      for (var i = 0; i < 3; i++) {
-        judges.push({
-          id: 1,
-          fname: 'Boby',
-          lname: 'Modnar',
-          address: {
-            country: 'France',
-            city: 'Montpellier',
-            street: '123 Avenue de la France',
-            zip_code: '34000'
-          },
-          phone: '0011223344',
-          fax: '0011223345',
-          status: {
-            id: 1,
-            name: 'Magistrat'
-          },
-          tribunal: {
-            id: 1,
-            name: "TGI de Montpellier",
-            court: {}
-          },
-          clerk: {
-            id: 1,
-            fname: 'Bob',
-            lname: 'Michou',
-            address: {
-              country: 'France',
-              city: 'Montpellier',
-              street: '123 Avenue de la France',
-              zip_code: '34000'
-            },
-            phone: '0011223351',
-            fax: '0011223352',
-            tribunal: {
-              id: 1,
-              name: 'TGI de Montpellier',
-              phone: '0011223371',
-              court: {
-                id: 1,
-                label: 'Cours d\'Appel de Montpellier'
-              }
-            }
-          }
-        });
-      }
-      deferred.resolve(judges);
-      return deferred.promise;
-    };
+//    Judge.prototype.getAll = function () {
+//      var deferred = $q.defer();
+//      var judges = [];
+//      for (var i = 0; i < 3; i++) {
+//        judges.push({
+//          id: 1,
+//          fname: 'Boby',
+//          lname: 'Modnar',
+//          address: {
+//            country: 'France',
+//            city: 'Montpellier',
+//            street: '123 Avenue de la France',
+//            zip_code: '34000'
+//          },
+//          phone: '0011223344',
+//          fax: '0011223345',
+//          status: {
+//            id: 1,
+//            name: 'Magistrat'
+//          },
+//          tribunal: {
+//            id: 1,
+//            name: "TGI de Montpellier",
+//            court: {}
+//          },
+//          clerk: {
+//            id: 1,
+//            fname: 'Bob',
+//            lname: 'Michou',
+//            address: {
+//              country: 'France',
+//              city: 'Montpellier',
+//              street: '123 Avenue de la France',
+//              zip_code: '34000'
+//            },
+//            phone: '0011223351',
+//            fax: '0011223352',
+//            tribunal: {
+//              id: 1,
+//              name: 'TGI de Montpellier',
+//              phone: '0011223371',
+//              court: {
+//                id: 1,
+//                label: 'Cours d\'Appel de Montpellier'
+//              }
+//            }
+//          }
+//        });
+//      }
+//      deferred.resolve(judges);
+//      return deferred.promise;
+//    };
 
     Judge.prototype.add = function (judgeData) {
       var deferred = $q.defer();

@@ -1,0 +1,1339 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for ./src/app/common/dirPagination/dirPagination.js</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="../prettify.css">
+
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Helvetica Neue, Helvetica,Arial;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 10em;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Consolas, Menlo, Monaco, monospace;
+            margin: 0;
+            padding: 0;
+            line-height: 14px;
+            font-size: 14px;
+            -moz-tab-size: 2;
+            -o-tab-size:  2;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { text-decoration: none; color: #000; }
+        div.coverage-summary a:visited { text-decoration: none; color: #333; }
+        div.coverage-summary a:hover { text-decoration: underline; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: url("https://yui-s.yahooapis.com/3.6.0/build/datatable-sort/assets/skins/sam/sort-arrow-sprite.png") no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1>Code coverage report for <span class="entity">./src/app/common/dirPagination/dirPagination.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">9.64% <small>(16 / 166)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">0% <small>(0 / 88)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">2.78% <small>(1 / 36)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">9.7% <small>(16 / 165)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">./src/app/common/dirPagination\</a> &#187; dirPagination.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
+ * dirPagination - AngularJS module for paginating (almost) anything.
+ *
+ *
+ * Credits
+ * =======
+ *
+ * Daniel Tabuenca: https://groups.google.com/d/msg/angular/an9QpzqIYiM/r8v-3W1X5vcJ
+ * for the idea on how to dynamically invoke the ng-repeat directive.
+ *
+ * I borrowed a couple of lines and a few attribute names from the AngularUI Bootstrap project:
+ * https://github.com/angular-ui/bootstrap/blob/master/src/pagination/pagination.js
+ *
+ * Copyright 2014 Michael Bromley &lt;michael@michaelbromley.co.uk&gt;
+ */
+&nbsp;
+(function() {
+&nbsp;
+    /**
+     * Config
+     */
+    var moduleName = 'angularUtils.directives.dirPagination';
+    var templatePath = 'common/dirPagination/dirPagination.tpl.html';
+&nbsp;
+    /**
+     * Module
+     */
+    var module;
+    try {
+        module = angular.module(moduleName);
+    } catch(err) {
+        // named module does not exist, so create one
+        module = angular.module(moduleName, []);
+    }
+&nbsp;
+    module.directive('dirPaginate', ['$compile', '$parse', '$timeout', 'paginationService', <span class="fstat-no" title="function not covered" >function($compile, $parse, $timeout, paginationService) {</span>
+<span class="cstat-no" title="statement not covered" >        return  {</span>
+            terminal: true,
+            multiElement: true,
+            priority: 5000, // This setting is used in conjunction with the later call to $compile() to prevent infinite recursion of compilation
+            compile: <span class="fstat-no" title="function not covered" >function dirPaginationCompileFn(tElement, tAttrs){</span>
+&nbsp;
+                // Add ng-repeat to the dom element
+<span class="cstat-no" title="statement not covered" >                if (tElement[0].hasAttribute('dir-paginate-start') || tElement[0].hasAttribute('data-dir-paginate-start')) {</span>
+                    // using multiElement mode (dir-paginate-start, dir-paginate-end)
+<span class="cstat-no" title="statement not covered" >                    tAttrs.$set('ngRepeatStart', tAttrs.dirPaginate);</span>
+<span class="cstat-no" title="statement not covered" >                    tElement.eq(tElement.length - 1).attr('ng-repeat-end', true);</span>
+                } else {
+<span class="cstat-no" title="statement not covered" >                    tAttrs.$set('ngRepeat', tAttrs.dirPaginate);</span>
+                }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                var expression = tAttrs.dirPaginate;</span>
+                // regex taken directly from https://github.com/angular/angular.js/blob/master/src/ng/directive/ngRepeat.js#L211
+<span class="cstat-no" title="statement not covered" >                var match = expression.match(/^\s*([\s\S]+?)\s+in\s+([\s\S]+?)(?:\s+track\s+by\s+([\s\S]+?))?\s*$/);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                var filterPattern = /\|\s*itemsPerPage\s*:[^|]*/;</span>
+<span class="cstat-no" title="statement not covered" >                if (match[2].match(filterPattern) === null) {</span>
+<span class="cstat-no" title="statement not covered" >                    throw 'pagination directive: the \'itemsPerPage\' filter must be set.';</span>
+                }
+<span class="cstat-no" title="statement not covered" >                var itemsPerPageFilterRemoved = match[2].replace(filterPattern, '');</span>
+<span class="cstat-no" title="statement not covered" >                var collectionGetter = $parse(itemsPerPageFilterRemoved);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                var paginationId = tAttrs.paginationId || '__default';</span>
+<span class="cstat-no" title="statement not covered" >                paginationService.registerInstance(paginationId);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                return <span class="fstat-no" title="function not covered" >function dirPaginationLinkFn(scope, element, attrs){</span></span>
+<span class="cstat-no" title="statement not covered" >                    var compiled =  $compile(element, false, 5000); </span>// we manually compile the element again, as we have now added ng-repeat. Priority less than 5000 prevents infinite recursion of compiling dirPaginate
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    var currentPageGetter;</span>
+<span class="cstat-no" title="statement not covered" >                    if (attrs.currentPage) {</span>
+<span class="cstat-no" title="statement not covered" >                        currentPageGetter = $parse(attrs.currentPage);</span>
+                    } else {
+                        // if the current-page attribute was not set, we'll make our own
+<span class="cstat-no" title="statement not covered" >                        var defaultCurrentPage = paginationId + '__currentPage';</span>
+<span class="cstat-no" title="statement not covered" >                        scope[defaultCurrentPage] = 1;</span>
+<span class="cstat-no" title="statement not covered" >                        currentPageGetter = $parse(defaultCurrentPage);</span>
+                    }
+<span class="cstat-no" title="statement not covered" >                    paginationService.setCurrentPageParser(paginationId, currentPageGetter, scope);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    if (typeof attrs.totalItems !== 'undefined') {</span>
+<span class="cstat-no" title="statement not covered" >                        paginationService.setAsyncModeTrue(paginationId);</span>
+<span class="cstat-no" title="statement not covered" >                        scope.$watch(<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >                            return $parse(attrs.totalItems)(scope);</span>
+                        }, <span class="fstat-no" title="function not covered" >function (result) {</span>
+<span class="cstat-no" title="statement not covered" >                            if (0 &lt;= result) {</span>
+<span class="cstat-no" title="statement not covered" >                                paginationService.setCollectionLength(paginationId, result);</span>
+                            }
+                        });
+                    } else {
+<span class="cstat-no" title="statement not covered" >                        scope.$watchCollection(<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >                            return collectionGetter(scope);</span>
+                        }, <span class="fstat-no" title="function not covered" >function(collection) {</span>
+<span class="cstat-no" title="statement not covered" >                            if (collection) {</span>
+<span class="cstat-no" title="statement not covered" >                                paginationService.setCollectionLength(paginationId, collection.length);</span>
+                            }
+                        });
+                    }
+&nbsp;
+                    // Delegate to the link function returned by the new compilation of the ng-repeat
+<span class="cstat-no" title="statement not covered" >                    compiled(scope);</span>
+                };
+            }
+        }; 
+    }]);
+&nbsp;
+    module.directive('dirPaginationControls', ['paginationService', <span class="fstat-no" title="function not covered" >function(paginationService) {</span>
+<span class="cstat-no" title="statement not covered" >        var numberRegex = /^\d+$/;</span>
+        /**
+         * Generate an array of page numbers (or the '...' string) which is used in an ng-repeat to generate the
+         * links used in pagination
+         *
+         * @param currentPage
+         * @param rowsPerPage
+         * @param paginationRange
+         * @param collectionLength
+         * @returns {Array}
+         */
+<span class="fstat-no" title="function not covered" >        function generatePagesArray(currentPage, collectionLength, rowsPerPage, paginationRange) {</span>
+<span class="cstat-no" title="statement not covered" >            var pages = [];</span>
+<span class="cstat-no" title="statement not covered" >            var totalPages = Math.ceil(collectionLength / rowsPerPage);</span>
+<span class="cstat-no" title="statement not covered" >            var halfWay = Math.ceil(paginationRange / 2);</span>
+<span class="cstat-no" title="statement not covered" >            var position;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            if (currentPage &lt;= halfWay) {</span>
+<span class="cstat-no" title="statement not covered" >                position = 'start';</span>
+            } else <span class="cstat-no" title="statement not covered" >if (totalPages - halfWay &lt; currentPage) {</span>
+<span class="cstat-no" title="statement not covered" >                position = 'end';</span>
+            } else {
+<span class="cstat-no" title="statement not covered" >                position = 'middle';</span>
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            var ellipsesNeeded = paginationRange &lt; totalPages;</span>
+<span class="cstat-no" title="statement not covered" >            var i = 1;</span>
+<span class="cstat-no" title="statement not covered" >            while (i &lt;= totalPages &amp;&amp; i &lt;= paginationRange) {</span>
+<span class="cstat-no" title="statement not covered" >                var pageNumber = calculatePageNumber(i, currentPage, paginationRange, totalPages);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                var openingEllipsesNeeded = (i === 2 &amp;&amp; (position === 'middle' || position === 'end'));</span>
+<span class="cstat-no" title="statement not covered" >                var closingEllipsesNeeded = (i === paginationRange - 1 &amp;&amp; (position === 'middle' || position === 'start'));</span>
+<span class="cstat-no" title="statement not covered" >                if (ellipsesNeeded &amp;&amp; (openingEllipsesNeeded || closingEllipsesNeeded)) {</span>
+<span class="cstat-no" title="statement not covered" >                    pages.push('...');</span>
+                } else {
+<span class="cstat-no" title="statement not covered" >                    pages.push(pageNumber);</span>
+                }
+<span class="cstat-no" title="statement not covered" >                i ++;</span>
+            }
+<span class="cstat-no" title="statement not covered" >            return pages;</span>
+        }
+&nbsp;
+        /**
+         * Given the position in the sequence of pagination links [i], figure out what page number corresponds to that position.
+         *
+         * @param i
+         * @param currentPage
+         * @param paginationRange
+         * @param totalPages
+         * @returns {*}
+         */
+<span class="fstat-no" title="function not covered" >        function calculatePageNumber(i, currentPage, paginationRange, totalPages) {</span>
+<span class="cstat-no" title="statement not covered" >            var halfWay = Math.ceil(paginationRange/2);</span>
+<span class="cstat-no" title="statement not covered" >            if (i === paginationRange) {</span>
+<span class="cstat-no" title="statement not covered" >                return totalPages;</span>
+            } else <span class="cstat-no" title="statement not covered" >if (i === 1) {</span>
+<span class="cstat-no" title="statement not covered" >                return i;</span>
+            } else <span class="cstat-no" title="statement not covered" >if (paginationRange &lt; totalPages) {</span>
+<span class="cstat-no" title="statement not covered" >                if (totalPages - halfWay &lt; currentPage) {</span>
+<span class="cstat-no" title="statement not covered" >                    return totalPages - paginationRange + i;</span>
+                } else <span class="cstat-no" title="statement not covered" >if (halfWay &lt; currentPage) {</span>
+<span class="cstat-no" title="statement not covered" >                    return currentPage - halfWay + i;</span>
+                } else {
+<span class="cstat-no" title="statement not covered" >                    return i;</span>
+                }
+            } else {
+<span class="cstat-no" title="statement not covered" >                return i;</span>
+            }
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return {</span>
+            restrict: 'AE',
+            templateUrl: <span class="fstat-no" title="function not covered" >function(elem, attrs) {</span>
+<span class="cstat-no" title="statement not covered" >                return attrs.templateUrl || templatePath;</span>
+            },
+            scope: {
+                maxSize: '=?',
+                onPageChange: '&amp;?'
+            },
+            link: <span class="fstat-no" title="function not covered" >function(scope, element, attrs) {</span>
+<span class="cstat-no" title="statement not covered" >                var paginationId;</span>
+<span class="cstat-no" title="statement not covered" >                paginationId = attrs.paginationId || '__default';</span>
+<span class="cstat-no" title="statement not covered" >                if (!scope.maxSize) { <span class="cstat-no" title="statement not covered" >scope.maxSize = 9; </span>}</span>
+<span class="cstat-no" title="statement not covered" >                scope.directionLinks = angular.isDefined(attrs.directionLinks) ? scope.$parent.$eval(attrs.directionLinks) : true;</span>
+<span class="cstat-no" title="statement not covered" >                scope.boundaryLinks = angular.isDefined(attrs.boundaryLinks) ? scope.$parent.$eval(attrs.boundaryLinks) : false;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                if (!paginationService.isRegistered(paginationId)) {</span>
+<span class="cstat-no" title="statement not covered" >                    var idMessage = (paginationId !== '__default') ? ' (id: ' + paginationId + ') ' : ' ';</span>
+<span class="cstat-no" title="statement not covered" >                    throw 'pagination directive: the pagination controls' + idMessage + 'cannot be used without the corresponding pagination directive.';</span>
+                }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                var paginationRange = Math.max(scope.maxSize, 5);</span>
+<span class="cstat-no" title="statement not covered" >                scope.pages = [];</span>
+<span class="cstat-no" title="statement not covered" >                scope.pagination = {</span>
+                    last: 1,
+                    current: 1
+                };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                scope.$watch(<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >                    return (paginationService.getCollectionLength(paginationId) + 1) * paginationService.getItemsPerPage(paginationId);</span>
+                }, <span class="fstat-no" title="function not covered" >function(length) {</span>
+<span class="cstat-no" title="statement not covered" >                    if (0 &lt; length) {</span>
+<span class="cstat-no" title="statement not covered" >                        generatePagination();</span>
+                    }
+                });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                scope.$watch(<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >                    return paginationService.getCurrentPage(paginationId);</span>
+                }, <span class="fstat-no" title="function not covered" >function(currentPage, previousPage) {</span>
+<span class="cstat-no" title="statement not covered" >                    if (currentPage != previousPage) {</span>
+<span class="cstat-no" title="statement not covered" >                        goToPage(currentPage);</span>
+                    }
+                });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                scope.setCurrent = <span class="fstat-no" title="function not covered" >function(num) {</span></span>
+<span class="cstat-no" title="statement not covered" >                    if (isValidPageNumber(num)) {</span>
+<span class="cstat-no" title="statement not covered" >                        paginationService.setCurrentPage(paginationId, num);</span>
+                    }
+                };
+&nbsp;
+<span class="fstat-no" title="function not covered" >                function goToPage(num) {</span>
+<span class="cstat-no" title="statement not covered" >                    if (isValidPageNumber(num)) {</span>
+<span class="cstat-no" title="statement not covered" >                        scope.pages = generatePagesArray(num, paginationService.getCollectionLength(paginationId), paginationService.getItemsPerPage(paginationId), paginationRange);</span>
+<span class="cstat-no" title="statement not covered" >                        scope.pagination.current = num;</span>
+&nbsp;
+                        // if a callback has been set, then call it with the page number as an argument
+<span class="cstat-no" title="statement not covered" >                        if (scope.onPageChange) {</span>
+<span class="cstat-no" title="statement not covered" >                            scope.onPageChange({ newPageNumber : num });</span>
+                        }
+                    }
+                }
+&nbsp;
+<span class="fstat-no" title="function not covered" >                function generatePagination() {</span>
+<span class="cstat-no" title="statement not covered" >                    var page = parseInt(paginationService.getCurrentPage(paginationId), 10) || 1;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    scope.pages = generatePagesArray(page, paginationService.getCollectionLength(paginationId), paginationService.getItemsPerPage(paginationId), paginationRange);</span>
+<span class="cstat-no" title="statement not covered" >                    scope.pagination.current = page;</span>
+<span class="cstat-no" title="statement not covered" >                    scope.pagination.last = scope.pages[scope.pages.length - 1];</span>
+<span class="cstat-no" title="statement not covered" >                    if (scope.pagination.last &lt; scope.pagination.current) {</span>
+<span class="cstat-no" title="statement not covered" >                        scope.setCurrent(scope.pagination.last);</span>
+                    }
+                }
+&nbsp;
+<span class="fstat-no" title="function not covered" >                function isValidPageNumber(num) {</span>
+<span class="cstat-no" title="statement not covered" >                    return (numberRegex.test(num) &amp;&amp; (0 &lt; num &amp;&amp; num &lt;= scope.pagination.last));</span>
+                }
+            }
+        };
+    }]);
+&nbsp;
+    module.filter('itemsPerPage', ['paginationService', <span class="fstat-no" title="function not covered" >function(paginationService) {</span>
+<span class="cstat-no" title="statement not covered" >        return <span class="fstat-no" title="function not covered" >function(collection, itemsPerPage, paginationId) {</span></span>
+<span class="cstat-no" title="statement not covered" >            if (typeof (paginationId) === 'undefined') {</span>
+<span class="cstat-no" title="statement not covered" >                paginationId = '__default';</span>
+            }
+<span class="cstat-no" title="statement not covered" >            if (!paginationService.isRegistered(paginationId)) {</span>
+<span class="cstat-no" title="statement not covered" >                throw 'pagination directive: the itemsPerPage id argument (id: ' + paginationId + ') does not match a registered pagination-id.';</span>
+            }
+<span class="cstat-no" title="statement not covered" >            var end;</span>
+<span class="cstat-no" title="statement not covered" >            var start;</span>
+<span class="cstat-no" title="statement not covered" >            if (collection instanceof Array) {</span>
+<span class="cstat-no" title="statement not covered" >                itemsPerPage = parseInt(itemsPerPage, 10) || 9999999999;</span>
+<span class="cstat-no" title="statement not covered" >                if (paginationService.isAsyncMode(paginationId)) {</span>
+<span class="cstat-no" title="statement not covered" >                    start = 0;</span>
+                } else {
+<span class="cstat-no" title="statement not covered" >                    start = (paginationService.getCurrentPage(paginationId) - 1) * itemsPerPage;</span>
+                }
+<span class="cstat-no" title="statement not covered" >                end = start + itemsPerPage;</span>
+<span class="cstat-no" title="statement not covered" >                paginationService.setItemsPerPage(paginationId, itemsPerPage);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                return collection.slice(start, end);</span>
+            } else {
+<span class="cstat-no" title="statement not covered" >                return collection;</span>
+            }
+        };
+    }]);
+&nbsp;
+    module.service('paginationService', <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >        var instances = {};</span>
+<span class="cstat-no" title="statement not covered" >        var lastRegisteredInstance;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.registerInstance = <span class="fstat-no" title="function not covered" >function(instanceId) {</span></span>
+<span class="cstat-no" title="statement not covered" >            if (typeof instances[instanceId] === 'undefined') {</span>
+<span class="cstat-no" title="statement not covered" >                instances[instanceId] = {</span>
+                    asyncMode: false
+                };
+<span class="cstat-no" title="statement not covered" >                lastRegisteredInstance = instanceId;</span>
+            }
+        };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.isRegistered = <span class="fstat-no" title="function not covered" >function(instanceId) {</span></span>
+<span class="cstat-no" title="statement not covered" >            return (typeof instances[instanceId] !== 'undefined');</span>
+        };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.getLastInstanceId = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >            return lastRegisteredInstance;</span>
+        };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.setCurrentPageParser = <span class="fstat-no" title="function not covered" >function(instanceId, val, scope) {</span></span>
+<span class="cstat-no" title="statement not covered" >            instances[instanceId].currentPageParser = val;</span>
+<span class="cstat-no" title="statement not covered" >            instances[instanceId].context = scope;</span>
+        };
+<span class="cstat-no" title="statement not covered" >        this.setCurrentPage = <span class="fstat-no" title="function not covered" >function(instanceId, val) {</span></span>
+<span class="cstat-no" title="statement not covered" >            instances[instanceId].currentPageParser.assign(instances[instanceId].context, val);</span>
+        };
+<span class="cstat-no" title="statement not covered" >        this.getCurrentPage = <span class="fstat-no" title="function not covered" >function(instanceId) {</span></span>
+<span class="cstat-no" title="statement not covered" >            var parser = instances[instanceId].currentPageParser;</span>
+<span class="cstat-no" title="statement not covered" >            return parser ? parser(instances[instanceId].context) : 1;</span>
+        };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.setItemsPerPage = <span class="fstat-no" title="function not covered" >function(instanceId, val) {</span></span>
+<span class="cstat-no" title="statement not covered" >            instances[instanceId].itemsPerPage = val;</span>
+        };
+<span class="cstat-no" title="statement not covered" >        this.getItemsPerPage = <span class="fstat-no" title="function not covered" >function(instanceId) {</span></span>
+<span class="cstat-no" title="statement not covered" >            return instances[instanceId].itemsPerPage;</span>
+        };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.setCollectionLength = <span class="fstat-no" title="function not covered" >function(instanceId, val) {</span></span>
+<span class="cstat-no" title="statement not covered" >            instances[instanceId].collectionLength = val;</span>
+        };
+<span class="cstat-no" title="statement not covered" >        this.getCollectionLength = <span class="fstat-no" title="function not covered" >function(instanceId) {</span></span>
+<span class="cstat-no" title="statement not covered" >            return instances[instanceId].collectionLength;</span>
+        };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.setAsyncModeTrue = <span class="fstat-no" title="function not covered" >function(instanceId) {</span></span>
+<span class="cstat-no" title="statement not covered" >            instances[instanceId].asyncMode = true;</span>
+        };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.isAsyncMode = <span class="fstat-no" title="function not covered" >function(instanceId) {</span></span>
+<span class="cstat-no" title="statement not covered" >            return instances[instanceId].asyncMode;</span>
+        };
+    });
+})();
+&nbsp;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Nov 16 2014 18:04:45 GMT+0100 (Paris, Madrid)</div>
+</div>
+
+<script src="../prettify.js"></script>
+
+<script src="https://yui-s.yahooapis.com/3.6.0/build/yui/yui-min.js"></script>
+<script>
+
+    YUI().use('datatable', function (Y) {
+
+        var formatters = {
+          pct: function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              try {
+                  return o.value.toFixed(2) + '%';
+              } catch (ex) { return o.value + '%'; }
+          },
+          html: function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              return o.record.get(o.column.key + '_html');
+          }
+        },
+          defaultFormatter = function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              return o.value;
+          };
+
+        function getColumns(theadNode) {
+            var colNodes = theadNode.all('tr th'),
+                cols = [],
+                col;
+            colNodes.each(function (colNode) {
+                col = {
+                    key: colNode.getAttribute('data-col'),
+                    label: colNode.get('innerHTML') || ' ',
+                    sortable: !colNode.getAttribute('data-nosort'),
+                    className: colNode.getAttribute('class'),
+                    type: colNode.getAttribute('data-type'),
+                    allowHTML: colNode.getAttribute('data-html') === 'true' || colNode.getAttribute('data-fmt') === 'html'
+                };
+                col.formatter = formatters[colNode.getAttribute('data-fmt')] || defaultFormatter;
+                cols.push(col);
+            });
+            return cols;
+        }
+
+        function getRowData(trNode, cols) {
+            var tdNodes = trNode.all('td'),
+                    i,
+                    row = { classes: {} },
+                    node,
+                    name;
+            for (i = 0; i < cols.length; i += 1) {
+                name = cols[i].key;
+                node = tdNodes.item(i);
+                row[name] = node.getAttribute('data-value') || node.get('innerHTML');
+                row[name + '_html'] = node.get('innerHTML');
+                row.classes[name] = node.getAttribute('class');
+                //Y.log('Name: ' + name + '; Value: ' + row[name]);
+                if (cols[i].type === 'number') { row[name] = row[name] * 1; }
+            }
+            //Y.log(row);
+            return row;
+        }
+
+        function getData(tbodyNode, cols) {
+            var data = [];
+            tbodyNode.all('tr').each(function (trNode) {
+                data.push(getRowData(trNode, cols));
+            });
+            return data;
+        }
+
+        function replaceTable(node) {
+            if (!node) { return; }
+            var cols = getColumns(node.one('thead')),
+                data = getData(node.one('tbody'), cols),
+                table,
+                parent = node.get('parentNode');
+
+            table = new Y.DataTable({
+                columns: cols,
+                data: data,
+                sortBy: 'file'
+            });
+            parent.set('innerHTML', '');
+            table.render(parent);
+        }
+
+        Y.on('domready', function () {
+            replaceTable(Y.one('div.coverage-summary table'));
+            if (typeof prettyPrint === 'function') {
+                prettyPrint();
+            }
+        });
+    });
+</script>
+</body>
+</html>

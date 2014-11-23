@@ -18,6 +18,7 @@ angular
     'themis.courts',
     'themis.itemMissions',
     'themis.business',
+    'themis.evidences',
     'ui.router',
     'ngSanitize',
     'angularUtils.directives.dirPagination'
