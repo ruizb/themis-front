@@ -40,11 +40,11 @@
           <td>{{ evidence.numPV }}</td>
           <td>
             <ul>
-              <li ng-repeat="im in evidence.itemMissions">({{ im.item.label }})-({{ im.mission.label }})</li>
+              <li ng-repeat="im in evidence.operations">({{ im.item.label }})-({{ im.mission.label }})</li>
             </ul>
           </td> <!-- Afficher le nom de chaque service -->
           <td>
-            <button type="button" class="btn btn-default" tooltip="Modifier" ui-sref="evidences.edit({ id: evidence.id })">
+            <button type="button" class="btn btn-default" tooltip="Modifier" ui-sref="evidences.edit({ id: evidence.num })">
               <span class="glyphicon glyphicon-pencil"></span>
             </button>
             <button type="button" class="btn btn-default" tooltip="Supprimer" ng-click="remove(evidence)">

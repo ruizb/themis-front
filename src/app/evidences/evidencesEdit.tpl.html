@@ -7,24 +7,24 @@
 
 <form novalidate>
   <div ng-if="isEdit" class="form-group col-sm-8 col-sm-offset-2">
-    <label class="control-label" for="id">ID</label>
-    <input type="text" class="form-control" name="id" id="id" ng-model="evidence.id" readonly>
+    <label class="control-label" for="id">Numéro</label>
+    <input type="text" class="form-control" name="num" id="num" ng-model="evidence.num" readonly>
+  </div>
+  <div ng-if="!isEdit" class="form-group col-sm-8 col-sm-offset-2">
+    <label class="control-label" for="id">Numéro</label>
+    <input type="text" class="form-control" name="num" id="num" ng-model="evidence.num">
   </div>
   <div class="form-group col-sm-8 col-sm-offset-2">
     <label class="control-label" for="id">Libellé</label>
     <input type="text" class="form-control" name="label" id="label" ng-model="evidence.label">
   </div>
   <div class="form-group col-sm-8 col-sm-offset-2">
-    <label class="control-label" for="id">Numéro</label>
-    <input type="text" class="form-control" name="num" id="num" ng-model="evidence.num">
-  </div>
-  <div class="form-group col-sm-8 col-sm-offset-2">
-    <label class="control-label" for="id">numéro de PV</label>
+    <label class="control-label" for="id">Numéro de PV</label>
     <input type="text" class="form-control" name="numPV" id="numPV" ng-model="evidence.numPV">
   </div>
   <div class="form-group col-sm-8 col-sm-offset-2">
     <div class="input-group">
-      <label class="control-label" for="department">Objets-Missions</label>
+      <label class="control-label" for="operation">Objets-Missions</label>
     </div>
     <div class="input-group">
       <select class="form-control" name="itemMission" id="itemMission" ng-model="selectedItemMissionId">

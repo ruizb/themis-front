@@ -33,7 +33,7 @@
           evidence: function ($stateParams, $q, Evidence) {
             var deferred = $q.defer();
             if (_.isUndefined($stateParams.id) || $stateParams.id === '') {
-              deferred.resolve({ label: '',num:'',numPV:'',itemMissions:{} });
+              deferred.resolve({ num:'',label: '',numPV:'',operations:{} });
             }
             else {
               Evidence

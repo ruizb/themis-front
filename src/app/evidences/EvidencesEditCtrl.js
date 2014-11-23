@@ -2,7 +2,7 @@ angular
   .module('themis.evidences')
   .controller('EvidencesEditCtrl', function ($scope, $state, Evidence, ItemMission, evidence) {
 
-    var isEdit = !_.isUndefined(evidence.id) && _.isNumber(evidence.id);
+    var isEdit = !_.isUndefined(evidence.num) && _.isNumber(evidence.num);
     $scope.isEdit = isEdit;
 
     $scope.selectedItemMissions = [];
@@ -57,7 +57,9 @@ angular
 
     $scope.submit = function () {
       var operation = isEdit ? 'edit' : 'add';
-      $scope.business.itemMissions = $scope.selectedItemMissions;
+      $scope.evidence.num = parseInt($scope.evidence.num, 10);
+      $scope.evidence.numPV = parseInt($scope.evidence.numPV, 10);
+      $scope.evidence.operations = $scope.selectedItemMissions;
       console.log('Sending...', $scope.evidence);
       Evidence
         [operation]($scope.evidence)

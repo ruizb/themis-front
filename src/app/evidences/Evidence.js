@@ -52,7 +52,7 @@ angular
     Evidence.prototype.edit = function (evidenceData) {
         var deferred = $q.defer();
       $http
-        .put(this.url + '/' + evidenceData.id, evidenceData)
+        .put(this.url + '/' + evidenceData.num, evidenceData)
         .success(function (data) {
           deferred.resolve(data);
         })
@@ -65,7 +65,7 @@ angular
     Evidence.prototype.remove = function (evidenceData) {
       var deferred = $q.defer();
       $http
-        ['delete'](this.url + '/' + evidenceData.id)// ['delete'] instead of .delete because of jshint ("delete is a reserved key word...")
+        ['delete'](this.url + '/' + evidenceData.num)// ['delete'] instead of .delete because of jshint ("delete is a reserved key word...")
         .success(function (data) {
           deferred.resolve(data);
         })
