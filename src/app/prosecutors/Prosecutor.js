@@ -8,36 +8,6 @@ angular
     };
     Prosecutor.prototype = Object.create(Entity.prototype);
 
-    // TODO tmp
-    Prosecutor.prototype.getAll = function () {
-      var deferred = $q.defer();
-
-      var prosecutors = [];
-      for (var i = 0; i < 5; i++) {
-        prosecutors.push({
-          id: i,
-          fname: "Boby",
-          lname: "Modnar",
-          status: {
-            id: i,
-            name: "Mega Procureur"
-          },
-          tribunal: {
-            id: i,
-            name: "TGI de Montpellier",
-            phone: "01586987548",
-            court: {
-              id: i,
-              label: "Cour appel de Montpellier"
-            }
-          }
-        });
-      }
-      deferred.resolve(prosecutors);
-
-      return deferred.promise;
-    };
-
     Prosecutor.prototype.add = function (prosecutorData) {
       var deferred = $q.defer();
       $http
